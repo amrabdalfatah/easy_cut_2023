@@ -1,3 +1,4 @@
+import 'package:easycut/utils/dimensions.dart';
 import 'package:flutter/material.dart';
 
 class BigText extends StatelessWidget {
@@ -11,7 +12,7 @@ class BigText extends StatelessWidget {
     required this.text,
     this.color = const Color(0xFF332d2b),
     this.overflow = TextOverflow.ellipsis,
-    this.size = 20,
+    this.size = 0,
   });
 
   @override
@@ -24,7 +25,7 @@ class BigText extends StatelessWidget {
         fontFamily: 'Roboto',
         color: color,
         fontWeight: FontWeight.w400,
-        fontSize: size,
+        fontSize: size == 0 ? Dimensions.font20 : size,
       ),
     );
   }

@@ -54,11 +54,56 @@ class _SalonPageBodyState extends State<SalonPageBody> {
           position: _currentPageValue.floor(),
           decorator: DotsDecorator(
             activeColor: AppColors.mainColor,
-            size: Size.square(9.0),
-            activeSize: Size(18.0, 9.0),
+            size: Size.square(Dimensions.height10),
+            activeSize: Size(Dimensions.height20, Dimensions.height10),
             activeShape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(5),
+              borderRadius: BorderRadius.circular(Dimensions.radius5),
             ),
+          ),
+        ),
+        SizedBox(height: Dimensions.height30),
+        Container(
+          margin: EdgeInsets.only(left: Dimensions.width30),
+          child: Row(
+            children: [
+              BigText(text: 'Popular'),
+            ],
+          ),
+        ),
+        Container(
+          height: Dimensions.screenHeight,
+          child: ListView.builder(
+            shrinkWrap: true,
+            physics: NeverScrollableScrollPhysics(),
+            itemCount: 10,
+            itemBuilder: (context, index) {
+              return Container(
+                margin: EdgeInsets.only(
+                  left: Dimensions.width30,
+                  right: Dimensions.width30,
+                ),
+                child: Row(
+                  children: [
+                    Container(
+                      width: Dimensions.pageViewTextContainer,
+                      height: Dimensions.pageViewTextContainer,
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(
+                          Dimensions.radius20,
+                        ),
+                        color: Colors.white38,
+                        image: DecorationImage(
+                          fit: BoxFit.cover,
+                          image: AssetImage(
+                            'assets/images/salon0.jpeg',
+                          ),
+                        ),
+                      ),
+                    ),
+                  ],
+                ),
+              );
+            },
           ),
         ),
       ],
@@ -96,7 +141,9 @@ class _SalonPageBodyState extends State<SalonPageBody> {
           Container(
             height: Dimensions.pageViewContainer,
             margin: EdgeInsets.only(
-                left: Dimensions.width10, right: Dimensions.width10),
+              left: Dimensions.width10,
+              right: Dimensions.width10,
+            ),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(Dimensions.radius30),
               color: index.isEven ? Color(0xFF69c5df) : Color(0xFF9294cc),

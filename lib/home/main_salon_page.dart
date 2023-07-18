@@ -55,6 +55,7 @@ class _MainSalonPageState extends State<MainSalonPage> {
                       child: Icon(
                         Icons.search,
                         color: Colors.white,
+                        size: Dimensions.iconSize24,
                       ),
                     ),
                   ),
@@ -62,7 +63,11 @@ class _MainSalonPageState extends State<MainSalonPage> {
               ),
             ),
           ),
-          SalonPageBody(),
+          Expanded(
+            child: SingleChildScrollView(
+              child: SalonPageBody(),
+            ),
+          ),
         ],
       ),
     );

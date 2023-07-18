@@ -1,3 +1,4 @@
+import 'package:easycut/home/salon_page_body.dart';
 import 'package:easycut/utils/colors.dart';
 import 'package:easycut/widgets/big_text.dart';
 import 'package:easycut/widgets/small_text.dart';
@@ -52,6 +53,7 @@ class _MainSalonPageState extends State<MainSalonPage> {
               ),
             ),
           ),
+          SalonPageBody(),
         ],
       ),
     );

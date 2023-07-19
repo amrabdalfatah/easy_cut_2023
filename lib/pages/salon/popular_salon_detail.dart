@@ -38,7 +38,7 @@ class PopularSalonDetail extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 AppIcon(icon: Icons.arrow_back_ios),
-                AppIcon(icon: Icons.book),
+                AppIcon(icon: Icons.favorite_border),
               ],
             ),
           ),

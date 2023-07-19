@@ -1,4 +1,4 @@
-import 'package:easycut/home/main_salon_page.dart';
+import 'package:easycut/pages/salon/popular_salon_detail.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MainSalonPage(),
+      home: const PopularSalonDetail(),
     );
   }
 }

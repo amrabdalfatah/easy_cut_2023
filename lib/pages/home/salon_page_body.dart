@@ -1,6 +1,7 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:easycut/utils/colors.dart';
 import 'package:easycut/utils/dimensions.dart';
+import 'package:easycut/widgets/app_column.dart';
 import 'package:easycut/widgets/big_text.dart';
 import 'package:easycut/widgets/icon_and_text.dart';
 import 'package:easycut/widgets/small_text.dart';
@@ -70,41 +71,77 @@ class _SalonPageBodyState extends State<SalonPageBody> {
             ],
           ),
         ),
-        Container(
-          height: Dimensions.screenHeight,
-          child: ListView.builder(
-            shrinkWrap: true,
-            physics: NeverScrollableScrollPhysics(),
-            itemCount: 10,
-            itemBuilder: (context, index) {
-              return Container(
-                margin: EdgeInsets.only(
-                  left: Dimensions.width30,
-                  right: Dimensions.width30,
-                ),
-                child: Row(
-                  children: [
-                    Container(
-                      width: Dimensions.pageViewTextContainer,
-                      height: Dimensions.pageViewTextContainer,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(
-                          Dimensions.radius20,
-                        ),
-                        color: Colors.white38,
-                        image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image: AssetImage(
-                            'assets/images/salon0.jpeg',
-                          ),
+        ListView.builder(
+          shrinkWrap: true,
+          physics: NeverScrollableScrollPhysics(),
+          itemCount: 10,
+          itemBuilder: (context, index) {
+            return Container(
+              margin: EdgeInsets.only(
+                left: Dimensions.width20,
+                right: Dimensions.width20,
+                bottom: Dimensions.height10,
+              ),
+              child: Row(
+                children: [
+                  Container(
+                    width: Dimensions.pageViewTextContainer,
+                    height: Dimensions.pageViewTextContainer,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(
+                        Dimensions.radius20,
+                      ),
+                      color: Colors.white38,
+                      image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: AssetImage(
+                          'assets/images/salon0.jpeg',
                         ),
                       ),
                     ),
-                  ],
-                ),
-              );
-            },
-          ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      height: Dimensions.height100,
+                      padding: EdgeInsets.symmetric(
+                        horizontal: Dimensions.width10,
+                      ),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.only(
+                          topRight: Radius.circular(Dimensions.radius20),
+                          bottomRight: Radius.circular(Dimensions.radius20),
+                        ),
+                        color: Colors.white,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          BigText(text: 'Salon Name'),
+                          SmallText(text: 'Salon Description'),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              IconAndTextWidget(
+                                icon: Icons.circle_sharp,
+                                text: 'Men',
+                                iconColor: AppColors.iconColor1,
+                              ),
+                              IconAndTextWidget(
+                                icon: Icons.location_on,
+                                text: '1.7km',
+                                iconColor: AppColors.mainColor,
+                              ),
+                            ],
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            );
+          },
         ),
       ],
     );
@@ -185,56 +222,12 @@ class _SalonPageBodyState extends State<SalonPageBody> {
               ),
               child: Container(
                 padding: EdgeInsets.only(
-                    top: Dimensions.height15,
-                    left: Dimensions.width15,
-                    right: Dimensions.width15),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    BigText(text: 'Salon Name'),
-                    SizedBox(height: Dimensions.height10),
-                    Row(
-                      children: [
-                        Wrap(
-                          children: List.generate(
-                            5,
-                            (index) => Icon(
-                              Icons.star,
-                              color: AppColors.mainColor,
-                              size: Dimensions.height15,
-                            ),
-                          ),
-                        ),
-                        SizedBox(width: Dimensions.width10),
-                        SmallText(text: '4.5'),
-                        SizedBox(width: Dimensions.width10),
-                        SmallText(text: '1287'),
-                        SizedBox(width: Dimensions.width10),
-                        SmallText(text: 'comments'),
-                      ],
-                    ),
-                    SizedBox(height: Dimensions.height20),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        IconAndTextWidget(
-                          icon: Icons.circle_sharp,
-                          text: 'Normal',
-                          iconColor: AppColors.iconColor1,
-                        ),
-                        IconAndTextWidget(
-                          icon: Icons.location_on,
-                          text: '1.7km',
-                          iconColor: AppColors.mainColor,
-                        ),
-                        IconAndTextWidget(
-                          icon: Icons.access_time_outlined,
-                          text: '32min',
-                          iconColor: AppColors.iconColor2,
-                        ),
-                      ],
-                    ),
-                  ],
+                  top: Dimensions.height15,
+                  left: Dimensions.width15,
+                  right: Dimensions.width15,
+                ),
+                child: AppColumn(
+                  text: "Salon Name",
                 ),
               ),
             ),

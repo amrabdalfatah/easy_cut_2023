@@ -1,4 +1,4 @@
-import 'package:easycut/home/salon_page_body.dart';
+import 'package:easycut/pages/home/salon_page_body.dart';
 import 'package:easycut/utils/colors.dart';
 import 'package:easycut/utils/dimensions.dart';
 import 'package:easycut/widgets/big_text.dart';

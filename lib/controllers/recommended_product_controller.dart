@@ -1,6 +1,6 @@
 import 'package:easycut/data/repository/recommended_product_repo.dart';
-import 'package:easycut/models/products_model.dart';
 import 'package:get/get.dart';
+import 'package:http/http.dart' as http;
 
 class RecommendedProductController extends GetxController {
   final RecommendedProductRepo recommendedProductRepo;
@@ -13,13 +13,13 @@ class RecommendedProductController extends GetxController {
   bool get isLoaded => _isLoaded;
 
   Future<void> getRecommendedProductList() async {
-    Response response =
+    http.Response response =
         await recommendedProductRepo.getRecommendedProductList();
     print(response.body);
     if (response.statusCode == 200) {
       print("Got Products");
       _recommendedProductList = [];
-      _recommendedProductList.addAll(Product.fromJson(response.body).products);
+      // _recommendedProductList.addAll(Product.fromJson(response.body).products);
       // print(_popularProductList);
       _isLoaded = true;
       update();

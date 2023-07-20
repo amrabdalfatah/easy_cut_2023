@@ -1,4 +1,4 @@
-import 'package:easycut/pages/home/main_salon_page.dart';
+import 'package:easycut/pages/home/home_page.dart';
 import 'package:easycut/pages/salon/popular_salon_detail.dart';
 import 'package:get/get.dart';
 
@@ -15,7 +15,7 @@ class RouteHelper {
   static List<GetPage> routes = [
     GetPage(
       name: initial,
-      page: () => MainSalonPage(),
+      page: () => HomePage(),
     ),
     GetPage(
       name: popularSalon,

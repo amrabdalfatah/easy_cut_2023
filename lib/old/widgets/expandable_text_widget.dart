@@ -1,6 +1,6 @@
-import 'package:easycut/utils/colors.dart';
-import 'package:easycut/utils/dimensions.dart';
-import 'package:easycut/widgets/small_text.dart';
+import 'package:easycut/old/utils/colors.dart';
+import 'package:easycut/old/utils/dimensions.dart';
+import 'package:easycut/old/widgets/small_text.dart';
 import 'package:flutter/material.dart';
 
 class ExpandableTextWidget extends StatefulWidget {

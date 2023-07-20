@@ -1,9 +1,9 @@
-import 'package:easycut/controllers/popular_product_controller.dart';
-import 'package:easycut/controllers/recommended_product_controller.dart';
-import 'package:easycut/data/api/api_client.dart';
-import 'package:easycut/data/repository/popular_product_repo.dart';
-import 'package:easycut/data/repository/recommended_product_repo.dart';
-import 'package:easycut/utils/constants.dart';
+import 'package:easycut/old/controllers/popular_product_controller.dart';
+import 'package:easycut/old/controllers/recommended_product_controller.dart';
+import 'package:easycut/old/data/api/api_client.dart';
+import 'package:easycut/old/data/repository/popular_product_repo.dart';
+import 'package:easycut/old/data/repository/recommended_product_repo.dart';
+import 'package:easycut/old/utils/constants.dart';
 import 'package:get/get.dart';
 
 Future<void> init() async {

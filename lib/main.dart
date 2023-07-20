@@ -1,9 +1,9 @@
-import 'package:easycut/controllers/popular_product_controller.dart';
-import 'package:easycut/routes/route_helper.dart';
+import 'package:easycut/old/controllers/popular_product_controller.dart';
+import 'package:easycut/old/routes/route_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'helper/dependencies.dart' as dep;
+import 'old/helper/dependencies.dart' as dep;
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

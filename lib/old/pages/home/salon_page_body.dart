@@ -1,15 +1,15 @@
 import 'package:dots_indicator/dots_indicator.dart';
-import 'package:easycut/controllers/popular_product_controller.dart';
-import 'package:easycut/controllers/recommended_product_controller.dart';
-import 'package:easycut/models/products_model.dart';
-import 'package:easycut/routes/route_helper.dart';
-import 'package:easycut/utils/colors.dart';
-import 'package:easycut/utils/constants.dart';
-import 'package:easycut/utils/dimensions.dart';
-import 'package:easycut/widgets/app_column.dart';
-import 'package:easycut/widgets/big_text.dart';
-import 'package:easycut/widgets/icon_and_text.dart';
-import 'package:easycut/widgets/small_text.dart';
+import 'package:easycut/old/controllers/popular_product_controller.dart';
+import 'package:easycut/old/controllers/recommended_product_controller.dart';
+import 'package:easycut/old/models/products_model.dart';
+import 'package:easycut/old/routes/route_helper.dart';
+import 'package:easycut/old/utils/colors.dart';
+import 'package:easycut/old/utils/constants.dart';
+import 'package:easycut/old/utils/dimensions.dart';
+import 'package:easycut/old/widgets/app_column.dart';
+import 'package:easycut/old/widgets/big_text.dart';
+import 'package:easycut/old/widgets/icon_and_text.dart';
+import 'package:easycut/old/widgets/small_text.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

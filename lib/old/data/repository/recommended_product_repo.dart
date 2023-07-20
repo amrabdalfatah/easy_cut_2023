@@ -1,5 +1,5 @@
-import 'package:easycut/data/api/api_client.dart';
-import 'package:easycut/utils/constants.dart';
+import 'package:easycut/old/data/api/api_client.dart';
+import 'package:easycut/old/utils/constants.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
 

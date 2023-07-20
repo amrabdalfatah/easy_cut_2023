@@ -1,6 +1,7 @@
-import 'package:easycut/data/repository/recommended_product_repo.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+
+import '../data/repository/recommended_product_repo.dart';
 
 class RecommendedProductController extends GetxController {
   final RecommendedProductRepo recommendedProductRepo;

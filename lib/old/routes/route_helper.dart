@@ -1,5 +1,5 @@
-import 'package:easycut/pages/home/home_page.dart';
-import 'package:easycut/pages/salon/popular_salon_detail.dart';
+import 'package:easycut/old/pages/home/home_page.dart';
+import 'package:easycut/old/pages/salon/popular_salon_detail.dart';
 import 'package:get/get.dart';
 
 class RouteHelper {

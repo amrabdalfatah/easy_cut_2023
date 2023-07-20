@@ -1,4 +1,4 @@
-import 'package:easycut/utils/dimensions.dart';
+import 'package:easycut/old/utils/dimensions.dart';
 import 'package:flutter/material.dart';
 
 class SmallText extends StatelessWidget {

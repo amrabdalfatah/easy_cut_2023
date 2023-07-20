@@ -1,6 +1,7 @@
-import 'package:easycut/data/repository/popular_product_repo.dart';
 import 'package:get/get.dart';
 import 'package:http/http.dart' as http;
+
+import '../data/repository/popular_product_repo.dart';
 
 class PopularProductController extends GetxController {
   final PopularProductRepo popularProductRepo;

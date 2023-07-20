@@ -1,12 +1,12 @@
-import 'package:easycut/controllers/popular_product_controller.dart';
-import 'package:easycut/pages/home/main_salon_page.dart';
-import 'package:easycut/utils/colors.dart';
-import 'package:easycut/utils/constants.dart';
-import 'package:easycut/utils/dimensions.dart';
-import 'package:easycut/widgets/app_column.dart';
-import 'package:easycut/widgets/app_icon.dart';
-import 'package:easycut/widgets/big_text.dart';
-import 'package:easycut/widgets/expandable_text_widget.dart';
+import 'package:easycut/old/controllers/popular_product_controller.dart';
+import 'package:easycut/old/pages/home/main_salon_page.dart';
+import 'package:easycut/old/utils/colors.dart';
+import 'package:easycut/old/utils/constants.dart';
+import 'package:easycut/old/utils/dimensions.dart';
+import 'package:easycut/old/widgets/app_column.dart';
+import 'package:easycut/old/widgets/app_icon.dart';
+import 'package:easycut/old/widgets/big_text.dart';
+import 'package:easycut/old/widgets/expandable_text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 

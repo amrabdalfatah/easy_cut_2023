@@ -1,16 +1,27 @@
+import 'package:easycut/controllers/popular_product_controller.dart';
+import 'package:easycut/pages/home/main_salon_page.dart';
 import 'package:easycut/utils/colors.dart';
+import 'package:easycut/utils/constants.dart';
 import 'package:easycut/utils/dimensions.dart';
 import 'package:easycut/widgets/app_column.dart';
 import 'package:easycut/widgets/app_icon.dart';
 import 'package:easycut/widgets/big_text.dart';
 import 'package:easycut/widgets/expandable_text_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class PopularSalonDetail extends StatelessWidget {
-  const PopularSalonDetail({super.key});
+  final int pageId;
+  const PopularSalonDetail({
+    super.key,
+    required this.pageId,
+  });
 
   @override
   Widget build(BuildContext context) {
+    var product =
+        Get.find<PopularProductController>().popularProductList[pageId];
+    // TODO: RecommendedController
     return Scaffold(
       body: Stack(
         children: [
@@ -23,8 +34,8 @@ class PopularSalonDetail extends StatelessWidget {
               decoration: BoxDecoration(
                 image: DecorationImage(
                   fit: BoxFit.cover,
-                  image: AssetImage(
-                    'assets/images/salon0.jpeg',
+                  image: NetworkImage(
+                    AppConstants.BASE_URL + "/upload/" + product.img!,
                   ),
                 ),
               ),
@@ -37,7 +48,12 @@ class PopularSalonDetail extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                AppIcon(icon: Icons.arrow_back_ios),
+                GestureDetector(
+                  onTap: () {
+                    Get.to(() => MainSalonPage());
+                  },
+                  child: AppIcon(icon: Icons.arrow_back_ios),
+                ),
                 AppIcon(icon: Icons.favorite_border),
               ],
             ),
@@ -64,7 +80,7 @@ class PopularSalonDetail extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   AppColumn(
-                    text: "Salon Name",
+                    text: product.name!,
                   ),
                   SizedBox(height: Dimensions.height20),
                   BigText(text: "Description"),
@@ -72,8 +88,7 @@ class PopularSalonDetail extends StatelessWidget {
                   Expanded(
                     child: SingleChildScrollView(
                       child: ExpandableTextWidget(
-                        text:
-                            "Expandable Text Widget aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaabbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbbb",
+                        text: product.description!,
                       ),
                     ),
                   ),

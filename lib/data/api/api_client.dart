@@ -1,3 +1,4 @@
+import 'package:easycut/utils/constants.dart';
 import 'package:get/get.dart';
 
 class ApiClient extends GetConnect implements GetxService {
@@ -9,6 +10,7 @@ class ApiClient extends GetConnect implements GetxService {
 
   ApiClient({required this.appBaseUrl}) {
     baseUrl = appBaseUrl;
+    token = AppConstants.TOKEN;
     timeout = const Duration(seconds: 30);
     _mainHeaders = {
       'Content-type': 'application/json; charset=UTF-8',
@@ -17,8 +19,11 @@ class ApiClient extends GetConnect implements GetxService {
   }
 
   Future<Response> getData(String uri) async {
+    print('Get Data from Api Client');
+    print(uri);
     try {
       Response response = await get(uri);
+      print('Response ${response.statusCode}');
       return response;
     } catch (e) {
       return Response(

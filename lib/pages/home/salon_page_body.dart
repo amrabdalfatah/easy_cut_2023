@@ -1,11 +1,17 @@
 import 'package:dots_indicator/dots_indicator.dart';
+import 'package:easycut/controllers/popular_product_controller.dart';
+import 'package:easycut/controllers/recommended_product_controller.dart';
+import 'package:easycut/models/products_model.dart';
+import 'package:easycut/routes/route_helper.dart';
 import 'package:easycut/utils/colors.dart';
+import 'package:easycut/utils/constants.dart';
 import 'package:easycut/utils/dimensions.dart';
 import 'package:easycut/widgets/app_column.dart';
 import 'package:easycut/widgets/big_text.dart';
 import 'package:easycut/widgets/icon_and_text.dart';
 import 'package:easycut/widgets/small_text.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class SalonPageBody extends StatefulWidget {
   const SalonPageBody({super.key});
@@ -40,114 +46,154 @@ class _SalonPageBodyState extends State<SalonPageBody> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        Container(
-          height: Dimensions.pageView,
-          child: PageView.builder(
-            controller: pageController,
-            itemCount: 5,
-            itemBuilder: (context, position) {
-              return _buildPageItem(position);
-            },
-          ),
+        GetBuilder<PopularProductController>(
+          builder: (popularProducts) {
+            return popularProducts.isLoaded
+                ? Container(
+                    height: Dimensions.pageView,
+                    child: PageView.builder(
+                      controller: pageController,
+                      itemCount: popularProducts.popularProductList.length,
+                      itemBuilder: (context, position) {
+                        return _buildPageItem(
+                          position,
+                          popularProducts.popularProductList[position],
+                        );
+                      },
+                    ),
+                  )
+                : CircularProgressIndicator(
+                    color: AppColors.mainColor,
+                  );
+          },
         ),
-        DotsIndicator(
-          dotsCount: 5,
-          position: _currentPageValue.floor(),
-          decorator: DotsDecorator(
-            activeColor: AppColors.mainColor,
-            size: Size.square(Dimensions.height10),
-            activeSize: Size(Dimensions.height20, Dimensions.height10),
-            activeShape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(Dimensions.radius5),
-            ),
-          ),
+        GetBuilder<PopularProductController>(
+          builder: (popularProducts) {
+            return DotsIndicator(
+              dotsCount: popularProducts.popularProductList.length,
+              position: _currentPageValue.floor(),
+              decorator: DotsDecorator(
+                activeColor: AppColors.mainColor,
+                size: Size.square(Dimensions.height10),
+                activeSize: Size(Dimensions.height20, Dimensions.height10),
+                activeShape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(Dimensions.radius5),
+                ),
+              ),
+            );
+          },
         ),
         SizedBox(height: Dimensions.height30),
         Container(
           margin: EdgeInsets.only(left: Dimensions.width30),
           child: Row(
             children: [
-              BigText(text: 'Popular'),
+              BigText(text: 'Recommended'),
             ],
           ),
         ),
-        ListView.builder(
-          shrinkWrap: true,
-          physics: NeverScrollableScrollPhysics(),
-          itemCount: 10,
-          itemBuilder: (context, index) {
-            return Container(
-              margin: EdgeInsets.only(
-                left: Dimensions.width20,
-                right: Dimensions.width20,
-                bottom: Dimensions.height10,
-              ),
-              child: Row(
-                children: [
-                  Container(
-                    width: Dimensions.pageViewTextContainer,
-                    height: Dimensions.pageViewTextContainer,
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(
-                        Dimensions.radius20,
-                      ),
-                      color: Colors.white38,
-                      image: DecorationImage(
-                        fit: BoxFit.cover,
-                        image: AssetImage(
-                          'assets/images/salon0.jpeg',
-                        ),
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: Container(
-                      height: Dimensions.height100,
-                      padding: EdgeInsets.symmetric(
-                        horizontal: Dimensions.width10,
-                      ),
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.only(
-                          topRight: Radius.circular(Dimensions.radius20),
-                          bottomRight: Radius.circular(Dimensions.radius20),
-                        ),
-                        color: Colors.white,
-                      ),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          BigText(text: 'Salon Name'),
-                          SmallText(text: 'Salon Description'),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        GetBuilder<RecommendedProductController>(
+          builder: (recommendedProduct) {
+            return recommendedProduct.isLoaded
+                ? ListView.builder(
+                    shrinkWrap: true,
+                    physics: NeverScrollableScrollPhysics(),
+                    itemCount: recommendedProduct.recommendedProductList.length,
+                    itemBuilder: (context, index) {
+                      return GestureDetector(
+                        onTap: () {
+                          Get.toNamed(RouteHelper.getRecommendedSalon(index));
+                        },
+                        child: Container(
+                          margin: EdgeInsets.only(
+                            left: Dimensions.width20,
+                            right: Dimensions.width20,
+                            bottom: Dimensions.height10,
+                          ),
+                          child: Row(
                             children: [
-                              IconAndTextWidget(
-                                icon: Icons.circle_sharp,
-                                text: 'Men',
-                                iconColor: AppColors.iconColor1,
+                              Container(
+                                width: Dimensions.pageViewTextContainer,
+                                height: Dimensions.pageViewTextContainer,
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(
+                                    Dimensions.radius20,
+                                  ),
+                                  color: Colors.white38,
+                                  image: DecorationImage(
+                                    fit: BoxFit.cover,
+                                    image: NetworkImage(
+                                      AppConstants.BASE_URL +
+                                          "/uploads/" +
+                                          recommendedProduct
+                                              .recommendedProductList[index]
+                                              .img!,
+                                    ),
+                                  ),
+                                ),
                               ),
-                              IconAndTextWidget(
-                                icon: Icons.location_on,
-                                text: '1.7km',
-                                iconColor: AppColors.mainColor,
+                              Expanded(
+                                child: Container(
+                                  height: Dimensions.height100,
+                                  padding: EdgeInsets.symmetric(
+                                    horizontal: Dimensions.width10,
+                                  ),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.only(
+                                      topRight:
+                                          Radius.circular(Dimensions.radius20),
+                                      bottomRight:
+                                          Radius.circular(Dimensions.radius20),
+                                    ),
+                                    color: Colors.white,
+                                  ),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      BigText(
+                                          text: recommendedProduct
+                                              .recommendedProductList[index]
+                                              .name!),
+                                      SmallText(text: 'Salon Description'),
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          IconAndTextWidget(
+                                            icon: Icons.circle_sharp,
+                                            text: 'Men',
+                                            iconColor: AppColors.iconColor1,
+                                          ),
+                                          IconAndTextWidget(
+                                            icon: Icons.location_on,
+                                            text: '1.7km',
+                                            iconColor: AppColors.mainColor,
+                                          ),
+                                        ],
+                                      ),
+                                    ],
+                                  ),
+                                ),
                               ),
                             ],
                           ),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              ),
-            );
+                        ),
+                      );
+                    },
+                  )
+                : CircularProgressIndicator(
+                    color: AppColors.mainColor,
+                  );
           },
         ),
       ],
     );
   }
 
-  Widget _buildPageItem(int index) {
+  Widget _buildPageItem(int index, ProductModel popularProduct) {
     Matrix4 matrix = Matrix4.identity();
     if (index == _currentPageValue.floor()) {
       var currScale = 1 - (_currentPageValue - index) * (1 - _scaleFactor);
@@ -186,48 +232,53 @@ class _SalonPageBodyState extends State<SalonPageBody> {
               color: index.isEven ? Color(0xFF69c5df) : Color(0xFF9294cc),
               image: DecorationImage(
                 fit: BoxFit.cover,
-                image: AssetImage(
-                  'assets/images/salon0.jpeg',
+                image: NetworkImage(
+                  AppConstants.BASE_URL + "/uploads/" + popularProduct.img!,
                 ),
               ),
             ),
           ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Container(
-              height: Dimensions.pageViewTextContainer,
-              margin: EdgeInsets.only(
-                left: Dimensions.width30,
-                right: Dimensions.width30,
-                bottom: Dimensions.height30,
-              ),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(Dimensions.radius20),
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(
-                    color: Color(0xFFe8e8e8),
-                    blurRadius: 5.0,
-                    offset: Offset(0, 5),
-                  ),
-                  BoxShadow(
-                    color: Colors.white,
-                    offset: Offset(-5, 0),
-                  ),
-                  BoxShadow(
-                    color: Colors.white,
-                    offset: Offset(5, 0),
-                  ),
-                ],
-              ),
+          GestureDetector(
+            onTap: () {
+              Get.toNamed(RouteHelper.getPopularSalon(index));
+            },
+            child: Align(
+              alignment: Alignment.bottomCenter,
               child: Container(
-                padding: EdgeInsets.only(
-                  top: Dimensions.height15,
-                  left: Dimensions.width15,
-                  right: Dimensions.width15,
+                height: Dimensions.pageViewTextContainer,
+                margin: EdgeInsets.only(
+                  left: Dimensions.width30,
+                  right: Dimensions.width30,
+                  bottom: Dimensions.height30,
                 ),
-                child: AppColumn(
-                  text: "Salon Name",
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(Dimensions.radius20),
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Color(0xFFe8e8e8),
+                      blurRadius: 5.0,
+                      offset: Offset(0, 5),
+                    ),
+                    BoxShadow(
+                      color: Colors.white,
+                      offset: Offset(-5, 0),
+                    ),
+                    BoxShadow(
+                      color: Colors.white,
+                      offset: Offset(5, 0),
+                    ),
+                  ],
+                ),
+                child: Container(
+                  padding: EdgeInsets.only(
+                    top: Dimensions.height15,
+                    left: Dimensions.width15,
+                    right: Dimensions.width15,
+                  ),
+                  child: AppColumn(
+                    text: popularProduct.name!,
+                  ),
                 ),
               ),
             ),

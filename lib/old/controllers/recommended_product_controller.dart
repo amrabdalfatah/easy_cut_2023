@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:http/http.dart' as http;
 
 import '../data/repository/recommended_product_repo.dart';
 
@@ -14,7 +13,7 @@ class RecommendedProductController extends GetxController {
   bool get isLoaded => _isLoaded;
 
   Future<void> getRecommendedProductList() async {
-    http.Response response =
+    Response response =
         await recommendedProductRepo.getRecommendedProductList();
     print(response.body);
     if (response.statusCode == 200) {

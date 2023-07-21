@@ -1,6 +1,5 @@
 import 'package:easycut/old/utils/constants.dart';
 import 'package:get/get.dart';
-import 'package:http/http.dart' as http;
 
 class ApiClient extends GetConnect implements GetxService {
   // when you call server you need it
@@ -19,7 +18,7 @@ class ApiClient extends GetConnect implements GetxService {
     };
   }
 
-  Future<http.Response> getData(String uri) async {
+  Future<Response> getData(String uri) async {
     print('Get Data from Api Client');
     try {
       // Uri url = Uri(host: AppConstants.BASE_URL, path: uri);
@@ -31,27 +30,22 @@ class ApiClient extends GetConnect implements GetxService {
       });
       print('Response from Getx done');
 
-      http.Response res = await http.get(
-        url,
-        headers: _mainHeaders,
-      );
+      
 
-      print('Done Response');
-      print('Response ${res.statusCode}');
-      return res;
+      
 
       // print('Response ${response.statusCode}');
 
-      // return response;
+      return response;
     } catch (e) {
       print('Error Api Client ' + e.toString());
       // return Response(
       //   statusCode: 1,
       //   statusText: e.toString(),
       // );
-      return http.Response(
-        e.toString(),
-        1,
+      return Response(
+        bodyString: e.toString(),
+        statusCode: 1,
       );
     }
   }

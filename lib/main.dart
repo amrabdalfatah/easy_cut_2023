@@ -1,13 +1,12 @@
-import 'package:easycut/old/controllers/popular_product_controller.dart';
-import 'package:easycut/old/routes/route_helper.dart';
+
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'old/helper/dependencies.dart' as dep;
+import 'view/screen/onboarding.dart';
+
 
 void main() async {
-  WidgetsFlutterBinding.ensureInitialized();
-  await dep.init();
+
   runApp(const MyApp());
 }
 
@@ -16,13 +15,11 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Get.find<PopularProductController>().getPopularProductList();
-    // Get.find<RecommendedProductController>().getRecommendedProductList();
+    
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'Easy Cut',
-      initialRoute: RouteHelper.getInitial(),
-      getPages: RouteHelper.routes,
+      home: OnBoarding(),
     );
   }
 }

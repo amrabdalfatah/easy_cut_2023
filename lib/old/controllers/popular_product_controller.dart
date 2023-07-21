@@ -1,5 +1,4 @@
 import 'package:get/get.dart';
-import 'package:http/http.dart' as http;
 
 import '../data/repository/popular_product_repo.dart';
 
@@ -14,7 +13,7 @@ class PopularProductController extends GetxController {
   bool get isLoaded => _isLoaded;
 
   Future<void> getPopularProductList() async {
-    http.Response response = await popularProductRepo.getPopularProductList();
+    Response response = await popularProductRepo.getPopularProductList();
     print(response.body);
     if (response.statusCode == 200) {
       print("Got Products");

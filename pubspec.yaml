@@ -31,6 +31,8 @@ flutter:
 
   assets:
     - assets/images/
+    - assets/images/salonbk/
+    - assets/images/icon/
 
   fonts:
     - family: Roboto

@@ -1,3 +1,4 @@
+import 'package:easycut/helper/dependencies.dart';
 import 'package:easycut/routes/route_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -14,6 +15,7 @@ class MyApp extends StatelessWidget {
       // translations: MyTranslation(),
       debugShowCheckedModeBanner: false,
       title: 'Easy Cut',
+      onInit: init,
       // locale: controller.language,
       // theme: controller.appTheme,
       // initialBinding: InitialBindings(),

@@ -5,12 +5,9 @@ import 'package:get/get.dart';
 class RouteHelper {
   static const String initial = "/";
   static const String popularSalon = "/popular-salon";
-  static const String recommendedSalon = "/recommended-salon";
 
   static String getInitial() => '$initial';
   static String getPopularSalon(int pageId) => '$popularSalon?pageId=$pageId';
-  static String getRecommendedSalon(int pageId) =>
-      '$recommendedSalon?pageId=$pageId';
 
   static List<GetPage> routes = [
     GetPage(
@@ -19,14 +16,6 @@ class RouteHelper {
     ),
     GetPage(
       name: popularSalon,
-      page: () {
-        var pageId = Get.parameters['pageId'];
-        return PopularSalonDetail(pageId: int.parse(pageId!));
-      },
-      transition: Transition.fadeIn,
-    ),
-    GetPage(
-      name: recommendedSalon,
       page: () {
         var pageId = Get.parameters['pageId'];
         return PopularSalonDetail(pageId: int.parse(pageId!));

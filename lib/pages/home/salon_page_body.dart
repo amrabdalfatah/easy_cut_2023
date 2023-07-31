@@ -179,7 +179,7 @@ class _SalonPageBodyState extends State<SalonPageBody> {
           itemBuilder: (context, index) {
             return GestureDetector(
               onTap: () {
-                Get.toNamed(RouteHelper.getRecommendedSalon(index));
+                // Get.toNamed(RouteHelper.getRecommendedSalon(index));
               },
               child: Container(
                 margin: EdgeInsets.only(

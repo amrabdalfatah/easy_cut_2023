@@ -18,8 +18,9 @@ class PopularProductController extends GetxController {
       products: [
         ProductModel(
           id: 1,
-          name: 'Head & Sholders',
-          description: 'This is the first element for static',
+          name: 'Salon Eltomy',
+          description:
+              'This is the first element for static This is the first element for static This is the first element for static This is the first element for static This is the first element for static This is the first element for static This is the first element for static This is the first element for static This is the first element for static',
           price: 24,
           stars: 5,
           img: ImageAsset.onBoardingOne,
@@ -27,6 +28,14 @@ class PopularProductController extends GetxController {
           createdAt: '23 Feb, 2023',
           updatedAt: '24 Feb, 2023',
           typeId: 2,
+          images: [
+            ImageAsset.onBoardingOne,
+            ImageAsset.onBoardingTwo,
+            ImageAsset.onBoardingThree,
+            ImageAsset.onBoardingOne,
+            ImageAsset.onBoardingTwo,
+            ImageAsset.onBoardingThree,
+          ],
         ),
         ProductModel(
           id: 2,
@@ -39,6 +48,11 @@ class PopularProductController extends GetxController {
           createdAt: '23 Feb, 2023',
           updatedAt: '24 Feb, 2023',
           typeId: 2,
+          images: [
+            ImageAsset.onBoardingOne,
+            ImageAsset.onBoardingTwo,
+            ImageAsset.onBoardingThree,
+          ],
         ),
       ],
     ),

@@ -78,68 +78,252 @@ class PopularSalonDetail extends StatelessWidget {
                   topLeft: Radius.circular(Dimensions.radius30),
                 ),
               ),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  AppColumn(
-                    text: product.products[pageId].name!,
-                  ),
-                  SizedBox(height: Dimensions.height20),
-                  BigText(text: "Description"),
-                  SizedBox(height: Dimensions.height20),
-                  Expanded(
-                    child: SingleChildScrollView(
-                      child: ExpandableTextWidget(
-                        text: product.products[pageId].description!,
+              child: DefaultTabController(
+                length: 3,
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    AppColumn(
+                      text: product.products[pageId].name!,
+                    ),
+                    SizedBox(height: Dimensions.height10),
+                    TabBar(
+                      labelColor: AppColors.mainColor,
+                      unselectedLabelColor: Colors.grey[700],
+                      indicatorColor: AppColors.mainColor,
+                      tabs: [
+                        Tab(
+                          text: "About",
+                        ),
+                        Tab(
+                          text: "Products",
+                        ),
+                        Tab(
+                          text: "Comments",
+                        ),
+                      ],
+                    ),
+                    Expanded(
+                      child: TabBarView(
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              SizedBox(height: Dimensions.height10),
+                              SizedBox(
+                                height: Dimensions.height100,
+                                child: SingleChildScrollView(
+                                  child: ExpandableTextWidget(
+                                    text: product.products[pageId].description!,
+                                  ),
+                                ),
+                              ),
+                              SizedBox(height: Dimensions.height10),
+                              BigText(text: "Gallery"),
+                              SizedBox(height: Dimensions.height10),
+                              SizedBox(
+                                height: Dimensions.height100,
+                                child: ListView.builder(
+                                  scrollDirection: Axis.horizontal,
+                                  itemCount:
+                                      product.products[pageId].images.length,
+                                  itemBuilder: (context, index) {
+                                    return Container(
+                                      height: Dimensions.height100,
+                                      width: Dimensions.width100,
+                                      margin: EdgeInsets.only(
+                                        right: Dimensions.width10,
+                                      ),
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(
+                                          Dimensions.radius15,
+                                        ),
+                                        image: DecorationImage(
+                                          fit: BoxFit.cover,
+                                          image: AssetImage(
+                                            product
+                                                .products[pageId].images[index],
+                                          ),
+                                        ),
+                                      ),
+                                    );
+                                  },
+                                ),
+                              ),
+                              SizedBox(height: Dimensions.height10),
+                            ],
+                          ),
+                          GridView.builder(
+                            padding: EdgeInsets.symmetric(
+                              vertical: Dimensions.height20,
+                            ),
+                            gridDelegate:
+                                SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2,
+                              mainAxisSpacing: Dimensions.height15,
+                              crossAxisSpacing: Dimensions.height15,
+                              childAspectRatio: 3 / 4,
+                            ),
+                            itemCount: 4,
+                            itemBuilder: (context, index) {
+                              return Container(
+                                color: Colors.red,
+                              );
+                              // return Card(
+                              //   margin: EdgeInsets.only(
+                              //     bottom: Dimensions.height15,
+                              //   ),
+                              //   child: Container(
+                              //     height: Dimensions.height150,
+                              //     padding: EdgeInsets.all(Dimensions.height15),
+                              //     child: Column(
+                              //       crossAxisAlignment: CrossAxisAlignment.start,
+                              //       children: [
+                              //         ListTile(
+                              //           leading: CircleAvatar(
+                              //             radius: Dimensions.radius30,
+                              //             backgroundImage: AssetImage(
+                              //               'assets/images/salonbk/salon1.jpg',
+                              //             ),
+                              //           ),
+                              //           title: BigText(
+                              //             text: "Amr Abdalfatah",
+                              //           ),
+                              //           subtitle: SmallText(
+                              //             text: "20 Minutes Ago",
+                              //           ),
+                              //           trailing: SizedBox(
+                              //             width: Dimensions.width45,
+                              //             child: Row(
+                              //               children: [
+                              //                 Icon(
+                              //                   Icons.star,
+                              //                   size: Dimensions.width15,
+                              //                   color: Colors.yellow,
+                              //                 ),
+                              //                 SmallText(
+                              //                   text: "5.00",
+                              //                   color: Colors.black45,
+                              //                 ),
+                              //               ],
+                              //             ),
+                              //           ),
+                              //         ),
+                              //         Container(
+                              //           height: 1,
+                              //           color: Colors.grey[300],
+                              //         ),
+                              //         SizedBox(
+                              //           height: Dimensions.height10,
+                              //         ),
+                              //         Expanded(
+                              //           child: SmallText(
+                              //             text: "Hiiiiiiiiiiiiiiiiii\nHello My name ",
+                              //             color: Colors.black45,
+                              //           ),
+                              //         ),
+                              //       ],
+                              //     ),
+                              //   ),
+                              // );
+                            },
+                          ),
+                          GridView.builder(
+                            padding: EdgeInsets.symmetric(
+                              vertical: Dimensions.height20,
+                            ),
+                            gridDelegate:
+                                SliverGridDelegateWithFixedCrossAxisCount(
+                              crossAxisCount: 2,
+                              mainAxisSpacing: Dimensions.height15,
+                              crossAxisSpacing: Dimensions.height15,
+                              childAspectRatio: 3 / 4,
+                            ),
+                            itemCount: 4,
+                            itemBuilder: (context, index) {
+                              return Container(
+                                color: Colors.green,
+                              );
+                              // return Card(
+                              //   margin: EdgeInsets.only(
+                              //     bottom: Dimensions.height15,
+                              //   ),
+                              //   child: Container(
+                              //     height: Dimensions.height150,
+                              //     padding: EdgeInsets.all(Dimensions.height15),
+                              //     child: Column(
+                              //       crossAxisAlignment: CrossAxisAlignment.start,
+                              //       children: [
+                              //         ListTile(
+                              //           leading: CircleAvatar(
+                              //             radius: Dimensions.radius30,
+                              //             backgroundImage: AssetImage(
+                              //               'assets/images/salonbk/salon1.jpg',
+                              //             ),
+                              //           ),
+                              //           title: BigText(
+                              //             text: "Amr Abdalfatah",
+                              //           ),
+                              //           subtitle: SmallText(
+                              //             text: "20 Minutes Ago",
+                              //           ),
+                              //           trailing: SizedBox(
+                              //             width: Dimensions.width45,
+                              //             child: Row(
+                              //               children: [
+                              //                 Icon(
+                              //                   Icons.star,
+                              //                   size: Dimensions.width15,
+                              //                   color: Colors.yellow,
+                              //                 ),
+                              //                 SmallText(
+                              //                   text: "5.00",
+                              //                   color: Colors.black45,
+                              //                 ),
+                              //               ],
+                              //             ),
+                              //           ),
+                              //         ),
+                              //         Container(
+                              //           height: 1,
+                              //           color: Colors.grey[300],
+                              //         ),
+                              //         SizedBox(
+                              //           height: Dimensions.height10,
+                              //         ),
+                              //         Expanded(
+                              //           child: SmallText(
+                              //             text: "Hiiiiiiiiiiiiiiiiii\nHello My name ",
+                              //             color: Colors.black45,
+                              //           ),
+                              //         ),
+                              //       ],
+                              //     ),
+                              //   ),
+                              // );
+                            },
+                          ),
+                        ],
                       ),
                     ),
-                  ),
-                ],
+                  ],
+                ),
               ),
             ),
           ),
         ],
       ),
       bottomNavigationBar: Container(
-        height: Dimensions.height100,
-        padding: EdgeInsets.symmetric(
-          horizontal: Dimensions.width20,
-          vertical: Dimensions.height20,
-        ),
-        child: Row(
-          children: [
-            Expanded(
-              child: Container(
-                decoration: BoxDecoration(
-                  color: AppColors.paraColor,
-                  borderRadius: BorderRadius.circular(Dimensions.radius30),
-                ),
-                child: Center(
-                  child: BigText(
-                    text: "Comments",
-                    color: Colors.white,
-                  ),
-                ),
-              ),
+        height: Dimensions.height80,
+        color: AppColors.mainColor,
+        child: Center(
+          child: TextButton(
+            onPressed: () {},
+            child: BigText(
+              text: "Booking Now",
+              color: Colors.white,
             ),
-            SizedBox(
-              width: Dimensions.width10,
-            ),
-            Expanded(
-              child: Container(
-                decoration: BoxDecoration(
-                  color: AppColors.mainColor,
-                  borderRadius: BorderRadius.circular(Dimensions.radius30),
-                ),
-                child: Center(
-                  child: BigText(
-                    text: "Booking",
-                    color: Colors.white,
-                  ),
-                ),
-              ),
-            ),
-          ],
+          ),
         ),
       ),
     );

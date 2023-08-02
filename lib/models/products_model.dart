@@ -52,18 +52,21 @@ class ProductModel {
   String? createdAt;
   String? updatedAt;
   int? typeId;
+  List<String>? images;
 
-  ProductModel(
-      {this.id,
-      this.name,
-      this.description,
-      this.price,
-      this.stars,
-      this.img,
-      this.location,
-      this.createdAt,
-      this.updatedAt,
-      this.typeId});
+  ProductModel({
+    this.id,
+    this.name,
+    this.description,
+    this.price,
+    this.stars,
+    this.img,
+    this.location,
+    this.createdAt,
+    this.updatedAt,
+    this.typeId,
+    this.images,
+  });
 
   ProductModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
@@ -76,6 +79,12 @@ class ProductModel {
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
     typeId = json['type_id'];
+    if (json['images'] != null) {
+      images = <String>[];
+      json['images'].forEach((v) {
+        images!.add(v);
+      });
+    }
   }
 
   Map<String, dynamic> toJson() {

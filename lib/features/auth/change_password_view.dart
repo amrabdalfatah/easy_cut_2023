@@ -1,82 +1,136 @@
+import 'package:easycut/core/utils/colors.dart';
 import 'package:easycut/core/utils/dimensions.dart';
-import 'package:easycut/core/widgets/big_text.dart';
+import 'package:easycut/core/utils/images_strings.dart';
+import 'package:easycut/core/view_model/auth_view_model.dart';
 import 'package:easycut/core/widgets/main_button.dart';
-import 'package:easycut/core/widgets/small_text.dart';
 import 'package:easycut/features/auth/password_changed_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'widgets/custom_text_form_field.dart';
+import 'widgets/header_auth.dart';
 
-class ChangePasswordView extends StatelessWidget {
+class ChangePasswordView extends GetWidget<AuthViewModel> {
   const ChangePasswordView({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SizedBox(
-        height: Dimensions.screenHeight,
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Expanded(
-              child: Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: Dimensions.width15,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(
-                      height: Dimensions.height64,
+      body: SingleChildScrollView(
+        child: Container(
+          height: Dimensions.screenHeight,
+          padding: EdgeInsets.symmetric(
+            horizontal: Dimensions.width15,
+            vertical: Dimensions.height15,
+          ),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              const HeaderAuth(
+                imageAsset: ImagesStrings.logo,
+                title: "Reset Password",
+                firstDesc: "make your account secure ,",
+                secondDesc: "Create a new password and confirm it.",
+              ),
+              GetX<AuthViewModel>(
+                builder: (authCTRL) => TextFormField(
+                  keyboardType: TextInputType.visiblePassword,
+                  style: const TextStyle(
+                    color: AppColors.mainColor,
+                  ),
+                  obscureText: authCTRL.shownPassword.value,
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Colors.white,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(
+                        Dimensions.radius20,
+                      ),
                     ),
-                    BigText(
-                      text: 'Create new password',
-                      fontFamily: "Urbanist",
-                      fontWeight: FontWeight.w700,
-                      size: Dimensions.font32,
-                      color: const Color(0xFF1E232C),
+                    hintText: "Password",
+                    prefixIcon: const Icon(
+                      Icons.lock,
+                      color: AppColors.mainColor,
                     ),
-                    SizedBox(
-                      height: Dimensions.height10,
-                    ),
-                    SmallText(
-                      text:
-                          'Your new password must be unique from those \npreviously used.',
-                      textAlign: TextAlign.start,
-                      fontFamily: "Urbanist",
-                      fontWeight: FontWeight.w500,
-                      size: Dimensions.font16,
-                      color: const Color(0xFF8391A1),
-                    ),
-                    SizedBox(
-                      height: Dimensions.height30,
-                    ),
-                    const CustomTextFormField(
-                      text: 'New Password',
-                      type: TextInputType.visiblePassword,
-                    ),
-                    SizedBox(
-                      height: Dimensions.height10,
-                    ),
-                    const CustomTextFormField(
-                      text: 'Confirm Password',
-                      type: TextInputType.visiblePassword,
-                    ),
-                    SizedBox(
-                      height: Dimensions.height10,
-                    ),
-                    MainButton(
-                      text: 'Reset Password',
-                      onTap: () {
-                        Get.to(() => const PasswordChangedView());
+                    suffixIcon: IconButton(
+                      onPressed: () {
+                        controller.changeShownPassword();
                       },
+                      icon: Icon(
+                        controller.shownPassword.value
+                            ? Icons.remove_red_eye_rounded
+                            : Icons.visibility_off,
+                        color: AppColors.mainColor,
+                      ),
                     ),
-                  ],
+                  ),
+                  onSaved: (value) {
+                    controller.password = value!;
+                  },
+                  validator: (value) {
+                    if (controller.password.isEmpty) {
+                      return 'Please, Enter your Password';
+                    }
+                    return null;
+                  },
                 ),
               ),
-            ),
-          ],
+              SizedBox(
+                height: Dimensions.height10,
+              ),
+              GetX<AuthViewModel>(
+                builder: (authCTRL) => TextFormField(
+                  keyboardType: TextInputType.visiblePassword,
+                  style: TextStyle(
+                    color: AppColors.mainColor,
+                  ),
+                  obscureText: authCTRL.shownPassword.value,
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Colors.white,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(
+                        Dimensions.radius20,
+                      ),
+                    ),
+                    hintText: "Confirm Password",
+                    prefixIcon: const Icon(
+                      Icons.lock,
+                      color: AppColors.mainColor,
+                    ),
+                    suffixIcon: IconButton(
+                      onPressed: () {
+                        controller.changeShownPassword();
+                      },
+                      icon: Icon(
+                        controller.shownPassword.value
+                            ? Icons.remove_red_eye_rounded
+                            : Icons.visibility_off,
+                        color: AppColors.mainColor,
+                      ),
+                    ),
+                  ),
+                  onSaved: (value) {
+                    controller.password = value!;
+                  },
+                  validator: (value) {
+                    if (controller.password.isEmpty) {
+                      return 'Please, Enter your Password';
+                    }
+                    return null;
+                  },
+                ),
+              ),
+              SizedBox(
+                height: Dimensions.height10,
+              ),
+              MainButton(
+                text: 'Reset Password',
+                onTap: () {
+                  Get.to(() => const PasswordChangedView());
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );

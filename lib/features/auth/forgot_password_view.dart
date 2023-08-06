@@ -3,7 +3,7 @@ import 'package:easycut/core/utils/dimensions.dart';
 import 'package:easycut/core/utils/images_strings.dart';
 import 'package:easycut/core/view_model/auth_view_model.dart';
 import 'package:easycut/core/widgets/main_button.dart';
-import 'package:easycut/features/auth/login_view.dart';
+import 'package:easycut/features/auth/otp_verification_password_view.dart';
 import 'package:easycut/features/auth/widgets/header_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -76,16 +76,17 @@ class ForgotPasswordView extends GetWidget<AuthViewModel> {
                       text: 'Check Email',
                       onTap: () {
                         _formKey.currentState!.save();
-                        if (_formKey.currentState!.validate()) {
-                          Get.snackbar(
-                            'Reset Password',
-                            'check your Email \nThe Resetting Password sent to your Email.',
-                            snackPosition: SnackPosition.TOP,
-                            colorText: const Color.fromARGB(255, 0, 99, 3),
-                          );
-                          Get.off(() => LoginView());
-                          controller.forgetPassword();
-                        }
+                        // if (_formKey.currentState!.validate()) {
+                        //   Get.snackbar(
+                        //     'Reset Password',
+                        //     'check your Email \nThe Resetting Password sent to your Email.',
+                        //     snackPosition: SnackPosition.TOP,
+                        //     colorText: const Color.fromARGB(255, 0, 99, 3),
+                        //   );
+                        //   Get.off(() => LoginView());
+                        //   controller.forgetPassword();
+                        // }
+                        Get.to(() => OtpVerificationPasswordView());
                       },
                     ),
                   ],

@@ -2,7 +2,6 @@ import 'package:easycut/core/utils/colors.dart';
 import 'package:easycut/core/utils/dimensions.dart';
 import 'package:easycut/core/utils/images_strings.dart';
 import 'package:easycut/core/view_model/auth_view_model.dart';
-import 'package:easycut/core/widgets/big_text.dart';
 import 'package:easycut/core/widgets/small_text.dart';
 import 'package:easycut/features/auth/forgot_password_view.dart';
 import 'package:easycut/features/auth/widgets/header_auth.dart';

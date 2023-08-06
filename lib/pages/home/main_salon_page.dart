@@ -1,4 +1,4 @@
-import 'package:easycut/constant/imageasset.dart';
+import 'package:easycut/core/utils/images_strings.dart';
 import 'package:easycut/utils/colors.dart';
 import 'package:easycut/utils/dimensions.dart';
 import 'package:flutter/material.dart';
@@ -27,7 +27,7 @@ class MainSalonPage extends StatelessWidget {
               CircleAvatar(
                 radius: Dimensions.radius20,
                 backgroundImage: AssetImage(
-                  ImageAsset.profileAvatar,
+                  ImagesStrings.profile,
                 ),
               ),
               Center(

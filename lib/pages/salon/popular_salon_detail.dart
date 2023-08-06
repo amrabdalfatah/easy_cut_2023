@@ -8,8 +8,6 @@ import 'package:easycut/widgets/expandable_text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../controllers/popular_product_controller.dart';
-
 class PopularSalonDetail extends StatelessWidget {
   final int pageId;
   const PopularSalonDetail({
@@ -19,8 +17,9 @@ class PopularSalonDetail extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var product =
-        Get.find<PopularProductController>().popularProductList[pageId];
+    // var product =
+    //     Get.find<PopularProductController>().popularProductList[pageId];
+    var product;
     return Scaffold(
       body: Stack(
         children: [
@@ -169,63 +168,6 @@ class PopularSalonDetail extends StatelessWidget {
                               return Container(
                                 color: Colors.red,
                               );
-                              // return Card(
-                              //   margin: EdgeInsets.only(
-                              //     bottom: Dimensions.height15,
-                              //   ),
-                              //   child: Container(
-                              //     height: Dimensions.height150,
-                              //     padding: EdgeInsets.all(Dimensions.height15),
-                              //     child: Column(
-                              //       crossAxisAlignment: CrossAxisAlignment.start,
-                              //       children: [
-                              //         ListTile(
-                              //           leading: CircleAvatar(
-                              //             radius: Dimensions.radius30,
-                              //             backgroundImage: AssetImage(
-                              //               'assets/images/salonbk/salon1.jpg',
-                              //             ),
-                              //           ),
-                              //           title: BigText(
-                              //             text: "Amr Abdalfatah",
-                              //           ),
-                              //           subtitle: SmallText(
-                              //             text: "20 Minutes Ago",
-                              //           ),
-                              //           trailing: SizedBox(
-                              //             width: Dimensions.width45,
-                              //             child: Row(
-                              //               children: [
-                              //                 Icon(
-                              //                   Icons.star,
-                              //                   size: Dimensions.width15,
-                              //                   color: Colors.yellow,
-                              //                 ),
-                              //                 SmallText(
-                              //                   text: "5.00",
-                              //                   color: Colors.black45,
-                              //                 ),
-                              //               ],
-                              //             ),
-                              //           ),
-                              //         ),
-                              //         Container(
-                              //           height: 1,
-                              //           color: Colors.grey[300],
-                              //         ),
-                              //         SizedBox(
-                              //           height: Dimensions.height10,
-                              //         ),
-                              //         Expanded(
-                              //           child: SmallText(
-                              //             text: "Hiiiiiiiiiiiiiiiiii\nHello My name ",
-                              //             color: Colors.black45,
-                              //           ),
-                              //         ),
-                              //       ],
-                              //     ),
-                              //   ),
-                              // );
                             },
                           ),
                           GridView.builder(

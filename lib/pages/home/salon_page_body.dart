@@ -1,5 +1,5 @@
 import 'package:dots_indicator/dots_indicator.dart';
-import 'package:easycut/constant/imageasset.dart';
+import 'package:easycut/core/utils/images_strings.dart';
 import 'package:easycut/models/products_model.dart';
 import 'package:easycut/routes/route_helper.dart';
 import 'package:easycut/utils/colors.dart';
@@ -36,7 +36,7 @@ class _SalonPageBodyState extends State<SalonPageBody> {
           description: 'This is the first element for static',
           price: 24,
           stars: 5,
-          img: ImageAsset.onBoardingOne,
+          img: ImagesStrings.salonTwo,
           location: 'Egypt',
           createdAt: '23 Feb, 2023',
           updatedAt: '24 Feb, 2023',
@@ -48,7 +48,7 @@ class _SalonPageBodyState extends State<SalonPageBody> {
           description: 'This is the first element for static',
           price: 24,
           stars: 5,
-          img: ImageAsset.onBoardingOne,
+          img: ImagesStrings.salonTwo,
           location: 'Egypt',
           createdAt: '23 Feb, 2023',
           updatedAt: '24 Feb, 2023',

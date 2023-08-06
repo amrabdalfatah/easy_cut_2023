@@ -1,4 +1,4 @@
-import 'package:easycut/constant/imageasset.dart';
+import 'package:easycut/core/utils/images_strings.dart';
 import 'package:easycut/utils/dimensions.dart';
 import 'package:easycut/widgets/big_text.dart';
 import 'package:easycut/widgets/expandable_text_widget.dart';
@@ -29,7 +29,7 @@ class ProfilePage extends StatelessWidget {
                             CircleAvatar(
                               radius: Dimensions.radius50,
                               backgroundImage: AssetImage(
-                                ImageAsset.profileAvatar,
+                                ImagesStrings.profile,
                               ),
                             ),
                             SizedBox(width: Dimensions.width20),

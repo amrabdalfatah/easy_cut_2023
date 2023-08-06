@@ -20,7 +20,7 @@ class HeaderAuth extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: Dimensions.heightImage,
+      height: Dimensions.heightImage - Dimensions.height45,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

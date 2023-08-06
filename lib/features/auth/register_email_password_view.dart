@@ -1,14 +1,14 @@
+import 'package:easycut/core/utils/colors.dart';
 import 'package:easycut/core/utils/dimensions.dart';
+import 'package:easycut/core/utils/images_strings.dart';
 import 'package:easycut/core/view_model/auth_view_model.dart';
-import 'package:easycut/core/widgets/main_button.dart';
-import 'package:easycut/core/widgets/sized_space_box.dart';
 import 'package:easycut/core/widgets/small_text.dart';
 import 'package:easycut/features/auth/login_view.dart';
-import 'package:easycut/widgets/big_text.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'widgets/register_input_field.dart';
+import 'widgets/header_auth.dart';
 
 class RegisterEmailPasswordView extends GetWidget<AuthViewModel> {
   RegisterEmailPasswordView({Key? key}) : super(key: key);
@@ -18,234 +18,217 @@ class RegisterEmailPasswordView extends GetWidget<AuthViewModel> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SizedBox(
-        height: Dimensions.screenHeight,
-        child: SingleChildScrollView(
+      body: SingleChildScrollView(
+        child: Container(
+          height: Dimensions.screenHeight,
+          padding: EdgeInsets.symmetric(
+            horizontal: Dimensions.width15,
+            vertical: Dimensions.height15,
+          ),
           child: Form(
             key: _formKey,
             child: Column(
               children: [
-                const BigText(
-                  text: "Registration",
+                const HeaderAuth(
+                  imageAsset: ImagesStrings.logo,
+                  title: "Register Now",
+                  firstDesc: "So happy to see you,",
+                  secondDesc: "Let's make your life easy.",
                 ),
-                SizedBox(
-                  height: Dimensions.screenHeight - Dimensions.heightAppBar,
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(
-                      horizontal: Dimensions.width15,
+                TextFormField(
+                  keyboardType: TextInputType.text,
+                  style: TextStyle(
+                    color: AppColors.mainColor,
+                  ),
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Colors.white,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(
+                        Dimensions.radius20,
+                      ),
                     ),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Column(
-                          children: [
-                            const SizedSpaceBox(),
-                            const SizedSpaceBox(),
-                            const SizedSpaceBox(),
-                            RegisterInputField(
-                              text: 'Name',
-                              widget: TextFormField(
-                                keyboardType: TextInputType.name,
-                                decoration: InputDecoration(
-                                  contentPadding: EdgeInsets.zero,
-                                  hintText: 'Yassine',
-                                  hintStyle: TextStyle(
-                                    fontSize: Dimensions.font16,
-                                    color: const Color(0xFF5F5F6B),
-                                    letterSpacing: 1,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                ),
-                                onSaved: (value) {
-                                  controller.name = value!;
-                                },
-                                validator: (value) {
-                                  if (value == null) {
-                                    return 'Please, Enter your First Name';
-                                  }
-                                  return null;
-                                },
-                              ),
-                            ),
-                            RegisterInputField(
-                              text: 'Email',
-                              widget: TextFormField(
-                                keyboardType: TextInputType.emailAddress,
-                                decoration: InputDecoration(
-                                  contentPadding: EdgeInsets.zero,
-                                  hintText: 'Yassine.serrid@eng.ku.edu.kw',
-                                  hintStyle: TextStyle(
-                                    fontSize: Dimensions.font16,
-                                    color: const Color(0xFF5F5F6B),
-                                    letterSpacing: 1,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                ),
-                                onSaved: (value) {
-                                  controller.email = value!;
-                                },
-                                validator: (value) {
-                                  final regex = RegExp(
-                                      r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$');
-                                  if (controller.email.isEmpty) {
-                                    return 'Please, Enter your Email';
-                                  } else if (!regex.hasMatch(value!)) {
-                                    return 'Your Email is not valid';
-                                  }
-                                  return null;
-                                },
-                              ),
-                            ),
-                            const SizedSpaceBox(),
-                            RegisterInputField(
-                              text: 'Phone Number',
-                              widget: Row(
-                                children: [
-                                  SmallText(
-                                    text: '+965 ',
-                                    color: const Color(0xFF5F5F6B),
-                                    size: Dimensions.font16,
-                                    fontWeight: FontWeight.w400,
-                                  ),
-                                  Expanded(
-                                    child: TextFormField(
-                                      keyboardType: TextInputType.phone,
-                                      decoration: InputDecoration(
-                                        contentPadding: EdgeInsets.only(
-                                          left: Dimensions.width10,
-                                        ),
-                                        hintText: '6933297',
-                                        hintStyle: TextStyle(
-                                          fontSize: Dimensions.font16,
-                                          color: const Color(0xFF5F5F6B),
-                                          letterSpacing: 1,
-                                          fontWeight: FontWeight.w400,
-                                        ),
-                                      ),
-                                      onSaved: (value) {
-                                        controller.phone = value!;
-                                      },
-                                      validator: (value) {
-                                        if (controller.phone.isEmpty) {
-                                          return 'Please, Enter your Phone';
-                                        }
-                                        return null;
-                                      },
-                                    ),
-                                  ),
-                                ],
-                              ),
-                            ),
-                            const SizedSpaceBox(),
-                            RegisterInputField(
-                              text: 'Enter The Password',
-                              widget: GetX<AuthViewModel>(
-                                builder: (authCtr) => TextFormField(
-                                  keyboardType: TextInputType.visiblePassword,
-                                  obscureText: authCtr.shownPassword.value,
-                                  decoration: InputDecoration(
-                                    hintText: '**********',
-                                    hintStyle: TextStyle(
-                                      fontSize: Dimensions.font16,
-                                      color: const Color(0xFF5F5F6B),
-                                      letterSpacing: 1,
-                                      fontWeight: FontWeight.w400,
-                                    ),
-                                    suffixIcon: IconButton(
-                                      onPressed: () {
-                                        authCtr.changeShownPassword();
-                                      },
-                                      icon: Icon(
-                                        authCtr.shownPassword.value
-                                            ? Icons.remove_red_eye_rounded
-                                            : Icons.visibility_off,
-                                        color: Colors.black,
-                                      ),
-                                    ),
-                                  ),
-                                  onSaved: (value) {
-                                    controller.password = value!;
-                                  },
-                                  validator: (value) {
-                                    final regexp = RegExp(
-                                        r'^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[!@#\$&*~]).{8,}$');
-                                    if (controller.password == '') {
-                                      return 'Please, Enter Password';
-                                    } else if (!regexp.hasMatch(value!)) {
-                                      return 'Your Password is weak';
-                                    }
-                                    return null;
-                                  },
-                                ),
-                              ),
-                            ),
-                            const SizedSpaceBox(),
-                            RegisterInputField(
-                              text: 'Confirm The Password',
-                              widget: GetX<AuthViewModel>(
-                                builder: (passCtr) => TextFormField(
-                                  keyboardType: TextInputType.visiblePassword,
-                                  obscureText: passCtr.shownPassword.value,
-                                  decoration: InputDecoration(
-                                    hintText: '**********',
-                                    hintStyle: TextStyle(
-                                      fontSize: Dimensions.font16,
-                                      color: const Color(0xFF5F5F6B),
-                                      letterSpacing: 1,
-                                      fontWeight: FontWeight.w400,
-                                    ),
-                                    suffixIcon: IconButton(
-                                      onPressed: () {
-                                        passCtr.changeShownPassword();
-                                      },
-                                      icon: Icon(
-                                        passCtr.shownPassword.value
-                                            ? Icons.remove_red_eye_rounded
-                                            : Icons.visibility_off,
-                                        color: Colors.black,
-                                      ),
-                                    ),
-                                  ),
-                                  onSaved: (value) {
-                                    controller.confirmPassword = value!;
-                                  },
-                                  validator: (value) {
-                                    if (controller.confirmPassword.isNotEmpty) {
-                                      if (controller.confirmPassword ==
-                                          controller.password) {
-                                        return null;
-                                      }
-                                      return 'these are not the same';
-                                    }
-                                    return 'Please, Enter to confirm password';
-                                  },
-                                ),
-                              ),
-                            ),
-                            const SizedSpaceBox(),
-                            const SmallText(
-                              text:
-                                  '*Passwords should have a minimum length of at least \nseven characters and contain both numeric and \nalphabetic characters',
-                              color: Colors.red,
-                              textAlign: TextAlign.center,
-                              fontFamily: 'Montserrat',
-                            ),
-                          ],
-                        ),
-                        MainButton(
-                          text: 'Continue',
-                          onTap: () {
-                            _formKey.currentState!.save();
-                            if (_formKey.currentState!.validate()) {
-                              Get.to(() => LoginView());
-                            }
-                          },
-                        ),
-                        const SizedSpaceBox(),
-                      ],
+                    hintText: "Name",
+                    prefixIcon: const Icon(
+                      Icons.person,
+                      color: AppColors.mainColor,
                     ),
                   ),
+                  onSaved: (value) {
+                    controller.name = value!;
+                  },
+                  validator: (value) {
+                    if (controller.name.isEmpty) {
+                      return 'Please, Enter your Name';
+                    }
+                    return null;
+                  },
+                ),
+                SizedBox(height: Dimensions.height10),
+                TextFormField(
+                  keyboardType: TextInputType.phone,
+                  style: TextStyle(
+                    color: AppColors.mainColor,
+                  ),
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Colors.white,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(
+                        Dimensions.radius20,
+                      ),
+                    ),
+                    hintText: "Phone Number",
+                    prefixIcon: const Icon(
+                      Icons.phone,
+                      color: AppColors.mainColor,
+                    ),
+                  ),
+                  onSaved: (value) {
+                    controller.phone = value!;
+                  },
+                  validator: (value) {
+                    if (controller.phone.isEmpty) {
+                      return 'Please, Enter your Phone';
+                    }
+                    return null;
+                  },
+                ),
+                SizedBox(height: Dimensions.height10),
+                TextFormField(
+                  keyboardType: TextInputType.emailAddress,
+                  style: TextStyle(
+                    color: AppColors.mainColor,
+                  ),
+                  decoration: InputDecoration(
+                    filled: true,
+                    fillColor: Colors.white,
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(
+                        Dimensions.radius20,
+                      ),
+                    ),
+                    hintText: "Email",
+                    prefixIcon: const Icon(
+                      Icons.email,
+                      color: AppColors.mainColor,
+                    ),
+                  ),
+                  onSaved: (value) {
+                    controller.email = value!;
+                  },
+                  validator: (value) {
+                    final regex = RegExp(
+                        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$');
+                    if (controller.email.isEmpty) {
+                      return 'Please, Enter your Email';
+                    } else if (!regex.hasMatch(value!)) {
+                      return 'Your Email is not valid';
+                    }
+                    return null;
+                  },
+                ),
+                SizedBox(height: Dimensions.height10),
+                // Enter Password
+                GetX<AuthViewModel>(
+                  builder: (authCTRL) => TextFormField(
+                    keyboardType: TextInputType.visiblePassword,
+                    style: TextStyle(
+                      color: AppColors.mainColor,
+                    ),
+                    obscureText: authCTRL.shownPassword.value,
+                    decoration: InputDecoration(
+                      filled: true,
+                      fillColor: Colors.white,
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(
+                          Dimensions.radius20,
+                        ),
+                      ),
+                      hintText: "Password",
+                      prefixIcon: const Icon(
+                        Icons.lock,
+                        color: AppColors.mainColor,
+                      ),
+                      suffixIcon: IconButton(
+                        onPressed: () {
+                          controller.changeShownPassword();
+                        },
+                        icon: Icon(
+                          controller.shownPassword.value
+                              ? Icons.remove_red_eye_rounded
+                              : Icons.visibility_off,
+                          color: AppColors.mainColor,
+                        ),
+                      ),
+                    ),
+                    onSaved: (value) {
+                      controller.password = value!;
+                    },
+                    validator: (value) {
+                      if (controller.password.isEmpty) {
+                        return 'Please, Enter your Password';
+                      }
+                      return null;
+                    },
+                  ),
+                ),
+                SizedBox(height: Dimensions.height10),
+                GetX<AuthViewModel>(
+                  builder: (process) {
+                    return process.action.value
+                        ? const Center(
+                            child: CupertinoActivityIndicator(
+                              color: AppColors.mainColor,
+                            ),
+                          )
+                        : GestureDetector(
+                            onTap: () {
+                              _formKey.currentState!.save();
+                              if (_formKey.currentState!.validate()) {
+                                Get.offAll(() => LoginView());
+                                Get.put(() => AuthViewModel());
+                              }
+                            },
+                            child: Center(
+                              child: Container(
+                                height: Dimensions.height45,
+                                decoration: BoxDecoration(
+                                  color: AppColors.mainColor,
+                                  borderRadius: BorderRadius.circular(
+                                    Dimensions.radius30,
+                                  ),
+                                ),
+                                child: const Center(
+                                  child: SmallText(
+                                    text: "Sign Up",
+                                    fontWeight: FontWeight.w800,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          );
+                  },
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    SmallText(
+                      text: "Already have an account? ",
+                      color: Colors.black54,
+                      fontWeight: FontWeight.w600,
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        Get.back();
+                      },
+                      child: SmallText(
+                        text: "Login",
+                        color: AppColors.mainColor,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
                 ),
               ],
             ),

@@ -5,9 +5,12 @@ import 'package:easycut/core/view_model/auth_view_model.dart';
 import 'package:easycut/core/widgets/small_text.dart';
 import 'package:easycut/features/auth/forgot_password_view.dart';
 import 'package:easycut/features/auth/widgets/header_auth.dart';
+import 'package:easycut/pages/home/home_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+
+import 'register_email_password_view.dart';
 
 class LoginView extends GetWidget<AuthViewModel> {
   GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -146,6 +149,7 @@ class LoginView extends GetWidget<AuthViewModel> {
                                     _formKey.currentState!.save();
                                     if (_formKey.currentState!.validate()) {
                                       controller.signInWithEmailAndPassword();
+                                      Get.offAll(() => HomePage());
                                     }
                                   },
                                   child: Center(
@@ -178,9 +182,11 @@ class LoginView extends GetWidget<AuthViewModel> {
                             fontWeight: FontWeight.w600,
                           ),
                           TextButton(
-                            onPressed: () {},
+                            onPressed: () {
+                              Get.to(() => RegisterEmailPasswordView());
+                            },
                             child: SmallText(
-                              text: "Create Now",
+                              text: "Create New",
                               color: AppColors.mainColor,
                               fontWeight: FontWeight.bold,
                             ),

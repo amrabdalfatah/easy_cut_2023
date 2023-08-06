@@ -5,8 +5,8 @@ import 'package:get/get.dart';
 
 import 'helper/binding.dart';
 
-class MyApp extends StatelessWidget {
-  const MyApp({super.key});
+class EasyCut extends StatelessWidget {
+  const EasyCut({super.key});
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(

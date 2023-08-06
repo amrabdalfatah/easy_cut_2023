@@ -1,4 +1,5 @@
 import 'package:easycut/core/utils/images_strings.dart';
+import 'package:easycut/utils/dimensions.dart';
 import 'package:flutter/material.dart';
 
 class ImageSlidingAnimation extends StatelessWidget {
@@ -16,9 +17,12 @@ class ImageSlidingAnimation extends StatelessWidget {
       builder: (context, _) {
         return SlideTransition(
           position: slidingImageAnimation,
-          child: Image.asset(
-            ImagesStrings.background,
-            fit: BoxFit.cover,
+          child: SizedBox(
+            height: Dimensions.height250,
+            child: Image.asset(
+              ImagesStrings.logo,
+              fit: BoxFit.cover,
+            ),
           ),
         );
       },

@@ -3,8 +3,10 @@ import 'package:easycut/routes/route_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import 'app.dart';
+
 void main() async {
-  runApp(const MyApp());
+  runApp(const EasyCut());
 }
 
 class MyApp extends StatelessWidget {

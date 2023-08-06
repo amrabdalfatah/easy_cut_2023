@@ -1,4 +1,5 @@
 import 'package:easycut/core/utils/colors.dart';
+import 'package:easycut/features/splash/widgets/splash_view_body.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -12,7 +13,7 @@ class SplashView extends StatelessWidget {
         statusBarColor: AppColors.mainColor,
       ),
       child: const Scaffold(
-        backgroundColor: AppColors.mainColor,
+        body: SplashViewBody(),
       ),
     );
   }

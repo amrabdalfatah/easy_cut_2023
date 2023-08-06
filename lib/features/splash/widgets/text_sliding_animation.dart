@@ -1,4 +1,6 @@
 import 'package:easycut/core/utils/colors.dart';
+import 'package:easycut/core/utils/dimensions.dart';
+import 'package:easycut/core/widgets/big_text.dart';
 import 'package:flutter/material.dart';
 
 class TextSlidingAnimation extends StatelessWidget {
@@ -15,28 +17,22 @@ class TextSlidingAnimation extends StatelessWidget {
       animation: slidingAnimation,
       builder: (context, _) {
         return Column(
-          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             SlideTransition(
               position: slidingAnimation,
-              child: Text(
-                'Al-Yamama App',
+              child: const BigText(
+                text: 'EASY CUT',
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 30,
-                  color: AppColors.secondaryColor,
-                ),
+                color: AppColors.mainColor,
               ),
             ),
             SlideTransition(
               position: slidingAnimation,
-              child: Text(
-                'Connected with Smart Camera\n to make your Home Smart.',
+              child: BigText(
+                text: 'save your time',
                 textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 18,
-                  color: Colors.white,
-                ),
+                size: Dimensions.font20,
+                color: Colors.black,
               ),
             ),
           ],

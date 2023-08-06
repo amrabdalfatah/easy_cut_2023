@@ -35,7 +35,7 @@ class PasswordChangedView extends StatelessWidget {
                       decoration: const BoxDecoration(
                         image: DecorationImage(
                           fit: BoxFit.fill,
-                          image: AssetImage(ImagesStrings.background),
+                          image: AssetImage(ImagesStrings.logo),
                         ),
                       ),
                       child: Icon(

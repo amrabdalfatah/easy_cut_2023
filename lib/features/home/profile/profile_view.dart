@@ -1,12 +1,12 @@
+import 'package:easycut/core/utils/dimensions.dart';
 import 'package:easycut/core/utils/images_strings.dart';
-import 'package:easycut/utils/dimensions.dart';
-import 'package:easycut/widgets/big_text.dart';
-import 'package:easycut/widgets/expandable_text_widget.dart';
-import 'package:easycut/widgets/small_text.dart';
+import 'package:easycut/core/widgets/big_text.dart';
+import 'package:easycut/core/widgets/small_text.dart';
+import 'package:easycut/features/home/widgets/expandable_text_widget.dart';
 import 'package:flutter/material.dart';
 
-class ProfilePage extends StatelessWidget {
-  const ProfilePage({super.key});
+class ProfileView extends StatelessWidget {
+  const ProfileView({super.key});
 
   @override
   Widget build(BuildContext context) {

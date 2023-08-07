@@ -1,28 +1,24 @@
 import 'package:dots_indicator/dots_indicator.dart';
+import 'package:easycut/core/utils/colors.dart';
+import 'package:easycut/core/utils/dimensions.dart';
 import 'package:easycut/core/utils/images_strings.dart';
-import 'package:easycut/models/products_model.dart';
-import 'package:easycut/routes/route_helper.dart';
-import 'package:easycut/utils/colors.dart';
-import 'package:easycut/utils/dimensions.dart';
-import 'package:easycut/widgets/app_column.dart';
-import 'package:easycut/widgets/big_text.dart';
-import 'package:easycut/widgets/icon_and_text.dart';
-import 'package:easycut/widgets/small_text.dart';
+import 'package:easycut/model/products_model.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
-class SalonPageBody extends StatefulWidget {
-  const SalonPageBody({super.key});
+import 'show_salon_card.dart';
+
+class SlidingPopularSalons extends StatefulWidget {
+  const SlidingPopularSalons({super.key});
 
   @override
-  State<SalonPageBody> createState() => _SalonPageBodyState();
+  State<SlidingPopularSalons> createState() => _SlidingPopularSalonsState();
 }
 
-class _SalonPageBodyState extends State<SalonPageBody> {
+class _SlidingPopularSalonsState extends State<SlidingPopularSalons> {
   PageController pageController = PageController(viewportFraction: 0.85);
   var _currentPageValue = 0.0;
-  double _scaleFactor = 0.8;
-  double _height = Dimensions.pageViewContainer;
+  final _scaleFactor = 0.8;
+  final _height = Dimensions.pageViewContainer;
 
   List<Product> popularProductsStatic = [
     Product(
@@ -77,8 +73,9 @@ class _SalonPageBodyState extends State<SalonPageBody> {
   @override
   Widget build(BuildContext context) {
     return Column(
+      mainAxisSize: MainAxisSize.min,
       children: [
-        Container(
+        SizedBox(
           height: Dimensions.pageView,
           child: PageView.builder(
             controller: pageController,
@@ -87,110 +84,24 @@ class _SalonPageBodyState extends State<SalonPageBody> {
               return _buildPageItem(
                 position,
                 popularProductsStatic[0].products[position],
-                // popularProducts.popularProductList[position],
               );
             },
           ),
         ),
-        DotsIndicator(
-          dotsCount: popularProductsStatic[0].products.length,
-          position: _currentPageValue.floor(),
-          decorator: DotsDecorator(
-            activeColor: AppColors.mainColor,
-            size: Size.square(Dimensions.height10),
-            activeSize: Size(Dimensions.height20, Dimensions.height10),
-            activeShape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(Dimensions.radius5),
+        SizedBox(
+          height: Dimensions.height20,
+          child: DotsIndicator(
+            dotsCount: popularProductsStatic[0].products.length,
+            position: _currentPageValue.floor(),
+            decorator: DotsDecorator(
+              activeColor: AppColors.mainColor,
+              size: Size.square(Dimensions.height10),
+              activeSize: Size(Dimensions.height20, Dimensions.height10),
+              activeShape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(Dimensions.radius15),
+              ),
             ),
           ),
-        ),
-        SizedBox(height: Dimensions.height30),
-        Container(
-          margin: EdgeInsets.only(left: Dimensions.width30),
-          child: Row(
-            children: [
-              BigText(text: 'Recommended'),
-            ],
-          ),
-        ),
-        ListView.builder(
-          shrinkWrap: true,
-          physics: NeverScrollableScrollPhysics(),
-          itemCount: popularProductsStatic[0].products.length,
-          itemBuilder: (context, index) {
-            return GestureDetector(
-              onTap: () {},
-              child: Container(
-                margin: EdgeInsets.only(
-                  left: Dimensions.width20,
-                  right: Dimensions.width20,
-                  bottom: Dimensions.height10,
-                ),
-                child: Row(
-                  children: [
-                    Container(
-                      width: Dimensions.pageViewTextContainer,
-                      height: Dimensions.pageViewTextContainer,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(
-                          Dimensions.radius20,
-                        ),
-                        color: Colors.white38,
-                        image: DecorationImage(
-                          fit: BoxFit.cover,
-                          image: AssetImage(
-                            popularProductsStatic[0].products[index].img!,
-                          ),
-                        ),
-                      ),
-                    ),
-                    Expanded(
-                      child: Container(
-                        height: Dimensions.height100,
-                        padding: EdgeInsets.symmetric(
-                          horizontal: Dimensions.width10,
-                        ),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.only(
-                            topRight: Radius.circular(Dimensions.radius20),
-                            bottomRight: Radius.circular(Dimensions.radius20),
-                          ),
-                          color: Colors.white,
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            BigText(
-                              text: popularProductsStatic[0]
-                                  .products[index]
-                                  .name!,
-                            ),
-                            SmallText(text: 'Salon Description'),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                IconAndTextWidget(
-                                  icon: Icons.circle_sharp,
-                                  text: 'Men',
-                                  iconColor: AppColors.iconColor1,
-                                ),
-                                IconAndTextWidget(
-                                  icon: Icons.location_on,
-                                  text: '1.7km',
-                                  iconColor: AppColors.mainColor,
-                                ),
-                              ],
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            );
-          },
         ),
       ],
     );
@@ -242,9 +153,7 @@ class _SalonPageBodyState extends State<SalonPageBody> {
             ),
           ),
           GestureDetector(
-            onTap: () {
-              Get.toNamed(RouteHelper.getPopularSalon(index));
-            },
+            onTap: () {},
             child: Align(
               alignment: Alignment.bottomCenter,
               child: Container(
@@ -279,7 +188,7 @@ class _SalonPageBodyState extends State<SalonPageBody> {
                     left: Dimensions.width15,
                     right: Dimensions.width15,
                   ),
-                  child: AppColumn(
+                  child: ShowSalonCard(
                     text: popularProduct.name!,
                   ),
                 ),

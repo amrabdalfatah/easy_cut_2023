@@ -1,10 +1,9 @@
-import 'package:easycut/routes/route_helper.dart';
+import 'package:easycut/features/home/widgets/show_salon_card.dart';
 import 'package:easycut/utils/colors.dart';
 import 'package:easycut/utils/dimensions.dart';
-import 'package:easycut/widgets/app_column.dart';
 import 'package:easycut/widgets/app_icon.dart';
 import 'package:easycut/widgets/big_text.dart';
-import 'package:easycut/widgets/expandable_text_widget.dart';
+import 'package:easycut/features/home/widgets/expandable_text_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -51,7 +50,7 @@ class PopularSalonDetail extends StatelessWidget {
               children: [
                 GestureDetector(
                   onTap: () {
-                    Get.toNamed(RouteHelper.getInitial());
+                    // Get.toNamed(RouteHelper.getInitial());
                   },
                   child: AppIcon(icon: Icons.arrow_back_ios),
                 ),
@@ -82,7 +81,7 @@ class PopularSalonDetail extends StatelessWidget {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    AppColumn(
+                    ShowSalonCard(
                       text: product.products[pageId].name!,
                     ),
                     SizedBox(height: Dimensions.height10),

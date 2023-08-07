@@ -1,9 +1,10 @@
 import 'dart:async';
 
+import 'package:easycut/core/utils/dimensions.dart';
 import 'package:easycut/core/utils/images_strings.dart';
 import 'package:easycut/data/repository/popular_product_repo.dart';
 import 'package:easycut/model/user_model.dart';
-import 'package:easycut/models/products_model.dart';
+import 'package:easycut/model/products_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -36,7 +37,7 @@ class HomeViewModel extends GetxController {
   Future<void> signOut() async {}
 
   // Add Members Screen
-  PageController pageController = PageController();
+  // PageController pageController = PageController();
 
   previewFace(String image) {
     Get.dialog(

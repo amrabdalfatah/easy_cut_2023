@@ -1,13 +1,13 @@
 import 'package:easycut/utils/colors.dart';
 import 'package:easycut/utils/dimensions.dart';
 import 'package:easycut/widgets/big_text.dart';
-import 'package:easycut/widgets/icon_and_text.dart';
+import 'package:easycut/features/home/widgets/icon_and_text.dart';
 import 'package:easycut/widgets/small_text.dart';
 import 'package:flutter/material.dart';
 
-class AppColumn extends StatelessWidget {
+class ShowSalonCard extends StatelessWidget {
   final String text;
-  const AppColumn({super.key, required this.text});
+  const ShowSalonCard({super.key, required this.text});
 
   @override
   Widget build(BuildContext context) {

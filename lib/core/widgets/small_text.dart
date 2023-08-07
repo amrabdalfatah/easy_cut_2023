@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 class SmallText extends StatelessWidget {
   const SmallText({
     Key? key,
-    this.color = Colors.white,
+    this.color = Colors.black,
     required this.text,
     this.textAlign = TextAlign.center,
     this.overFlow = TextOverflow.ellipsis,
@@ -33,7 +33,7 @@ class SmallText extends StatelessWidget {
         fontFamily: fontFamily,
         fontWeight: fontWeight,
         color: color,
-        fontSize: size == 0 ? Dimensions.font12 : size,
+        fontSize: size == 0 ? Dimensions.font16 : size,
         height: height,
       ),
     );

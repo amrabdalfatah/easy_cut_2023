@@ -1,6 +1,10 @@
 import 'package:easycut/core/utils/colors.dart';
 import 'package:easycut/core/utils/dimensions.dart';
 import 'package:easycut/core/view_model/home_view_model.dart';
+import 'package:easycut/features/home/booking/booking_view.dart';
+import 'package:easycut/features/home/main_view.dart';
+import 'package:easycut/features/home/notification/notification_view.dart';
+import 'package:easycut/features/home/profile/profile_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -8,10 +12,10 @@ class HomeView extends GetWidget<HomeViewModel> {
   HomeView({super.key});
 
   final List<Widget> _pages = [
-    Container(color: Colors.red),
-    Container(color: Colors.green),
-    Container(color: Colors.blue),
-    Container(color: Colors.white),
+    MainView(),
+    NotificationView(),
+    BookingView(),
+    ProfileView(),
   ];
 
   @override

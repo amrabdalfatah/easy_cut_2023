@@ -5,7 +5,7 @@ class BigText extends StatelessWidget {
   const BigText({
     Key? key,
     required this.text,
-    this.color = Colors.white,
+    this.color = Colors.black,
     this.textAlign = TextAlign.center,
     this.overFlow = TextOverflow.ellipsis,
     this.fontFamily,
@@ -31,7 +31,7 @@ class BigText extends StatelessWidget {
       style: TextStyle(
         fontFamily: fontFamily,
         color: color,
-        fontSize: size == 0 ? Dimensions.font45 : size,
+        fontSize: size == 0 ? Dimensions.font20 : size,
         fontWeight: fontWeight,
       ),
     );

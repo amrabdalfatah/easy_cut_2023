@@ -8,6 +8,13 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class HomeViewModel extends GetxController {
+  // Nav bar with home
+  int currentVal = 0;
+  void changeCurrentVal(int index) {
+    currentVal = index;
+    update();
+  }
+
   UserModel? userData;
 
   ValueNotifier<bool> dataLoaded = ValueNotifier(false);

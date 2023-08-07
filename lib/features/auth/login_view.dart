@@ -5,6 +5,7 @@ import 'package:easycut/core/view_model/auth_view_model.dart';
 import 'package:easycut/core/widgets/small_text.dart';
 import 'package:easycut/features/auth/forgot_password_view.dart';
 import 'package:easycut/features/auth/widgets/header_auth.dart';
+import 'package:easycut/features/home/home_view.dart';
 import 'package:easycut/pages/home/home_page.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -149,7 +150,7 @@ class LoginView extends GetWidget<AuthViewModel> {
                                     _formKey.currentState!.save();
                                     if (_formKey.currentState!.validate()) {
                                       controller.signInWithEmailAndPassword();
-                                      Get.offAll(() => HomePage());
+                                      Get.offAll(() => const HomeView());
                                     }
                                   },
                                   child: Center(

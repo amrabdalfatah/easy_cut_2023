@@ -1,8 +1,8 @@
-import 'package:easycut/utils/colors.dart';
-import 'package:easycut/utils/dimensions.dart';
-import 'package:easycut/widgets/big_text.dart';
+import 'package:easycut/core/utils/colors.dart';
+import 'package:easycut/core/utils/dimensions.dart';
+import 'package:easycut/core/widgets/big_text.dart';
+import 'package:easycut/core/widgets/small_text.dart';
 import 'package:easycut/features/home/widgets/icon_and_text.dart';
-import 'package:easycut/widgets/small_text.dart';
 import 'package:flutter/material.dart';
 
 class ShowSalonCard extends StatelessWidget {
@@ -20,6 +20,7 @@ class ShowSalonCard extends StatelessWidget {
         ),
         SizedBox(height: Dimensions.height10),
         Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Wrap(
               children: List.generate(
@@ -31,11 +32,8 @@ class ShowSalonCard extends StatelessWidget {
                 ),
               ),
             ),
-            SizedBox(width: Dimensions.width10),
             SmallText(text: '4.5'),
-            SizedBox(width: Dimensions.width10),
             SmallText(text: '1287'),
-            SizedBox(width: Dimensions.width10),
             SmallText(text: 'comments'),
           ],
         ),

@@ -1,5 +1,5 @@
+import 'package:easycut/core/utils/dimensions.dart';
 import 'package:easycut/core/utils/images_strings.dart';
-import 'package:easycut/utils/dimensions.dart';
 import 'package:flutter/material.dart';
 
 class ImageSlidingAnimation extends StatelessWidget {

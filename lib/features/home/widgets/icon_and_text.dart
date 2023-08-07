@@ -1,5 +1,5 @@
-import 'package:easycut/utils/dimensions.dart';
-import 'package:easycut/widgets/small_text.dart';
+import 'package:easycut/core/utils/dimensions.dart';
+import 'package:easycut/core/widgets/small_text.dart';
 import 'package:flutter/material.dart';
 
 class IconAndTextWidget extends StatelessWidget {

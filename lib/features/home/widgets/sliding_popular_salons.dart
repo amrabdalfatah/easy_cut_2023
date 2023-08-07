@@ -2,8 +2,10 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:easycut/core/utils/colors.dart';
 import 'package:easycut/core/utils/dimensions.dart';
 import 'package:easycut/core/utils/images_strings.dart';
+import 'package:easycut/features/home/main/salon_details_view.dart';
 import 'package:easycut/model/products_model.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'show_salon_card.dart';
 
@@ -133,28 +135,30 @@ class _SlidingPopularSalonsState extends State<SlidingPopularSalons> {
 
     return Transform(
       transform: matrix,
-      child: Stack(
-        children: [
-          Container(
-            height: Dimensions.pageViewContainer,
-            margin: EdgeInsets.only(
-              left: Dimensions.width10,
-              right: Dimensions.width10,
-            ),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(Dimensions.radius30),
-              color: index.isEven ? Color(0xFF69c5df) : Color(0xFF9294cc),
-              image: DecorationImage(
-                fit: BoxFit.cover,
-                image: AssetImage(
-                  popularProduct.img!,
+      child: GestureDetector(
+        onTap: () {
+          Get.to(() => SalonDetailsView());
+        },
+        child: Stack(
+          children: [
+            Container(
+              height: Dimensions.pageViewContainer,
+              margin: EdgeInsets.only(
+                left: Dimensions.width10,
+                right: Dimensions.width10,
+              ),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(Dimensions.radius30),
+                color: index.isEven ? Color(0xFF69c5df) : Color(0xFF9294cc),
+                image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: AssetImage(
+                    popularProduct.img!,
+                  ),
                 ),
               ),
             ),
-          ),
-          GestureDetector(
-            onTap: () {},
-            child: Align(
+            Align(
               alignment: Alignment.bottomCenter,
               child: Container(
                 height: Dimensions.pageViewTextContainer,
@@ -194,8 +198,8 @@ class _SlidingPopularSalonsState extends State<SlidingPopularSalons> {
                 ),
               ),
             ),
-          ),
-        ],
+          ],
+        ),
       ),
     );
   }

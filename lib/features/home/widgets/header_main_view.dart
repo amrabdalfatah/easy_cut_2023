@@ -2,7 +2,7 @@ import 'package:easycut/core/utils/colors.dart';
 import 'package:easycut/core/utils/dimensions.dart';
 import 'package:easycut/core/utils/images_strings.dart';
 import 'package:easycut/core/widgets/big_text.dart';
-import 'package:easycut/widgets/small_text.dart';
+import 'package:easycut/core/widgets/small_text.dart';
 import 'package:flutter/material.dart';
 
 class HeaderMainView extends StatelessWidget {

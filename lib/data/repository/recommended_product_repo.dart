@@ -1,5 +1,5 @@
+import 'package:easycut/core/utils/constants.dart';
 import 'package:easycut/data/api/api_client.dart';
-import 'package:easycut/utils/constants.dart';
 import 'package:get/get.dart';
 
 class RecommendedProductRepo extends GetxService {

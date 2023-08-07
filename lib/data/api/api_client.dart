@@ -1,4 +1,4 @@
-import 'package:easycut/utils/constants.dart';
+import 'package:easycut/core/utils/constants.dart';
 import 'package:get/get.dart';
 
 class ApiClient extends GetConnect implements GetxService {

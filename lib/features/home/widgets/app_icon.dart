@@ -1,4 +1,4 @@
-import 'package:easycut/utils/dimensions.dart';
+import 'package:easycut/core/utils/dimensions.dart';
 import 'package:flutter/material.dart';
 
 class AppIcon extends StatelessWidget {

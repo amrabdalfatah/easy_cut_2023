@@ -19,22 +19,22 @@ class ApiClient extends GetConnect implements GetxService {
   }
 
   Future<Response> getData(String uri) async {
-    print('Get Data from Api Client');
+    // print('Get Data from Api Client');
     try {
       // Uri url = Uri(host: AppConstants.BASE_URL, path: uri);
       final url = Uri.parse(AppConstants.BASE_URL + uri);
-      print(url);
+      // print(url);
       var response = await get(uri).then((value) {
-        print('Inside get from Getx');
-        print(value.body);
+        // print('Inside get from Getx');
+        // print(value.body);
       });
-      print('Response from Getx done');
+      // print('Response from Getx done');
 
       // print('Response ${response.statusCode}');
 
       return response;
     } catch (e) {
-      print('Error Api Client ' + e.toString());
+      // print('Error Api Client ' + e.toString());
       // return Response(
       //   statusCode: 1,
       //   statusText: e.toString(),

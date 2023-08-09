@@ -13,7 +13,7 @@ import 'package:get/get.dart';
 import 'register_email_password_view.dart';
 
 class LoginView extends GetWidget<AuthViewModel> {
-  GlobalKey<FormState> _formKey = GlobalKey<FormState>();
+  GlobalKey<FormState> formKey = GlobalKey<FormState>();
   LoginView({super.key});
 
   @override
@@ -37,7 +37,7 @@ class LoginView extends GetWidget<AuthViewModel> {
               ),
               Expanded(
                 child: Form(
-                  key: _formKey,
+                  key: formKey,
                   child: Column(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
@@ -47,7 +47,7 @@ class LoginView extends GetWidget<AuthViewModel> {
                           // Enter Email
                           TextFormField(
                             keyboardType: TextInputType.emailAddress,
-                            style: TextStyle(
+                            style: const TextStyle(
                               color: AppColors.mainColor,
                             ),
                             decoration: InputDecoration(
@@ -83,7 +83,7 @@ class LoginView extends GetWidget<AuthViewModel> {
                           GetX<AuthViewModel>(
                             builder: (authCTRL) => TextFormField(
                               keyboardType: TextInputType.visiblePassword,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 color: AppColors.mainColor,
                               ),
                               obscureText: authCTRL.shownPassword.value,
@@ -146,8 +146,8 @@ class LoginView extends GetWidget<AuthViewModel> {
                                 )
                               : GestureDetector(
                                   onTap: () {
-                                    _formKey.currentState!.save();
-                                    if (_formKey.currentState!.validate()) {
+                                    formKey.currentState!.save();
+                                    if (formKey.currentState!.validate()) {
                                       controller.signInWithEmailAndPassword();
                                       Get.offAll(() => HomeView());
                                     }
@@ -176,7 +176,7 @@ class LoginView extends GetWidget<AuthViewModel> {
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          SmallText(
+                          const SmallText(
                             text: "Don't have an account? ",
                             color: Colors.black54,
                             fontWeight: FontWeight.w600,
@@ -185,7 +185,7 @@ class LoginView extends GetWidget<AuthViewModel> {
                             onPressed: () {
                               Get.to(() => RegisterEmailPasswordView());
                             },
-                            child: SmallText(
+                            child: const SmallText(
                               text: "Create New",
                               color: AppColors.mainColor,
                               fontWeight: FontWeight.bold,

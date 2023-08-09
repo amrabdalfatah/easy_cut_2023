@@ -2,6 +2,7 @@ import 'package:easycut/core/utils/colors.dart';
 import 'package:easycut/core/utils/dimensions.dart';
 import 'package:easycut/core/utils/images_strings.dart';
 import 'package:easycut/core/widgets/big_text.dart';
+import 'package:easycut/features/home/main/show_salon_booking_view.dart';
 import 'package:easycut/features/home/widgets/app_icon.dart';
 import 'package:easycut/features/home/widgets/expandable_text_widget.dart';
 import 'package:easycut/features/home/widgets/show_salon_card.dart';
@@ -202,7 +203,9 @@ class SalonDetailsView extends StatelessWidget {
         color: AppColors.mainColor,
         child: Center(
           child: TextButton(
-            onPressed: () {},
+            onPressed: () {
+              Get.to(() => ShowSalonBookingView());
+            },
             child: BigText(
               text: "Booking Now",
               color: Colors.white,

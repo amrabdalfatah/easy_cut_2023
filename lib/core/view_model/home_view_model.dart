@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:easycut/core/utils/dimensions.dart';
 import 'package:easycut/core/utils/images_strings.dart';
 import 'package:easycut/data/repository/popular_product_repo.dart';
 import 'package:easycut/model/user_model.dart';
@@ -16,6 +15,54 @@ class HomeViewModel extends GetxController {
     update();
   }
 
+  // Book Now View
+  List<bool> status = List.generate(5, (i) => false);
+  void selectChair(int index) {
+    status = List.generate(5, (i) => false);
+    status[index] = true;
+    update();
+  }
+
+  String chosenDate = "No Date";
+  void changeChosenDate(String date) {
+    chosenDate = date;
+    update();
+  }
+
+  String chosenTime = "No Time";
+  void changeChosenTime(String time) {
+    var actDateTime = DateTime.now();
+    if (chosenDate != "No Date") {
+      if (actDateTime.year == int.parse(chosenDate.substring(0, 4)) &&
+          actDateTime.month == int.parse(chosenDate.substring(5, 7)) &&
+          actDateTime.day == int.parse(chosenDate.substring(8, 10))) {
+        if (int.parse(time.substring(0, 2)) <= actDateTime.hour) {
+          chosenTime = "No Time";
+          Get.snackbar(
+            "Warning",
+            "You can't booking at the actual hour,\nyou may choose next hour.",
+            snackPosition: SnackPosition.TOP,
+            colorText: Colors.red,
+          );
+          update();
+        } else {
+          chosenTime = time;
+          update();
+        }
+      } else {
+        chosenTime = time;
+        update();
+      }
+    } else {
+      Get.snackbar(
+        "Warning",
+        "Please, select your date first,\nto determine hours for the day.",
+        snackPosition: SnackPosition.TOP,
+        colorText: Colors.red,
+      );
+    }
+  }
+
   UserModel? userData;
 
   ValueNotifier<bool> dataLoaded = ValueNotifier(false);
@@ -28,7 +75,7 @@ class HomeViewModel extends GetxController {
   }
 
   Future<void> getUser() async {
-    userData = UserModel.fromJson({"name": "amr"} as Map<dynamic, dynamic>?);
+    // userData = UserModel.fromJson({"name": "amr"} as Map<dynamic, dynamic>?);
 
     dataLoaded.value = true;
     update();
@@ -57,7 +104,7 @@ class HomeViewModel extends GetxController {
                 ),
               ),
             ),
-            Text(
+            const Text(
               'Face Image',
               textAlign: TextAlign.center,
               style: TextStyle(
@@ -190,7 +237,7 @@ class PopularProductController extends GetxController {
   }
 
   Future<void> getPopularProductList() async {
-    print("Got Products");
+    // print("Got Products");
     _popularProductList = [];
     _popularProductList = popularProductsStatic;
     // _popularProductList.addAll(Product.fromJson(response.).products);

@@ -5,7 +5,7 @@ import 'package:easycut/core/view_model/auth_view_model.dart';
 import 'package:easycut/core/widgets/big_text.dart';
 import 'package:easycut/core/widgets/main_button.dart';
 import 'package:easycut/core/widgets/small_text.dart';
-import 'package:easycut/features/auth/login_view.dart';
+import 'package:easycut/view/screen/auth/login.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -64,7 +64,7 @@ class PasswordChangedView extends StatelessWidget {
             MainButton(
               text: 'Back to Login',
               onTap: () {
-                Get.offAll(() => LoginView());
+                Get.offAll(() => Login());
                 Get.put(() => AuthViewModel());
               },
             ),

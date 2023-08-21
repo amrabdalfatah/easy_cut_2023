@@ -1,4 +1,4 @@
-import 'package:easycut/features/auth/login_view.dart';
+import 'package:easycut/view/screen/auth/login.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -20,7 +20,7 @@ class AuthViewModel extends GetxController {
         'This camera is registered to its owner \ntry another camera',
         snackPosition: SnackPosition.TOP,
       );
-      Get.off(() => LoginView());
+      Get.off(() => Login());
     } catch (e) {
       Get.snackbar(
         'Auth',

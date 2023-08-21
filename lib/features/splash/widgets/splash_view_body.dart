@@ -1,5 +1,5 @@
 import 'package:easycut/core/utils/dimensions.dart';
-import 'package:easycut/features/auth/login_view.dart';
+import 'package:easycut/view/screen/auth/login.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -88,7 +88,7 @@ class _SplashViewBodyState extends State<SplashViewBody>
   void navigateToControl() {
     Future.delayed(const Duration(seconds: 4), () {
       Get.off(
-        () => LoginView(),
+        () => Login(),
         transition: Transition.cupertino,
         duration: kTransitionDuration,
       );

@@ -3,7 +3,7 @@ import 'package:easycut/core/utils/dimensions.dart';
 import 'package:easycut/core/utils/images_strings.dart';
 import 'package:easycut/core/view_model/auth_view_model.dart';
 import 'package:easycut/core/widgets/small_text.dart';
-import 'package:easycut/features/auth/login_view.dart';
+import 'package:easycut/view/screen/auth/login.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -186,7 +186,7 @@ class RegisterEmailPasswordView extends GetWidget<AuthViewModel> {
                             onTap: () {
                               _formKey.currentState!.save();
                               if (_formKey.currentState!.validate()) {
-                                Get.offAll(() => LoginView());
+                                Get.offAll(() => Login());
                                 Get.put(() => AuthViewModel());
                               }
                             },

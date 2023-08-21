@@ -36,7 +36,7 @@ class BookSalonView extends GetWidget<HomeViewModel> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            BigText(
+            const BigText(
               text: "Name",
             ),
             SizedBox(height: Dimensions.height10),
@@ -49,7 +49,7 @@ class BookSalonView extends GetWidget<HomeViewModel> {
               height: 1,
               color: Colors.grey,
             ),
-            BigText(
+            const BigText(
               text: "Salon Name",
             ),
             SizedBox(height: Dimensions.height10),
@@ -62,7 +62,7 @@ class BookSalonView extends GetWidget<HomeViewModel> {
               height: 1,
               color: Colors.grey,
             ),
-            BigText(
+            const BigText(
               text: "Choose Chair",
             ),
             SizedBox(height: Dimensions.height10),
@@ -114,7 +114,7 @@ class BookSalonView extends GetWidget<HomeViewModel> {
               height: 1,
               color: Colors.grey,
             ),
-            BigText(
+            const BigText(
               text: "Choose Date",
             ),
             SizedBox(height: Dimensions.height10),
@@ -157,46 +157,48 @@ class BookSalonView extends GetWidget<HomeViewModel> {
               height: 1,
               color: Colors.grey,
             ),
-            BigText(
+            const BigText(
               text: "Choose Time",
             ),
             SizedBox(height: Dimensions.height10),
-            GetBuilder<HomeViewModel>(builder: (timeController) {
-              return Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  SmallText(
-                    text: timeController.chosenTime,
-                    size: Dimensions.font20,
-                  ),
-                  TextButton(
-                    onPressed: () {
-                      showTimePicker(
-                        context: context,
-                        initialTime: TimeOfDay.now(),
-                      ).then((value) {
-                        // TimeOfDay(15:37) -> 15:37
-                        var time = value.toString().substring(10, 15);
-                        timeController.changeChosenTime(time);
-                      }).catchError((error) {
-                        print(error);
-                      });
-                    },
-                    child: SmallText(
-                      text: "Choose",
-                      color: AppColors.mainColor,
-                      fontWeight: FontWeight.bold,
+            GetBuilder<HomeViewModel>(
+              builder: (timeController) {
+                return Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    SmallText(
+                      text: timeController.chosenTime,
+                      size: Dimensions.font20,
                     ),
-                  ),
-                ],
-              );
-            }),
+                    TextButton(
+                      onPressed: () {
+                        showTimePicker(
+                          context: context,
+                          initialTime: TimeOfDay.now(),
+                        ).then((value) {
+                          // TimeOfDay(15:37) -> 15:37
+                          var time = value.toString().substring(10, 15);
+                          timeController.changeChosenTime(time);
+                        }).catchError((error) {
+                          print(error);
+                        });
+                      },
+                      child: SmallText(
+                        text: "Choose",
+                        color: AppColors.mainColor,
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ],
+                );
+              },
+            ),
             Container(
               margin: EdgeInsets.symmetric(vertical: Dimensions.height10),
               height: 1,
               color: Colors.grey,
             ),
-            BigText(
+            const BigText(
               text: "Choose Services",
             ),
             SizedBox(height: Dimensions.height10),
@@ -249,13 +251,118 @@ class BookSalonView extends GetWidget<HomeViewModel> {
           ],
         ),
       ),
-      bottomNavigationBar: Container(
-        height: Dimensions.height60,
-        padding: EdgeInsets.symmetric(vertical: Dimensions.height10),
-        color: AppColors.mainColor,
-        child: BigText(
-          text: "Submit",
-          color: Colors.white,
+      bottomNavigationBar: GestureDetector(
+        onTap: () {
+          Get.defaultDialog(
+            title: "Book Now",
+            content: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Row(
+                  children: [
+                    BigText(text: "Name:"),
+                    SizedBox(width: Dimensions.width10),
+                    SmallText(
+                      text: "Amr Abdalfatah",
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    BigText(text: "Salon:"),
+                    SizedBox(width: Dimensions.width10),
+                    SmallText(
+                      text: "Salon Mohamed",
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    BigText(text: "Chair:"),
+                    SizedBox(width: Dimensions.width10),
+                    SmallText(
+                      text: "Chair 1",
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    BigText(text: "Date:"),
+                    SizedBox(width: Dimensions.width10),
+                    SmallText(
+                      text: controller.chosenDate,
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    BigText(text: "Time:"),
+                    SizedBox(width: Dimensions.width10),
+                    SmallText(
+                      text: controller.chosenTime,
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    BigText(text: "Services:"),
+                    SizedBox(width: Dimensions.width10),
+                    SmallText(
+                      text: "Hair Cut",
+                    ),
+                  ],
+                ),
+                Row(
+                  children: [
+                    BigText(text: "Amount:"),
+                    SizedBox(width: Dimensions.width10),
+                    SmallText(
+                      text: "\$ 100.00 EG",
+                    ),
+                  ],
+                ),
+              ],
+            ),
+            actions: [
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                  Get.snackbar(
+                    "Success",
+                    "you have booked successfully, \nbut you still wait for accepting from salon",
+                    colorText: Colors.green,
+                    snackPosition: SnackPosition.TOP,
+                  );
+                },
+                child: Text(
+                  'Confirm',
+                  style: TextStyle(
+                    color: AppColors.mainColor,
+                  ),
+                ),
+              ),
+              TextButton(
+                onPressed: () {
+                  Navigator.pop(context);
+                },
+                child: Text(
+                  'Cancel',
+                  style: TextStyle(
+                    color: Colors.red,
+                  ),
+                ),
+              ),
+            ],
+          );
+        },
+        child: Container(
+          height: Dimensions.height60,
+          padding: EdgeInsets.symmetric(vertical: Dimensions.height10),
+          color: AppColors.mainColor,
+          child: BigText(
+            text: "Submit",
+            color: Colors.white,
+          ),
         ),
       ),
     );

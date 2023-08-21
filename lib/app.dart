@@ -1,21 +1,37 @@
-import 'package:easycut/core/utils/colors.dart';
-import 'package:easycut/features/splash/splash_view.dart';
+import 'package:easycut/core/constant/color.dart';
+import 'package:easycut/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'helper/binding.dart';
+import 'view/screen/onboarding.dart';
 
 class EasyCut extends StatelessWidget {
   const EasyCut({super.key});
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
+      title: "Easy Cut",
       debugShowCheckedModeBanner: false,
-      initialBinding: Binding(),
-      theme: ThemeData().copyWith(
-        scaffoldBackgroundColor: AppColors.secondaryColor,
+      theme: ThemeData(
+        fontFamily: "Roboto",
+        scaffoldBackgroundColor: AppColor.backgroundColor,
+        textTheme: const TextTheme(
+          headlineLarge: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 22,
+            color: Colors.black,
+          ),
+          bodyLarge: TextStyle(
+            height: 2,
+            color: AppColor.grey,
+            fontWeight: FontWeight.bold,
+            fontSize: 14,
+          ),
+        ),
       ),
-      home: const SplashView(),
+      // initialBinding: Binding(),
+      home: const OnBoarding(),
+      routes: routes,
     );
   }
 }

@@ -10,11 +10,11 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import 'register_email_password_view.dart';
+import '../../../features/auth/register_email_password_view.dart';
 
-class LoginView extends GetWidget<AuthViewModel> {
+class Login extends GetWidget<AuthViewModel> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  LoginView({super.key});
+  Login({super.key});
 
   @override
   Widget build(BuildContext context) {

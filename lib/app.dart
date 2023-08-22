@@ -1,5 +1,6 @@
 import 'package:easycut/core/localization/change_local.dart';
 import 'package:easycut/core/localization/translation.dart';
+import 'package:easycut/helper/binding.dart';
 import 'package:easycut/routes.dart';
 import 'package:easycut/view/screen/language.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +17,7 @@ class EasyCut extends StatelessWidget {
       locale: controller.language,
       debugShowCheckedModeBanner: false,
       theme: controller.appTheme,
-      // initialBinding: Binding(),
+      initialBinding: MyBinding(),
       home: const Language(),
       routes: routes,
     );

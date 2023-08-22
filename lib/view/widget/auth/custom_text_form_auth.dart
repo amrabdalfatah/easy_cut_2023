@@ -10,6 +10,7 @@ class CustomTextFormAuth extends StatelessWidget {
   final TextEditingController myController;
   final bool obSecure;
   final void Function()? suffixPressed;
+  final String? Function(String?)? valid;
 
   const CustomTextFormAuth({
     Key? key,
@@ -20,6 +21,7 @@ class CustomTextFormAuth extends StatelessWidget {
     required this.myController,
     this.obSecure = false,
     this.suffixPressed,
+    required this.valid,
   }) : super(key: key);
 
   @override
@@ -30,6 +32,7 @@ class CustomTextFormAuth extends StatelessWidget {
         controller: myController,
         keyboardType: type,
         obscureText: obSecure,
+        validator: valid,
         style: const TextStyle(
           color: AppColor.primaryColor,
         ),
@@ -54,16 +57,6 @@ class CustomTextFormAuth extends StatelessWidget {
             ),
           ),
         ),
-        validator: (value) {
-          final regex = RegExp(
-              r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$');
-          // if (controller.email.isEmpty) {
-          //   return 'Please, Enter your Email';
-          // } else if (!regex.hasMatch(value!)) {
-          //   return 'Your Email is not valid';
-          // }
-          return null;
-        },
       ),
     );
   }

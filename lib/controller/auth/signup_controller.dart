@@ -9,6 +9,7 @@ abstract class SignUpController extends GetxController {
 }
 
 class SignUpControllerImp extends SignUpController {
+  GlobalKey<FormState> formState = GlobalKey<FormState>();
   late TextEditingController name;
   late TextEditingController email;
   late TextEditingController phone;
@@ -17,12 +18,15 @@ class SignUpControllerImp extends SignUpController {
 
   @override
   goBackLogin() {
-    Get.back();
+    Get.offNamed(AppRoute.login);
   }
 
   @override
   signUp() {
-    Get.toNamed(AppRoute.activateCode);
+    var formData = formState.currentState;
+    if (formData!.validate()) {
+      Get.toNamed(AppRoute.activateCode);
+    } else {}
   }
 
   @override

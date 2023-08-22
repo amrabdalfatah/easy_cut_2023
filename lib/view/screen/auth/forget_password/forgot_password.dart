@@ -1,5 +1,6 @@
 import 'package:easycut/controller/auth/forget_password_controller.dart';
 import 'package:easycut/core/constant/dimensions.dart';
+import 'package:easycut/core/functions/valid_input.dart';
 import 'package:easycut/view/widget/auth/custom_button_auth.dart';
 import 'package:easycut/view/widget/auth/custom_text_form_auth.dart';
 import 'package:easycut/view/widget/auth/header_auth.dart';
@@ -11,34 +12,42 @@ class ForgotPassword extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    ForgetPasswordControllerImp controller =
-        Get.put(ForgetPasswordControllerImp());
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.symmetric(
           horizontal: Dimensions.width15,
           vertical: Dimensions.height15,
         ),
-        child: ListView(
-          children: [
-            HeaderAuth(
-              title: "23".tr,
-              firstDesc: "24".tr,
-              secondDesc: "25".tr,
-            ),
-            CustomTextFormAuth(
-              myController: controller.email,
-              type: TextInputType.emailAddress,
-              hintText: "17".tr,
-              prefixIcon: Icons.email,
-            ),
-            CustomButtonAuth(
-              onPressed: () {
-                controller.checkEmail();
-              },
-              text: "26".tr,
-            ),
-          ],
+        child: GetBuilder<ForgetPasswordControllerImp>(
+          builder: (controller) {
+            return Form(
+              key: controller.formState,
+              child: ListView(
+                children: [
+                  HeaderAuth(
+                    title: "23".tr,
+                    firstDesc: "24".tr,
+                    secondDesc: "25".tr,
+                  ),
+                  CustomTextFormAuth(
+                    myController: controller.email,
+                    valid: (val) {
+                      return validInput(val!, 15, 100, 'email');
+                    },
+                    type: TextInputType.emailAddress,
+                    hintText: "17".tr,
+                    prefixIcon: Icons.email,
+                  ),
+                  CustomButtonAuth(
+                    onPressed: () {
+                      controller.checkEmail();
+                    },
+                    text: "26".tr,
+                  ),
+                ],
+              ),
+            );
+          },
         ),
       ),
     );

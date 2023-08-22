@@ -1,3 +1,4 @@
+import 'package:easycut/controller/auth/login_controller.dart';
 import 'package:easycut/core/constant/color.dart';
 import 'package:easycut/core/constant/dimensions.dart';
 import 'package:easycut/core/shared/widgets/small_text.dart';
@@ -5,13 +6,14 @@ import 'package:easycut/view/widget/auth/custom_button_auth.dart';
 import 'package:easycut/view/widget/auth/custom_text_form_auth.dart';
 import 'package:easycut/view/widget/auth/header_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class Login extends StatelessWidget {
-  // GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  Login({super.key});
+  const Login({super.key});
 
   @override
   Widget build(BuildContext context) {
+    LoginControllerImp controller = Get.put(LoginControllerImp());
     return Scaffold(
       body: Padding(
         padding: EdgeInsets.symmetric(
@@ -26,13 +28,13 @@ class Login extends StatelessWidget {
               secondDesc: "login to continue managing and saving your time.",
             ),
             CustomTextFormAuth(
-              myController: TextEditingController(),
+              myController: controller.email,
               type: TextInputType.emailAddress,
               hintText: "Email",
               prefixIcon: Icons.email,
             ),
             CustomTextFormAuth(
-              myController: TextEditingController(),
+              myController: controller.password,
               type: TextInputType.visiblePassword,
               obSecure: true,
               hintText: "Password",
@@ -67,7 +69,7 @@ class Login extends StatelessWidget {
                 const SizedBox(width: 10),
                 InkWell(
                   onTap: () {
-                    // Get.to(() => RegisterEmailPasswordView());
+                    controller.goToSignUp();
                   },
                   child: const SmallText(
                     text: "Sign Up",

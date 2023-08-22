@@ -23,13 +23,11 @@ class HeaderAuth extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(height: Dimensions.height50),
           Expanded(
             child: Center(
               child: Image.asset(AppImageAsset.logo),
             ),
           ),
-          SizedBox(height: Dimensions.height20),
           BigText(
             text: title,
             color: Colors.black,
@@ -50,7 +48,7 @@ class HeaderAuth extends StatelessWidget {
             fontWeight: FontWeight.w600,
             color: Colors.black54,
           ),
-          SizedBox(height: Dimensions.height50),
+          SizedBox(height: Dimensions.height20),
         ],
       ),
     );

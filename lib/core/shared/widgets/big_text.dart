@@ -1,23 +1,21 @@
-import 'package:easycut/core/utils/dimensions.dart';
+import 'package:easycut/core/constant/dimensions.dart';
 import 'package:flutter/material.dart';
 
-class SmallText extends StatelessWidget {
-  const SmallText({
+class BigText extends StatelessWidget {
+  const BigText({
     Key? key,
-    this.color = Colors.black,
     required this.text,
+    this.color = Colors.black,
     this.textAlign = TextAlign.center,
     this.overFlow = TextOverflow.ellipsis,
     this.fontFamily,
-    this.fontWeight = FontWeight.w400,
+    this.fontWeight = FontWeight.w700,
     this.size = 0,
-    this.height = 1.2,
   }) : super(key: key);
 
   final String text;
   final Color? color;
   final double size;
-  final double height;
   final TextOverflow overFlow;
   final TextAlign textAlign;
   final String? fontFamily;
@@ -29,12 +27,12 @@ class SmallText extends StatelessWidget {
       text,
       textAlign: textAlign,
       overflow: overFlow,
+      maxLines: 1,
       style: TextStyle(
         fontFamily: fontFamily,
-        fontWeight: fontWeight,
         color: color,
-        fontSize: size == 0 ? Dimensions.font16 : size,
-        height: height,
+        fontSize: size == 0 ? Dimensions.font20 : size,
+        fontWeight: fontWeight,
       ),
     );
   }

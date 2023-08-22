@@ -1,5 +1,5 @@
-import 'package:easycut/core/utils/dimensions.dart';
-import 'package:easycut/core/widgets/small_text.dart';
+import 'package:easycut/core/constant/dimensions.dart';
+import 'package:easycut/core/shared/widgets/small_text.dart';
 import 'package:flutter/material.dart';
 
 class RegisterInputField extends StatelessWidget {

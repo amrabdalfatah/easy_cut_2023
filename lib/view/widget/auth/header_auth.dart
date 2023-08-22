@@ -1,18 +1,17 @@
-import 'package:easycut/core/utils/dimensions.dart';
-import 'package:easycut/core/widgets/big_text.dart';
-import 'package:easycut/core/widgets/small_text.dart';
+import 'package:easycut/core/constant/dimensions.dart';
+import 'package:easycut/core/constant/image_asset.dart';
+import 'package:easycut/core/shared/widgets/big_text.dart';
+import 'package:easycut/core/shared/widgets/small_text.dart';
 import 'package:flutter/material.dart';
 
 class HeaderAuth extends StatelessWidget {
   const HeaderAuth({
     super.key,
-    required this.imageAsset,
     required this.title,
     required this.firstDesc,
     required this.secondDesc,
   });
 
-  final String imageAsset;
   final String title;
   final String firstDesc;
   final String secondDesc;
@@ -20,14 +19,14 @@ class HeaderAuth extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: Dimensions.heightImage - Dimensions.height45,
+      height: Dimensions.heightImage,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           SizedBox(height: Dimensions.height50),
           Expanded(
             child: Center(
-              child: Image.asset(imageAsset),
+              child: Image.asset(AppImageAsset.logo),
             ),
           ),
           SizedBox(height: Dimensions.height20),

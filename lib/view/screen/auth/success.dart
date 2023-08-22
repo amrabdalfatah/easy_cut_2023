@@ -27,7 +27,7 @@ class Success extends StatelessWidget {
               ),
               SizedBox(height: Dimensions.height30),
               BigText(
-                text: "Congratulation",
+                text: "31".tr,
                 color: Colors.black,
                 size: Dimensions.font32,
               ),
@@ -36,7 +36,7 @@ class Success extends StatelessWidget {
                 onPressed: () {
                   Get.offAllNamed(AppRoute.login);
                 },
-                text: "Go To Login",
+                text: "34".tr,
               ),
             ],
           ),

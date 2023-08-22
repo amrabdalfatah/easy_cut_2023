@@ -24,29 +24,29 @@ class SignUp extends StatelessWidget {
           children: [
             SizedBox(
               height: Dimensions.height200,
-              child: const HeaderAuth(
-                title: "Register Now",
-                firstDesc: "So happy to see you,",
-                secondDesc: "Let's make your life easy.",
+              child: HeaderAuth(
+                title: "22".tr,
+                firstDesc: "15".tr,
+                secondDesc: "6".tr,
               ),
             ),
             CustomTextFormAuth(
               myController: controller.name,
               type: TextInputType.text,
-              hintText: "Full Name",
+              hintText: "35".tr,
               prefixIcon: Icons.person,
             ),
             CustomTextFormAuth(
               myController: controller.email,
               type: TextInputType.emailAddress,
-              hintText: "Email",
+              hintText: "17".tr,
               prefixIcon: Icons.email,
             ),
             CustomTextFormAuth(
               myController: controller.password,
               type: TextInputType.visiblePassword,
               obSecure: true,
-              hintText: "Password",
+              hintText: "18".tr,
               prefixIcon: Icons.lock,
               suffixIcon: Icons.remove_red_eye_rounded,
               suffixPressed: () {},
@@ -54,7 +54,7 @@ class SignUp extends StatelessWidget {
             CustomTextFormAuth(
               myController: controller.phone,
               type: TextInputType.phone,
-              hintText: "Phone",
+              hintText: "36".tr,
               prefixIcon: Icons.phone_android,
             ),
             Container(
@@ -110,9 +110,9 @@ class SignUp extends StatelessWidget {
                             DropdownMenuItem(
                               value: Gender.gender,
                               onTap: () {},
-                              child: const Text(
-                                'Gender',
-                                style: TextStyle(
+                              child: Text(
+                                '38'.tr,
+                                style: const TextStyle(
                                   color: AppColor.grey,
                                 ),
                               ),
@@ -120,9 +120,9 @@ class SignUp extends StatelessWidget {
                             DropdownMenuItem(
                               value: Gender.male,
                               onTap: () {},
-                              child: const Text(
-                                'Male',
-                                style: TextStyle(
+                              child: Text(
+                                '39'.tr,
+                                style: const TextStyle(
                                   color: AppColor.grey,
                                 ),
                               ),
@@ -130,9 +130,9 @@ class SignUp extends StatelessWidget {
                             DropdownMenuItem(
                               value: Gender.female,
                               onTap: () {},
-                              child: const Text(
-                                'Female',
-                                style: TextStyle(
+                              child: Text(
+                                '40'.tr,
+                                style: const TextStyle(
                                   color: AppColor.grey,
                                 ),
                               ),
@@ -152,13 +152,13 @@ class SignUp extends StatelessWidget {
               onPressed: () {
                 controller.signUp();
               },
-              text: "Sign Up",
+              text: "22".tr,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const SmallText(
-                  text: "Have an account? ",
+                SmallText(
+                  text: "37".tr,
                   color: Colors.black54,
                 ),
                 const SizedBox(width: 10),
@@ -166,8 +166,8 @@ class SignUp extends StatelessWidget {
                   onTap: () {
                     controller.goBackLogin();
                   },
-                  child: const SmallText(
-                    text: "Login",
+                  child: SmallText(
+                    text: "20".tr,
                     color: AppColor.primaryColor,
                     fontWeight: FontWeight.bold,
                   ),
@@ -238,13 +238,13 @@ class SignUp extends StatelessWidget {
 
 /*
 validator: (value) {
-                    final regex = RegExp(
-                        r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$');
-                    if (controller.email.isEmpty) {
-                      return 'Please, Enter your Email';
-                    } else if (!regex.hasMatch(value!)) {
-                      return 'Your Email is not valid';
-                    }
-                    return null;
-                  },
+  final regex = RegExp(
+      r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$');
+  if (controller.email.isEmpty) {
+    return 'Please, Enter your Email';
+  } else if (!regex.hasMatch(value!)) {
+    return 'Your Email is not valid';
+  }
+  return null;
+},
  */

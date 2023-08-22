@@ -22,22 +22,22 @@ class Login extends StatelessWidget {
         ),
         child: ListView(
           children: [
-            const HeaderAuth(
-              title: "Welcome",
-              firstDesc: "So happy to see you,",
-              secondDesc: "login to continue managing and saving your time.",
+            HeaderAuth(
+              title: "14".tr,
+              firstDesc: "15".tr,
+              secondDesc: "16".tr,
             ),
             CustomTextFormAuth(
               myController: controller.email,
               type: TextInputType.emailAddress,
-              hintText: "Email",
+              hintText: "17".tr,
               prefixIcon: Icons.email,
             ),
             CustomTextFormAuth(
               myController: controller.password,
               type: TextInputType.visiblePassword,
               obSecure: true,
-              hintText: "Password",
+              hintText: "18".tr,
               prefixIcon: Icons.lock,
               suffixIcon: Icons.remove_red_eye_rounded,
               suffixPressed: () {},
@@ -46,23 +46,23 @@ class Login extends StatelessWidget {
               onTap: () {
                 controller.goToForgetPassword();
               },
-              child: const Text(
-                "Forget Password?",
+              child: Text(
+                "19".tr,
                 textAlign: TextAlign.end,
-                style: TextStyle(
+                style: const TextStyle(
                   color: AppColor.grey,
                 ),
               ),
             ),
             CustomButtonAuth(
               onPressed: () {},
-              text: "Login",
+              text: "20".tr,
             ),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const SmallText(
-                  text: "Don't have an account? ",
+                SmallText(
+                  text: "21".tr,
                   color: Colors.black54,
                 ),
                 const SizedBox(width: 10),
@@ -70,8 +70,8 @@ class Login extends StatelessWidget {
                   onTap: () {
                     controller.goToSignUp();
                   },
-                  child: const SmallText(
-                    text: "Sign Up",
+                  child: SmallText(
+                    text: "22".tr,
                     color: AppColor.primaryColor,
                     fontWeight: FontWeight.bold,
                   ),

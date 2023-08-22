@@ -21,16 +21,16 @@ class ResetPassword extends StatelessWidget {
         ),
         child: ListView(
           children: [
-            const HeaderAuth(
-              title: "Reset Password!",
-              firstDesc: "Congratulation",
-              secondDesc: "Please enter New Password.",
+            HeaderAuth(
+              title: "30".tr,
+              firstDesc: "31".tr,
+              secondDesc: "32".tr,
             ),
             CustomTextFormAuth(
               myController: controller.password,
               type: TextInputType.visiblePassword,
               obSecure: true,
-              hintText: "New Password",
+              hintText: "18".tr,
               prefixIcon: Icons.lock,
               suffixIcon: Icons.remove_red_eye_rounded,
               suffixPressed: () {},
@@ -39,7 +39,7 @@ class ResetPassword extends StatelessWidget {
               myController: controller.confirmPassword,
               type: TextInputType.visiblePassword,
               obSecure: true,
-              hintText: "Confirm Password",
+              hintText: "33".tr,
               prefixIcon: Icons.lock,
               suffixIcon: Icons.remove_red_eye_rounded,
               suffixPressed: () {},
@@ -48,7 +48,7 @@ class ResetPassword extends StatelessWidget {
               onPressed: () {
                 controller.resetPassword();
               },
-              text: "Reset Password",
+              text: "30".tr,
             ),
           ],
         ),

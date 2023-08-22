@@ -1,4 +1,3 @@
-import 'package:easycut/core/constant/color.dart';
 import 'package:easycut/core/localization/change_local.dart';
 import 'package:easycut/core/localization/translation.dart';
 import 'package:easycut/routes.dart';
@@ -16,23 +15,7 @@ class EasyCut extends StatelessWidget {
       translations: MyTranslation(),
       locale: controller.language,
       debugShowCheckedModeBanner: false,
-      theme: ThemeData(
-        fontFamily: "Roboto",
-        scaffoldBackgroundColor: AppColor.backgroundColor,
-        textTheme: const TextTheme(
-          headlineLarge: TextStyle(
-            fontWeight: FontWeight.bold,
-            fontSize: 22,
-            color: Colors.black,
-          ),
-          bodyLarge: TextStyle(
-            height: 2,
-            color: AppColor.grey,
-            fontWeight: FontWeight.bold,
-            fontSize: 14,
-          ),
-        ),
-      ),
+      theme: controller.appTheme,
       // initialBinding: Binding(),
       home: const Language(),
       routes: routes,

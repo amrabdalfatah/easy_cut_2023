@@ -21,22 +21,22 @@ class ForgotPassword extends StatelessWidget {
         ),
         child: ListView(
           children: [
-            const HeaderAuth(
-              title: "Forgot Password!",
-              firstDesc: "Don't worry it happens!",
-              secondDesc: "Please enter your Email Address.",
+            HeaderAuth(
+              title: "23".tr,
+              firstDesc: "24".tr,
+              secondDesc: "25".tr,
             ),
             CustomTextFormAuth(
               myController: controller.email,
               type: TextInputType.emailAddress,
-              hintText: "Email",
+              hintText: "17".tr,
               prefixIcon: Icons.email,
             ),
             CustomButtonAuth(
               onPressed: () {
                 controller.checkEmail();
               },
-              text: "Check Email",
+              text: "26".tr,
             ),
           ],
         ),

@@ -20,19 +20,19 @@ class Language extends GetView<LocalController> {
             ),
             const SizedBox(height: 20),
             CustomButtonLang(
-              textButton: 'AR',
+              textButton: '2'.tr,
               onPressed: () {
                 controller.changeLang('ar');
               },
             ),
             CustomButtonLang(
-              textButton: 'EN',
+              textButton: '3'.tr,
               onPressed: () {
                 controller.changeLang('en');
               },
             ),
             CustomButtonLang(
-              textButton: 'DE',
+              textButton: '4'.tr,
               onPressed: () {
                 controller.changeLang('de');
               },

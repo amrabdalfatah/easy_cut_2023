@@ -20,9 +20,9 @@ class ActivateCode extends StatelessWidget {
         ),
         child: ListView(
           children: [
-            const HeaderAuth(
-              title: "OTP Verification!",
-              firstDesc: "Check your Email, we've sent code to",
+            HeaderAuth(
+              title: "27".tr,
+              firstDesc: "28".tr,
               secondDesc: "email@email.com",
             ),
             PinCodeTextField(
@@ -35,7 +35,7 @@ class ActivateCode extends StatelessWidget {
               animationType: AnimationType.fade,
               validator: (v) {
                 if (v!.length < 6) {
-                  return "Enter Full Number";
+                  return "29".tr;
                 } else {
                   return null;
                 }

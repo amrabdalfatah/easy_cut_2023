@@ -3,8 +3,8 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-alertExit() {
-  return Get.defaultDialog(
+Future<bool> alertExit() {
+  Get.defaultDialog(
     title: "47".tr,
     middleText: "48".tr,
     actions: [
@@ -22,4 +22,5 @@ alertExit() {
       ),
     ],
   );
+  return Future.value(true);
 }

@@ -61,11 +61,15 @@ class SignUp extends StatelessWidget {
                         return validInput(val!, 6, 30, 'password');
                       },
                       type: TextInputType.visiblePassword,
-                      obSecure: true,
+                      obSecure: controller.isShowPassword,
                       hintText: "18".tr,
                       prefixIcon: Icons.lock,
-                      suffixIcon: Icons.remove_red_eye_rounded,
-                      suffixPressed: () {},
+                      suffixIcon: controller.isShowPassword
+                          ? Icons.visibility
+                          : Icons.visibility_off,
+                      suffixPressed: () {
+                        controller.showPassword();
+                      },
                     ),
                     CustomTextFormAuth(
                       myController: controller.phone,

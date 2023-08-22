@@ -12,6 +12,14 @@ class LoginControllerImp extends LoginController {
   GlobalKey<FormState> formState = GlobalKey<FormState>();
   late TextEditingController email;
   late TextEditingController password;
+
+  bool isShowPassword = true;
+
+  showPassword() {
+    isShowPassword = !isShowPassword;
+    update();
+  }
+
   @override
   goToForgetPassword() {
     Get.toNamed(AppRoute.forgetPassword);

@@ -16,6 +16,13 @@ class SignUpControllerImp extends SignUpController {
   late TextEditingController password;
   late Gender gender;
 
+  bool isShowPassword = true;
+
+  showPassword() {
+    isShowPassword = !isShowPassword;
+    update();
+  }
+
   @override
   goBackLogin() {
     Get.offNamed(AppRoute.login);

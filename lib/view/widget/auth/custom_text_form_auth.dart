@@ -49,9 +49,9 @@ class CustomTextFormAuth extends StatelessWidget {
             prefixIcon,
             color: AppColor.primaryColor,
           ),
-          suffixIcon: IconButton(
-            onPressed: suffixPressed,
-            icon: Icon(
+          suffixIcon: InkWell(
+            onTap: suffixPressed,
+            child: Icon(
               suffixIcon,
               color: AppColor.primaryColor,
             ),

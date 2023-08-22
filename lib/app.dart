@@ -1,16 +1,20 @@
 import 'package:easycut/core/constant/color.dart';
+import 'package:easycut/core/localization/change_local.dart';
+import 'package:easycut/core/localization/translation.dart';
 import 'package:easycut/routes.dart';
+import 'package:easycut/view/screen/language.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-
-import 'view/screen/onboarding.dart';
 
 class EasyCut extends StatelessWidget {
   const EasyCut({super.key});
   @override
   Widget build(BuildContext context) {
+    LocalController controller = Get.put(LocalController());
     return GetMaterialApp(
       title: "Easy Cut",
+      translations: MyTranslation(),
+      locale: controller.language,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
         fontFamily: "Roboto",
@@ -30,7 +34,7 @@ class EasyCut extends StatelessWidget {
         ),
       ),
       // initialBinding: Binding(),
-      home: const OnBoarding(),
+      home: const Language(),
       routes: routes,
     );
   }

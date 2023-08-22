@@ -12,7 +12,9 @@ class LoginControllerImp extends LoginController {
   late TextEditingController email;
   late TextEditingController password;
   @override
-  goToForgetPassword() {}
+  goToForgetPassword() {
+    Get.toNamed(AppRoute.forgetPassword);
+  }
 
   @override
   goToSignUp() {

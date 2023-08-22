@@ -44,14 +44,13 @@ class Login extends StatelessWidget {
             ),
             GestureDetector(
               onTap: () {
-                // Get.to(() => ForgotPasswordView());
+                controller.goToForgetPassword();
               },
               child: const Text(
                 "Forget Password?",
                 textAlign: TextAlign.end,
                 style: TextStyle(
-                  color: Colors.black,
-                  fontWeight: FontWeight.w500,
+                  color: AppColor.grey,
                 ),
               ),
             ),

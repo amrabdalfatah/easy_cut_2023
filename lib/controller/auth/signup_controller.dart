@@ -1,3 +1,4 @@
+import 'package:easycut/core/constant/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -20,7 +21,9 @@ class SignUpControllerImp extends SignUpController {
   }
 
   @override
-  signUp() {}
+  signUp() {
+    Get.toNamed(AppRoute.activateCode);
+  }
 
   @override
   void onInit() {

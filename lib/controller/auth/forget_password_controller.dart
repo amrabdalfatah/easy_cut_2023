@@ -1,3 +1,4 @@
+import 'package:easycut/core/constant/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -8,9 +9,10 @@ abstract class ForgetPasswordController extends GetxController {
 class ForgetPasswordControllerImp extends ForgetPasswordController {
   late TextEditingController email;
 
-
   @override
-  checkEmail() {}
+  checkEmail() {
+    Get.toNamed(AppRoute.verifyCode);
+  }
 
   @override
   void onInit() {

@@ -149,7 +149,9 @@ class SignUp extends StatelessWidget {
               ),
             ),
             CustomButtonAuth(
-              onPressed: () {},
+              onPressed: () {
+                controller.signUp();
+              },
               text: "Sign Up",
             ),
             Row(

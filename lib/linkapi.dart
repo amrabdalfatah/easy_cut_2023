@@ -12,19 +12,15 @@ class AppLink {
   static const String notification = "$server/notification.php";
 
 // ================================= Auth ========================== //
-
   static const String signUp = "$server/users/auth/signup.php";
   static const String login = "$server/users/auth/login.php";
-  static const String activateCode = "$server/users/auth/verifycode.php";
+  static const String activateCode = "$server/users/auth/activatecode.php";
   static const String resend = "$server/users/auth/resend.php";
-
 // ================================= ForgetPassword ========================== //
 
-  static const String checkEmail = "$server/forgetpassword/checkemail.php";
-  static const String resetPassword =
-      "$server/forgetpassword/resetpassword.php";
-  static const String verifycodeforgetpassword =
-      "$server/forgetpassword/verifycode.php";
+  static const String checkEmail = "$server/users/auth/checkemail.php";
+  static const String resetPassword = "$server/users/auth/resetpassword.php";
+  static const String verifyCode = "$server/users/auth/verifycode.php";
 
 // Home
 

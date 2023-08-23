@@ -1,12 +1,10 @@
 import 'package:easycut/controller/auth/activate_code_controller.dart';
-import 'package:easycut/core/class/status_request.dart';
+import 'package:easycut/core/class/handling_data_view.dart';
 import 'package:easycut/core/constant/color.dart';
 import 'package:easycut/core/constant/dimensions.dart';
-import 'package:easycut/core/constant/image_asset.dart';
 import 'package:easycut/view/widget/auth/header_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:lottie/lottie.dart';
 import 'package:pin_code_fields/pin_code_fields.dart';
 
 class ActivateCode extends StatelessWidget {
@@ -22,54 +20,55 @@ class ActivateCode extends StatelessWidget {
         ),
         child: GetBuilder<ActivateCodeControllerImp>(
           builder: (controller) {
-            return controller.statusRequest == StatusRequest.loading
-                ? Center(child: Lottie.asset(AppImageAsset.lottie1))
-                : ListView(
-                    children: [
-                      HeaderAuth(
-                        title: "27".tr,
-                        firstDesc: "28".tr,
-                        secondDesc: "${controller.email}",
-                      ),
-                      PinCodeTextField(
-                        appContext: context,
-                        pastedTextStyle: const TextStyle(
-                          color: AppColor.primaryColor,
-                          fontWeight: FontWeight.bold,
-                        ),
-                        length: 6,
-                        animationType: AnimationType.fade,
-                        validator: (v) {
-                          if (v!.length < 6) {
-                            return "29".tr;
-                          } else {
-                            return null;
-                          }
-                        },
-                        pinTheme: PinTheme(
-                          shape: PinCodeFieldShape.box,
-                          borderRadius: BorderRadius.circular(5),
-                          fieldHeight: Dimensions.height50,
-                          fieldWidth: Dimensions.width45,
-                          activeFillColor: Colors.white,
-                          inactiveColor: Colors.white,
-                          disabledColor: Colors.white,
-                          inactiveFillColor: Colors.white,
-                          activeColor: Colors.white,
-                          selectedColor: Colors.white,
-                          selectedFillColor: Colors.white,
-                        ),
-                        cursorColor: Colors.black,
-                        animationDuration: const Duration(milliseconds: 300),
-                        enableActiveFill: true,
-                        keyboardType: TextInputType.number,
-                        onChanged: (value) {},
-                        onCompleted: (value) {
-                          controller.checkCode(value);
-                        },
-                      ),
-                    ],
-                  );
+            return HandlingDataRequest(
+              statusRequest: controller.statusRequest,
+              widget: ListView(
+                children: [
+                  HeaderAuth(
+                    title: "27".tr,
+                    firstDesc: "28".tr,
+                    secondDesc: "${controller.email}",
+                  ),
+                  PinCodeTextField(
+                    appContext: context,
+                    pastedTextStyle: const TextStyle(
+                      color: AppColor.primaryColor,
+                      fontWeight: FontWeight.bold,
+                    ),
+                    length: 6,
+                    animationType: AnimationType.fade,
+                    validator: (v) {
+                      if (v!.length < 6) {
+                        return "29".tr;
+                      } else {
+                        return null;
+                      }
+                    },
+                    pinTheme: PinTheme(
+                      shape: PinCodeFieldShape.box,
+                      borderRadius: BorderRadius.circular(5),
+                      fieldHeight: Dimensions.height50,
+                      fieldWidth: Dimensions.width45,
+                      activeFillColor: Colors.white,
+                      inactiveColor: Colors.white,
+                      disabledColor: Colors.white,
+                      inactiveFillColor: Colors.white,
+                      activeColor: Colors.white,
+                      selectedColor: Colors.white,
+                      selectedFillColor: Colors.white,
+                    ),
+                    cursorColor: Colors.black,
+                    animationDuration: const Duration(milliseconds: 300),
+                    enableActiveFill: true,
+                    keyboardType: TextInputType.number,
+                    onChanged: (value) {},
+                    onCompleted: (value) {
+                      controller.checkCode(value);
+                    },
+                  ),
+                ],
+              ),
+            );
           },
         ),
       ),

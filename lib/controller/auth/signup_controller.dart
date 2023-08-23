@@ -60,7 +60,7 @@ class SignUpControllerImp extends SignUpController {
   }
 
   SignUpData signUpData = SignUpData(Get.find());
-  StatusRequest? statusRequest;
+  StatusRequest statusRequest = StatusRequest.success;
   // List data = [];
 
   @override

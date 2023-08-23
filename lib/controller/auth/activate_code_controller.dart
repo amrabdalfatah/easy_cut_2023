@@ -13,7 +13,7 @@ class ActivateCodeControllerImp extends ActivateCodeController {
   String? email;
 
   ActivateCodeData activateCodeData = ActivateCodeData(Get.find());
-  StatusRequest? statusRequest;
+  StatusRequest statusRequest = StatusRequest.success;
 
   @override
   checkCode(String val) async {

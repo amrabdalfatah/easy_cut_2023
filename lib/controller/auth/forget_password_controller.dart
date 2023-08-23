@@ -1,4 +1,7 @@
+import 'package:easycut/core/class/status_request.dart';
 import 'package:easycut/core/constant/routes.dart';
+import 'package:easycut/core/functions/handling_data_controller.dart';
+import 'package:easycut/data/data_source/remote/forget_password/check_email.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -9,12 +12,43 @@ abstract class ForgetPasswordController extends GetxController {
 class ForgetPasswordControllerImp extends ForgetPasswordController {
   GlobalKey<FormState> formState = GlobalKey<FormState>();
   late TextEditingController email;
+  CheckEmailData checkEmailData = CheckEmailData(Get.find());
+  StatusRequest statusRequest = StatusRequest.success;
 
   @override
-  checkEmail() {
+  checkEmail() async {
     var formData = formState.currentState;
     if (formData!.validate()) {
-      Get.toNamed(AppRoute.verifyCode);
+      statusRequest = StatusRequest.loading;
+      update();
+      var response = await checkEmailData.postData(
+        email.text,
+      );
+      statusRequest = handlingData(response);
+      if (statusRequest == StatusRequest.success) {
+        if (response['status'] == 'success') {
+          // data.addAll(response['data']);
+          // print(response['data']);
+          Get.snackbar(
+            'Email Found',
+            'Please, Check your Account \nWe sent Verification code',
+            snackPosition: SnackPosition.BOTTOM,
+            colorText: Colors.green,
+          );
+          Get.toNamed(AppRoute.verifyCode, arguments: {
+            'email': email.text,
+          });
+        } else {
+          Get.snackbar(
+            'Warning',
+            'Email is not found',
+            snackPosition: SnackPosition.TOP,
+            colorText: Colors.red,
+          );
+          statusRequest = StatusRequest.failure;
+        }
+      }
+      update();
     } else {}
   }
 

@@ -7,12 +7,13 @@ import 'package:easycut/view/screen/auth/forget_password/verify_code.dart';
 import 'package:easycut/view/screen/auth/login.dart';
 import 'package:easycut/view/screen/auth/signup.dart';
 import 'package:easycut/view/screen/auth/success.dart';
+import 'package:easycut/view/screen/home.dart';
 import 'package:easycut/view/screen/language.dart';
 import 'package:easycut/view/screen/onboarding.dart';
 import 'package:get/get.dart';
 
 List<GetPage<dynamic>>? routes = [
-// =================== On Boarding ======================
+  // =================== On Boarding ======================
   GetPage(
     name: "/",
     page: () => const Language(),
@@ -28,7 +29,7 @@ List<GetPage<dynamic>>? routes = [
     name: AppRoute.onBoarding,
     page: () => const OnBoarding(),
   ),
-// ===================     Auth    ======================
+  // ===================     Auth    ======================
   GetPage(
     name: AppRoute.login,
     page: () => const Login(),
@@ -56,5 +57,10 @@ List<GetPage<dynamic>>? routes = [
   GetPage(
     name: AppRoute.success,
     page: () => const Success(),
+  ),
+  // ===================     Home =========================
+  GetPage(
+    name: AppRoute.home,
+    page: () => const Home(),
   ),
 ];

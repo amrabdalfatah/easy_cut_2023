@@ -1,4 +1,5 @@
 import 'package:easycut/controller/auth/reset_password_controller.dart';
+import 'package:easycut/core/class/handling_data_view.dart';
 import 'package:easycut/core/constant/dimensions.dart';
 import 'package:easycut/core/functions/valid_input.dart';
 import 'package:easycut/view/widget/auth/custom_button_auth.dart';
@@ -20,54 +21,57 @@ class ResetPassword extends StatelessWidget {
         ),
         child: GetBuilder<ResetPasswordControllerImp>(
           builder: (controller) {
-            return Form(
-              key: controller.formState,
-              child: ListView(
-                children: [
-                  HeaderAuth(
-                    title: "30".tr,
-                    firstDesc: "31".tr,
-                    secondDesc: "32".tr,
-                  ),
-                  CustomTextFormAuth(
-                    myController: controller.password,
-                    valid: (val) {
-                      return validInput(val!, 6, 30, 'password');
-                    },
-                    type: TextInputType.visiblePassword,
-                    obSecure: controller.isShowPassword,
-                    hintText: "18".tr,
-                    prefixIcon: Icons.lock,
-                    suffixIcon: controller.isShowPassword
-                        ? Icons.visibility
-                        : Icons.visibility_off,
-                    suffixPressed: () {
-                      controller.showPassword();
-                    },
-                  ),
-                  CustomTextFormAuth(
-                    myController: controller.confirmPassword,
-                    valid: (val) {
-                      return validInput(val!, 6, 30, 'password');
-                    },
-                    type: TextInputType.visiblePassword,
-                    obSecure: controller.isShowPassword,
-                    hintText: "33".tr,
-                    prefixIcon: Icons.lock,
-                    suffixIcon: controller.isShowPassword
-                        ? Icons.visibility
-                        : Icons.visibility_off,
-                    suffixPressed: () {
-                      controller.showPassword();
-                    },
-                  ),
-                  CustomButtonAuth(
-                    onPressed: () {
-                      controller.resetPassword();
-                    },
-                    text: "30".tr,
-                  ),
-                ],
+            return HandlingDataRequest(
+              statusRequest: controller.statusRequest,
+              widget: Form(
+                key: controller.formState,
+                child: ListView(
+                  children: [
+                    HeaderAuth(
+                      title: "30".tr,
+                      firstDesc: "31".tr,
+                      secondDesc: "32".tr,
+                    ),
+                    CustomTextFormAuth(
+                      myController: controller.password,
+                      valid: (val) {
+                        return validInput(val!, 6, 30, 'password');
+                      },
+                      type: TextInputType.visiblePassword,
+                      obSecure: controller.isShowPassword,
+                      hintText: "18".tr,
+                      prefixIcon: Icons.lock,
+                      suffixIcon: controller.isShowPassword
+                          ? Icons.visibility
+                          : Icons.visibility_off,
+                      suffixPressed: () {
+                        controller.showPassword();
+                      },
+                    ),
+                    CustomTextFormAuth(
+                      myController: controller.confirmPassword,
+                      valid: (val) {
+                        return validInput(val!, 6, 30, 'password');
+                      },
+                      type: TextInputType.visiblePassword,
+                      obSecure: controller.isShowPassword,
+                      hintText: "33".tr,
+                      prefixIcon: Icons.lock,
+                      suffixIcon: controller.isShowPassword
+                          ? Icons.visibility
+                          : Icons.visibility_off,
+                      suffixPressed: () {
+                        controller.showPassword();
+                      },
+                    ),
+                    CustomButtonAuth(
+                      onPressed: () {
+                        controller.resetPassword();
+                      },
+                      text: "30".tr,
+                    ),
+                  ],
+                ),
               ),
             );
           },

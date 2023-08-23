@@ -5,11 +5,14 @@ import 'package:easycut/controller/auth/reset_password_controller.dart';
 import 'package:easycut/controller/auth/signup_controller.dart';
 import 'package:easycut/controller/auth/verify_code_controller.dart';
 import 'package:easycut/controller/onboarding_controller.dart';
+import 'package:easycut/core/class/crud.dart';
 import 'package:get/get.dart';
 
 class MyBinding extends Bindings {
   @override
   void dependencies() {
+    // ============== CRUD Operations
+    Get.put(Crud());
     // ============== On Boarding Controller
     Get.lazyPut(() => OnBoardingControllerImp(), fenix: true);
     // ============== Auth Controller

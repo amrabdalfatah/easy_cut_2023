@@ -1,4 +1,7 @@
+import 'package:easycut/core/class/status_request.dart';
 import 'package:easycut/core/constant/routes.dart';
+import 'package:easycut/core/functions/handling_data_controller.dart';
+import 'package:easycut/data/data_source/remote/auth/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:location/location.dart';
@@ -19,33 +22,33 @@ class SignUpControllerImp extends SignUpController {
 
   Location location = Location();
 
-  getLocation() async {
-    bool _serviceEnabled;
-    PermissionStatus _permissionGranted;
-    LocationData _locationData;
-
-    _serviceEnabled = await location.serviceEnabled();
-    if (!_serviceEnabled) {
-      _serviceEnabled = await location.requestService();
-      if (!_serviceEnabled) {
-        return;
-      }
-    }
-
-    _permissionGranted = await location.hasPermission();
-    if (_permissionGranted == PermissionStatus.denied) {
-      _permissionGranted = await location.requestPermission();
-      if (_permissionGranted != PermissionStatus.granted) {
-        return;
-      }
-    }
-
-    _locationData = await location.getLocation();
-    print(_locationData);
-  }
+  // getLocation() async {
+  //   bool _serviceEnabled;
+  //   PermissionStatus _permissionGranted;
+  //   LocationData _locationData;
+  //
+  //   _serviceEnabled = await location.serviceEnabled();
+  //   if (!_serviceEnabled) {
+  //     _serviceEnabled = await location.requestService();
+  //     if (!_serviceEnabled) {
+  //       return;
+  //     }
+  //   }
+  //
+  //   _permissionGranted = await location.hasPermission();
+  //   if (_permissionGranted == PermissionStatus.denied) {
+  //     _permissionGranted = await location.requestPermission();
+  //     if (_permissionGranted != PermissionStatus.granted) {
+  //       return;
+  //     }
+  //   }
+  //
+  //   _locationData = await location.getLocation();
+  //
+  //   print(_locationData);
+  // }
 
   bool isShowPassword = true;
-
   showPassword() {
     isShowPassword = !isShowPassword;
     update();
@@ -56,11 +59,51 @@ class SignUpControllerImp extends SignUpController {
     Get.offNamed(AppRoute.login);
   }
 
+  SignUpData signUpData = SignUpData(Get.find());
+  StatusRequest? statusRequest;
+  // List data = [];
+
   @override
-  signUp() {
+  signUp() async {
     var formData = formState.currentState;
     if (formData!.validate()) {
-      Get.toNamed(AppRoute.activateCode);
+      statusRequest = StatusRequest.loading;
+      update();
+      var response = await signUpData.postData(
+        name.text,
+        email.text,
+        password.text,
+        phone.text,
+        gender.name,
+        "Egypt",
+        "Menofia",
+        "Birket Elsabaa",
+      );
+      statusRequest = handlingData(response);
+      if (statusRequest == StatusRequest.success) {
+        if (response['status'] == 'success') {
+          // data.addAll(response['data']);
+          Get.snackbar(
+            'Register Success',
+            'Your Register is successfully \nGo to your account to get verify code',
+            snackPosition: SnackPosition.BOTTOM,
+            colorText: Colors.green,
+          );
+          Get.toNamed(AppRoute.activateCode, arguments: {
+            'email': email.text,
+          });
+        } else {
+          Get.snackbar(
+            'Warning',
+            'Email Already Exists',
+            snackPosition: SnackPosition.TOP,
+            colorText: Colors.red,
+          );
+
+          statusRequest = StatusRequest.failure;
+        }
+      }
+      update();
     } else {}
   }
 
@@ -71,7 +114,7 @@ class SignUpControllerImp extends SignUpController {
     name = TextEditingController();
     phone = TextEditingController();
     gender = Gender.gender;
-    getLocation();
+    // getLocation();
     super.onInit();
   }
 

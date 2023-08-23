@@ -20,6 +20,10 @@ List<GetPage<dynamic>>? routes = [
       MyMiddleware(),
     ],
   ),
+  // GetPage(
+  //   name: "/",
+  //   page: () => const TestView(),
+  // ),
   GetPage(
     name: AppRoute.onBoarding,
     page: () => const OnBoarding(),

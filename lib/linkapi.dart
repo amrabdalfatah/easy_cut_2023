@@ -1,9 +1,10 @@
 class AppLink {
-  static const String server = "http://";
-  static const String imageststatic = "assets/images";
+  // https://easycuteg.com/users/auth/signup.php
+  static const String server = "https://easycuteg.com";
+  // static const String imageststatic = "assets/images";
 //========================== Image ============================
-  static const String imagestCategories = "$imageststatic/categories";
-  static const String imagestItems = "$imageststatic/items";
+  // static const String imagestCategories = "$imageststatic/categories";
+  // static const String imagestItems = "$imageststatic/items";
 // =============================================================
 //
   static const String test = "$server/test.php";
@@ -12,10 +13,10 @@ class AppLink {
 
 // ================================= Auth ========================== //
 
-  static const String signUp = "$server/auth/signup.php";
-  static const String login = "$server/auth/login.php";
-  static const String verifycodessignup = "$server/auth/verfiycode.php";
-  static const String resend = "$server/auth/resend.php";
+  static const String signUp = "$server/users/auth/signup.php";
+  static const String login = "$server/users/auth/login.php";
+  static const String activateCode = "$server/users/auth/verifycode.php";
+  static const String resend = "$server/users/auth/resend.php";
 
 // ================================= ForgetPassword ========================== //
 

@@ -1,4 +1,5 @@
 import 'package:easycut/core/constant/routes.dart';
+import 'package:easycut/core/services/services.dart';
 import 'package:easycut/data/data_source/static/static.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
@@ -12,10 +13,13 @@ class OnBoardingControllerImp extends OnBoardingController {
   late PageController pageController;
   int currentPage = 0;
 
+  MyServices myServices = Get.find();
+
   @override
   next() {
     currentPage++;
     if (currentPage > onBoardingList.length - 1) {
+      myServices.sharedPreferences.setString('step1', '1');
       Get.offAllNamed(AppRoute.login);
     } else {
       pageController.animateToPage(

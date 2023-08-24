@@ -1,4 +1,4 @@
-import 'package:easycut/controller/home_controller.dart';
+import 'package:easycut/controller/home/home_controller.dart';
 import 'package:easycut/core/constant/color.dart';
 import 'package:easycut/core/constant/dimensions.dart';
 import 'package:easycut/view/screen/home/main.dart';
@@ -10,7 +10,6 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    HomeControllerImp controller = Get.put(HomeControllerImp());
     return Scaffold(
       backgroundColor: Colors.white,
       // body: _pages[controller.currentVal],
@@ -34,7 +33,7 @@ class Home extends StatelessWidget {
               label: 'Home',
             ),
             BottomNavigationBarItem(
-              icon: Icon(Icons.notification_important),
+              icon: Icon(Icons.notifications_active),
               label: 'Notification',
             ),
             BottomNavigationBarItem(

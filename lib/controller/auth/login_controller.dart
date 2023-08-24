@@ -63,6 +63,13 @@ class LoginControllerImp extends LoginController {
                 .setString('email', response['data']['email']);
             myServices.sharedPreferences
                 .setString('phone', response['data']['phone']);
+            myServices.sharedPreferences
+                .setString('gender', response['data']['gender']);
+            myServices.sharedPreferences
+                .setString('country', response['data']['country']);
+            myServices.sharedPreferences
+                .setString('city', response['data']['city']);
+
             myServices.sharedPreferences.setString('step', '2');
 
             String userId = myServices.sharedPreferences.getString('id')!;

@@ -8,7 +8,14 @@ import 'package:flutter/material.dart';
 
 class ShowSalonCard extends StatelessWidget {
   final String text;
-  const ShowSalonCard({super.key, required this.text});
+  final String? phone;
+  final String? gender;
+  const ShowSalonCard({
+    super.key,
+    required this.text,
+    this.phone,
+    this.gender,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -21,7 +28,6 @@ class ShowSalonCard extends StatelessWidget {
         ),
         SizedBox(height: Dimensions.height10),
         Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Wrap(
               children: List.generate(
@@ -34,8 +40,8 @@ class ShowSalonCard extends StatelessWidget {
               ),
             ),
             SmallText(text: '4.5'),
-            SmallText(text: '1287'),
-            SmallText(text: 'comments'),
+            // SmallText(text: '1287'),
+            // SmallText(text: 'comments'),
           ],
         ),
         SizedBox(height: Dimensions.height10),
@@ -44,14 +50,16 @@ class ShowSalonCard extends StatelessWidget {
           children: [
             IconAndTextWidget(
               icon: Icons.circle_sharp,
-              text: 'Men',
+              text: gender == "1" ? "Men" : "Women",
               iconColor: AppColor.grey,
             ),
-            IconAndTextWidget(
-              icon: Icons.location_on,
-              text: '1.7km',
-              iconColor: AppColor.primaryColor,
-            ),
+            phone == null
+                ? SizedBox()
+                : IconAndTextWidget(
+                    icon: Icons.phone,
+                    text: phone!,
+                    iconColor: AppColor.primaryColor,
+                  ),
           ],
         ),
       ],

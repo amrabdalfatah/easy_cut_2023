@@ -6,18 +6,32 @@ import 'package:easycut/core/shared/widgets/small_text.dart';
 import 'package:flutter/material.dart';
 
 class HeaderMainView extends StatelessWidget {
-  const HeaderMainView({super.key});
+  final String? image;
+  final String name;
+  const HeaderMainView({
+    super.key,
+    required this.name,
+    this.image,
+  });
 
   @override
   Widget build(BuildContext context) {
     return Row(
       children: [
-        CircleAvatar(
-          radius: Dimensions.radius30,
-          backgroundImage: AssetImage(
-            AppImageAsset.profile,
-          ),
-        ),
+        image == null
+            ? CircleAvatar(
+                radius: Dimensions.radius30,
+                backgroundImage: AssetImage(
+                  AppImageAsset.profile,
+                ),
+              )
+            : Container(
+                height: Dimensions.height60,
+                decoration: BoxDecoration(
+                  shape: BoxShape.circle,
+                ),
+                child: Image.network(image!),
+              ),
         SizedBox(width: Dimensions.width10),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -28,7 +42,7 @@ class HeaderMainView extends StatelessWidget {
               size: Dimensions.font16,
             ),
             BigText(
-              text: "Amr Abdalfatah",
+              text: name,
               color: Colors.black,
               size: Dimensions.font20,
             ),

@@ -3,12 +3,15 @@ import 'package:easycut/core/constant/color.dart';
 import 'package:easycut/core/constant/dimensions.dart';
 import 'package:easycut/core/constant/image_asset.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import 'show_salon_card.dart';
 
 class SlidingPopularSalons extends StatefulWidget {
-  const SlidingPopularSalons({super.key});
+  final List popularSalon;
+  const SlidingPopularSalons({
+    super.key,
+    required this.popularSalon,
+  });
 
   @override
   State<SlidingPopularSalons> createState() => _SlidingPopularSalonsState();
@@ -19,40 +22,6 @@ class _SlidingPopularSalonsState extends State<SlidingPopularSalons> {
   var _currentPageValue = 0.0;
   final _scaleFactor = 0.8;
   final _height = Dimensions.pageViewContainer;
-
-  // List<Product> popularProductsStatic = [
-  //   Product(
-  //     totalSize: 4,
-  //     typeId: 3444,
-  //     offset: 455,
-  //     products: [
-  //       ProductModel(
-  //         id: 1,
-  //         name: 'Head & Sholders',
-  //         description: 'This is the first element for static',
-  //         price: 24,
-  //         stars: 5,
-  //         img: ImagesStrings.salonTwo,
-  //         location: 'Egypt',
-  //         createdAt: '23 Feb, 2023',
-  //         updatedAt: '24 Feb, 2023',
-  //         typeId: 2,
-  //       ),
-  //       ProductModel(
-  //         id: 2,
-  //         name: 'Head & Clear',
-  //         description: 'This is the first element for static',
-  //         price: 24,
-  //         stars: 5,
-  //         img: ImagesStrings.salonTwo,
-  //         location: 'Egypt',
-  //         createdAt: '23 Feb, 2023',
-  //         updatedAt: '24 Feb, 2023',
-  //         typeId: 2,
-  //       ),
-  //     ],
-  //   ),
-  // ];
 
   @override
   void initState() {
@@ -79,11 +48,11 @@ class _SlidingPopularSalonsState extends State<SlidingPopularSalons> {
           height: Dimensions.pageView,
           child: PageView.builder(
             controller: pageController,
-            itemCount: 4,
+            itemCount: widget.popularSalon.length,
             itemBuilder: (context, position) {
               return _buildPageItem(
                 position,
-                // popularProductsStatic[0].products[position],
+                widget.popularSalon[position],
               );
             },
           ),
@@ -91,8 +60,7 @@ class _SlidingPopularSalonsState extends State<SlidingPopularSalons> {
         SizedBox(
           height: Dimensions.height20,
           child: DotsIndicator(
-            // dotsCount: popularProductsStatic[0].products.length,
-            dotsCount: 4,
+            dotsCount: widget.popularSalon.length,
             position: _currentPageValue.floor(),
             decorator: DotsDecorator(
               activeColor: AppColor.primaryColor,
@@ -110,7 +78,7 @@ class _SlidingPopularSalonsState extends State<SlidingPopularSalons> {
 
   Widget _buildPageItem(
     int index,
-    /*ProductModel popularProduct*/
+    popSalon,
   ) {
     Matrix4 matrix = Matrix4.identity();
     if (index == _currentPageValue.floor()) {
@@ -196,8 +164,9 @@ class _SlidingPopularSalonsState extends State<SlidingPopularSalons> {
                     right: Dimensions.width15,
                   ),
                   child: ShowSalonCard(
-                    text: "Salon Amr",
-                    // text: popularProduct.name!,
+                    text: popSalon['name'],
+                    gender: popSalon['category_id'],
+                    phone: popSalon['phone'],
                   ),
                 ),
               ),

@@ -1,16 +1,55 @@
+import 'package:easycut/controller/home_controller.dart';
+import 'package:easycut/core/constant/color.dart';
+import 'package:easycut/core/constant/dimensions.dart';
+import 'package:easycut/view/screen/home/main.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
 
   @override
   Widget build(BuildContext context) {
+    HomeControllerImp controller = Get.put(HomeControllerImp());
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Home'),
-      ),
-      body: const Center(
-        child: Text('Home'),
+      backgroundColor: Colors.white,
+      // body: _pages[controller.currentVal],
+      body: MainView(),
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(Dimensions.radius15),
+          color: Colors.red,
+        ),
+        child: BottomNavigationBar(
+          currentIndex: 0,
+          //currentIndex: controller.currentVal,
+          type: BottomNavigationBarType.shifting,
+          showSelectedLabels: true,
+          showUnselectedLabels: false,
+          selectedItemColor: AppColor.primaryColor,
+          unselectedItemColor: Colors.grey[400],
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.notification_important),
+              label: 'Notification',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.calendar_month),
+              label: 'Booking',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.person),
+              label: 'Profile',
+            ),
+          ],
+          onTap: (index) {
+            // controller.changeCurrentVal(index);
+          },
+        ),
       ),
     );
   }

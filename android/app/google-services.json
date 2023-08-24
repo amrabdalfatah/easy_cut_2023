@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "209325857070",
+    "project_id": "easycut-f6b7f",
+    "storage_bucket": "easycut-f6b7f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:209325857070:android:7a19bef560d996888402bf",
+        "android_client_info": {
+          "package_name": "com.easycut.easycut"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "209325857070-a2edpl3r9smfvj2kd9s8qb6livi05t66.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.easycut.easycut",
+            "certificate_hash": "cf236004d0c1338316d43ec85d7346b6cb7fbea3"
+          }
+        },
+        {
+          "client_id": "209325857070-g23p3klhe3igv2v5daa68rccua24n45m.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBb2lny118R0uyoJVeWaJnnJ1dNMeBvEZU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "209325857070-g23p3klhe3igv2v5daa68rccua24n45m.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

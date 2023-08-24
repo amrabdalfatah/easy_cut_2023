@@ -1,6 +1,7 @@
 import 'package:easycut/controller/home/home_controller.dart';
 import 'package:easycut/core/class/handling_data_view.dart';
 import 'package:easycut/core/constant/dimensions.dart';
+import 'package:easycut/core/shared/widgets/small_text.dart';
 import 'package:easycut/view/widget/home/header_main_view.dart';
 import 'package:easycut/view/widget/home/newest_salon_item.dart';
 import 'package:easycut/view/widget/home/newest_text.dart';
@@ -34,19 +35,87 @@ class MainView extends StatelessWidget {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SlidingPopularSalons(
-                          popularSalon: controller.salons,
+                        SizedBox(
+                          height: Dimensions.pageView + Dimensions.height20,
+                          child: controller.popSalons.isEmpty
+                              ? Center(
+                                  child: SmallText(
+                                    text:
+                                        "Sorry, \nThere is no Salon highly rated on your location",
+                                    size: Dimensions.font16,
+                                  ),
+                                )
+                              : SlidingPopularSalons(
+                                  popularSalon: controller.popSalons,
+                                ),
                         ),
                         SizedBox(height: Dimensions.height20),
-                        NewestText(),
-                        ListView.builder(
-                          shrinkWrap: true,
-                          physics: NeverScrollableScrollPhysics(),
-                          itemCount: 3,
-                          itemBuilder: (context, index) {
-                            return NewestSalonItem();
-                          },
+                        Container(
+                          height: 2,
+                          width: double.infinity,
+                          margin: EdgeInsets.symmetric(
+                            horizontal: Dimensions.width30,
+                            vertical: Dimensions.height10,
+                          ),
+                          color: Colors.grey[300],
                         ),
+                        NewestText(
+                          title: 'Near for you',
+                        ),
+                        controller.nearSalons.isEmpty
+                            ? SizedBox(
+                                height: Dimensions.height100,
+                                child: Center(
+                                  child: SmallText(
+                                    text:
+                                        "Sorry, \nThere is no Salon near for your city",
+                                    size: Dimensions.font16,
+                                  ),
+                                ),
+                              )
+                            : ListView.builder(
+                                shrinkWrap: true,
+                                physics: NeverScrollableScrollPhysics(),
+                                itemCount: controller.nearSalons.length,
+                                itemBuilder: (context, index) {
+                                  return NewestSalonItem(
+                                    salon: controller.nearSalons[index],
+                                  );
+                                },
+                              ),
+                        Container(
+                          height: 2,
+                          width: double.infinity,
+                          margin: EdgeInsets.symmetric(
+                            horizontal: Dimensions.width30,
+                            vertical: Dimensions.height10,
+                          ),
+                          color: Colors.grey[300],
+                        ),
+                        NewestText(
+                          title: "Newest Salons",
+                        ),
+                        controller.newSalons.isEmpty
+                            ? SizedBox(
+                                height: Dimensions.height100,
+                                child: Center(
+                                  child: SmallText(
+                                    text:
+                                        "Sorry, \nThere is no New Salon At your Country",
+                                    size: Dimensions.font16,
+                                  ),
+                                ),
+                              )
+                            : ListView.builder(
+                                shrinkWrap: true,
+                                physics: NeverScrollableScrollPhysics(),
+                                itemCount: controller.newSalons.length,
+                                itemBuilder: (context, index) {
+                                  return NewestSalonItem(
+                                    salon: controller.newSalons[index],
+                                  );
+                                },
+                              ),
                       ],
                     ),
                   ),

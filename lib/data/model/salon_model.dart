@@ -4,6 +4,7 @@ class SalonModel {
   String? email;
   String? password;
   String? phone;
+  String? rate;
   String? description;
   String? chairs;
   String? categoryId;
@@ -22,6 +23,7 @@ class SalonModel {
       this.email,
       this.password,
       this.phone,
+      this.rate,
       this.description,
       this.chairs,
       this.categoryId,
@@ -40,6 +42,7 @@ class SalonModel {
     email = json['email'];
     password = json['password'];
     phone = json['phone'];
+    rate = json['rate'];
     description = json['description'];
     chairs = json['chairs'];
     categoryId = json['category_id'];
@@ -60,6 +63,7 @@ class SalonModel {
     data['email'] = this.email;
     data['password'] = this.password;
     data['phone'] = this.phone;
+    data['rate'] = this.rate;
     data['description'] = this.description;
     data['chairs'] = this.chairs;
     data['category_id'] = this.categoryId;

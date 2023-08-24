@@ -1,9 +1,11 @@
+import 'package:easycut/core/constant/color.dart';
 import 'package:easycut/core/constant/dimensions.dart';
 import 'package:easycut/core/shared/widgets/big_text.dart';
 import 'package:flutter/material.dart';
 
 class NewestText extends StatelessWidget {
-  const NewestText({super.key});
+  final String title;
+  const NewestText({super.key, required this.title});
 
   @override
   Widget build(BuildContext context) {
@@ -14,8 +16,8 @@ class NewestText extends StatelessWidget {
         bottom: Dimensions.height10,
       ),
       child: BigText(
-        text: 'Newest',
-        color: Colors.black,
+        text: title,
+        color: AppColor.primaryColor,
         size: Dimensions.font26,
       ),
     );

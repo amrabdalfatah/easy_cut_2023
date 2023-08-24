@@ -10,11 +10,13 @@ class ShowSalonCard extends StatelessWidget {
   final String text;
   final String? phone;
   final String? gender;
+  final String? rate;
   const ShowSalonCard({
     super.key,
     required this.text,
     this.phone,
     this.gender,
+    this.rate,
   });
 
   @override
@@ -39,7 +41,8 @@ class ShowSalonCard extends StatelessWidget {
                 ),
               ),
             ),
-            SmallText(text: '4.5'),
+            SizedBox(width: Dimensions.width10),
+            SmallText(text: rate!),
             // SmallText(text: '1287'),
             // SmallText(text: 'comments'),
           ],

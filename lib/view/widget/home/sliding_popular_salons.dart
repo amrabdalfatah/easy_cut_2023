@@ -2,12 +2,13 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:easycut/core/constant/color.dart';
 import 'package:easycut/core/constant/dimensions.dart';
 import 'package:easycut/core/constant/image_asset.dart';
+import 'package:easycut/data/model/salon_model.dart';
 import 'package:flutter/material.dart';
 
 import 'show_salon_card.dart';
 
 class SlidingPopularSalons extends StatefulWidget {
-  final List popularSalon;
+  final List<SalonModel> popularSalon;
   const SlidingPopularSalons({
     super.key,
     required this.popularSalon,
@@ -78,7 +79,7 @@ class _SlidingPopularSalonsState extends State<SlidingPopularSalons> {
 
   Widget _buildPageItem(
     int index,
-    popSalon,
+    SalonModel popSalon,
   ) {
     Matrix4 matrix = Matrix4.identity();
     if (index == _currentPageValue.floor()) {
@@ -164,9 +165,10 @@ class _SlidingPopularSalonsState extends State<SlidingPopularSalons> {
                     right: Dimensions.width15,
                   ),
                   child: ShowSalonCard(
-                    text: popSalon['name'],
-                    gender: popSalon['category_id'],
-                    phone: popSalon['phone'],
+                    text: popSalon.name!,
+                    gender: popSalon.categoryId,
+                    phone: popSalon.phone,
+                    rate: popSalon.rate,
                   ),
                 ),
               ),

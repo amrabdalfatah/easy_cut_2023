@@ -7,7 +7,8 @@ import 'package:http/http.dart' as http;
 import 'status_request.dart';
 
 class Crud {
-  Future<Either<StatusRequest, Map>> postData(String linkUrl, Map data) async {
+  Future<Either<StatusRequest, Map<String, dynamic>>> postData(
+      String linkUrl, Map<String, dynamic> data) async {
     try {
       if (await checkInternet()) {
         var response = await http.post(
@@ -15,7 +16,7 @@ class Crud {
           body: data,
         );
         if (response.statusCode == 200 || response.statusCode == 201) {
-          Map responseBody = jsonDecode(response.body);
+          Map<String, dynamic> responseBody = jsonDecode(response.body);
           return Right(responseBody);
         } else {
           return const Left(StatusRequest.serverFailure);

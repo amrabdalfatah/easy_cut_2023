@@ -2,6 +2,7 @@ import 'package:easycut/core/class/status_request.dart';
 import 'package:easycut/core/functions/handling_data_controller.dart';
 import 'package:easycut/core/services/services.dart';
 import 'package:easycut/data/data_source/remote/home/home_data.dart';
+import 'package:easycut/data/model/salon_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -22,7 +23,9 @@ class HomeControllerImp extends HomeController {
 
   HomeData homeData = HomeData(Get.find());
   StatusRequest statusRequest = StatusRequest.success;
-  List salons = [];
+  List<SalonModel> popSalons = [];
+  List<SalonModel> nearSalons = [];
+  List<SalonModel> newSalons = [];
 
   @override
   initialData() {
@@ -47,7 +50,24 @@ class HomeControllerImp extends HomeController {
     statusRequest = handlingData(response);
     if (statusRequest == StatusRequest.success) {
       if (response['status'] == 'success') {
-        salons.addAll(response['salons']);
+        List data = [];
+        data.addAll(response['popsalons']);
+        data.forEach((element) {
+          element = element as Map<String, dynamic>;
+          popSalons.add(SalonModel.fromJson(element));
+        });
+        data = [];
+        data.addAll(response['nearsalons']);
+        data.forEach((element) {
+          element = element as Map<String, dynamic>;
+          nearSalons.add(SalonModel.fromJson(element));
+        });
+        data = [];
+        data.addAll(response['newsalons']);
+        data.forEach((element) {
+          element = element as Map<String, dynamic>;
+          newSalons.add(SalonModel.fromJson(element));
+        });
       } else {
         Get.snackbar(
           'Warning',

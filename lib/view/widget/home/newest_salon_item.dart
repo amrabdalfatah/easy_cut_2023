@@ -3,12 +3,16 @@ import 'package:easycut/core/constant/dimensions.dart';
 import 'package:easycut/core/constant/image_asset.dart';
 import 'package:easycut/core/shared/widgets/big_text.dart';
 import 'package:easycut/core/shared/widgets/small_text.dart';
+import 'package:easycut/data/model/salon_model.dart';
 import 'package:easycut/view/widget/home/icon_and_text.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class NewestSalonItem extends StatelessWidget {
-  const NewestSalonItem({super.key});
+  final SalonModel salon;
+  const NewestSalonItem({
+    super.key,
+    required this.salon,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -58,12 +62,12 @@ class NewestSalonItem extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
                     BigText(
-                      text: "Salon Mohamed",
+                      text: salon.name!,
                       color: Colors.black,
                       size: Dimensions.font20,
                     ),
                     SmallText(
-                      text: 'Salon Description',
+                      text: "${salon.city} | ${salon.address}",
                       color: Colors.black,
                       size: Dimensions.font16,
                     ),
@@ -72,12 +76,12 @@ class NewestSalonItem extends StatelessWidget {
                       children: [
                         IconAndTextWidget(
                           icon: Icons.circle_sharp,
-                          text: 'Men',
+                          text: salon.categoryId == "1" ? "Men" : "Women",
                           iconColor: AppColor.grey,
                         ),
                         IconAndTextWidget(
-                          icon: Icons.location_on,
-                          text: '1.7km',
+                          icon: Icons.phone,
+                          text: salon.phone!,
                           iconColor: AppColor.primaryColor,
                         ),
                       ],

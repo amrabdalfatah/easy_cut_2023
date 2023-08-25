@@ -2,6 +2,7 @@ import 'package:easycut/controller/main/salon_detail_controller.dart';
 import 'package:easycut/core/class/handling_data_view.dart';
 import 'package:easycut/core/constant/color.dart';
 import 'package:easycut/core/constant/dimensions.dart';
+import 'package:easycut/core/constant/routes.dart';
 import 'package:easycut/core/shared/widgets/big_text.dart';
 import 'package:easycut/view/widget/home/app_icon.dart';
 import 'package:easycut/view/widget/main/stack_image_detail.dart';
@@ -52,7 +53,11 @@ class SalonDetails extends StatelessWidget {
                   width: double.infinity,
                   color: AppColor.primaryColor,
                   child: MaterialButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Get.toNamed(AppRoute.salonBookingDetails, arguments: {
+                        "id": controller.salon.id,
+                      });
+                    },
                     child: const BigText(
                       text: "Booking Now",
                       color: Colors.white,

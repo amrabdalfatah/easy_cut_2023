@@ -12,4 +12,5 @@ class AppRoute {
   // ============ Home Routes         ==================
   static const String home = "/home";
   static const String salonDetails = "/salondetails";
+  static const String salonBookingDetails = "/salonbookingdetails";
 }

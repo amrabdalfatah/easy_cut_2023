@@ -33,6 +33,7 @@ class CustomTextFormAuth extends StatelessWidget {
         keyboardType: type,
         obscureText: obSecure,
         validator: valid,
+        autocorrect: false,
         style: const TextStyle(
           color: AppColor.primaryColor,
         ),

@@ -3,7 +3,9 @@ import 'package:easycut/core/constant/color.dart';
 import 'package:easycut/core/constant/dimensions.dart';
 import 'package:easycut/core/constant/image_asset.dart';
 import 'package:easycut/data/model/salon_model.dart';
+import 'package:easycut/view/screen/main/salon_details.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import 'show_salon_card.dart';
 
@@ -108,7 +110,7 @@ class _SlidingPopularSalonsState extends State<SlidingPopularSalons> {
       transform: matrix,
       child: GestureDetector(
         onTap: () {
-          // Get.to(() => SalonDetailsView());
+          Get.to(() => SalonDetails());
         },
         child: Stack(
           children: [

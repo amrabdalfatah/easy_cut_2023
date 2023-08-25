@@ -14,6 +14,7 @@ class MainView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    Get.put(HomeControllerImp());
     return SafeArea(
       child: GetBuilder<HomeControllerImp>(
         builder: (controller) {

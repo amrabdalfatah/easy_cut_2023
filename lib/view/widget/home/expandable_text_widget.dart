@@ -41,8 +41,10 @@ class _ExpandableTextWidgetState extends State<ExpandableTextWidget> {
               size: Dimensions.font16,
               color: AppColor.grey,
               height: 1.4,
+              overFlow: TextOverflow.visible,
             )
           : Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 SmallText(
                   text: hiddenText
@@ -51,6 +53,7 @@ class _ExpandableTextWidgetState extends State<ExpandableTextWidget> {
                   size: Dimensions.font16,
                   color: AppColor.grey,
                   height: 1.4,
+                  overFlow: TextOverflow.visible,
                 ),
                 InkWell(
                   onTap: () {

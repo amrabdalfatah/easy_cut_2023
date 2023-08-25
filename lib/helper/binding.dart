@@ -25,5 +25,7 @@ class MyBinding extends Bindings {
     Get.lazyPut(() => ActivateCodeControllerImp(), fenix: true);
     // ============== Home Controller
     Get.lazyPut(() => HomeControllerImp());
+    // ============== Main Controller
+    // Get.lazyPut(() => SalonDetailControllerImp());
   }
 }

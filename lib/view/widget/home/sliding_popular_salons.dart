@@ -2,8 +2,8 @@ import 'package:dots_indicator/dots_indicator.dart';
 import 'package:easycut/core/constant/color.dart';
 import 'package:easycut/core/constant/dimensions.dart';
 import 'package:easycut/core/constant/image_asset.dart';
+import 'package:easycut/core/constant/routes.dart';
 import 'package:easycut/data/model/salon_model.dart';
-import 'package:easycut/view/screen/main/salon_details.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -81,7 +81,7 @@ class _SlidingPopularSalonsState extends State<SlidingPopularSalons> {
 
   Widget _buildPageItem(
     int index,
-    SalonModel popSalon,
+    SalonModel salon,
   ) {
     Matrix4 matrix = Matrix4.identity();
     if (index == _currentPageValue.floor()) {
@@ -110,7 +110,9 @@ class _SlidingPopularSalonsState extends State<SlidingPopularSalons> {
       transform: matrix,
       child: GestureDetector(
         onTap: () {
-          Get.to(() => SalonDetails());
+          Get.toNamed(AppRoute.salonDetails, arguments: {
+            "salonid": salon.id,
+          });
         },
         child: Stack(
           children: [
@@ -167,10 +169,10 @@ class _SlidingPopularSalonsState extends State<SlidingPopularSalons> {
                     right: Dimensions.width15,
                   ),
                   child: ShowSalonCard(
-                    text: popSalon.name!,
-                    gender: popSalon.categoryId,
-                    phone: popSalon.phone,
-                    rate: popSalon.rate,
+                    text: salon.name!,
+                    gender: salon.categoryId,
+                    phone: salon.phone,
+                    rate: salon.rate,
                   ),
                 ),
               ),

@@ -11,4 +11,5 @@ class AppRoute {
   static const String success = "/success"; // done
   // ============ Home Routes         ==================
   static const String home = "/home";
+  static const String salonDetails = "/salondetails";
 }

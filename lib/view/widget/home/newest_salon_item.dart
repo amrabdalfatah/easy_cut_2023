@@ -1,11 +1,13 @@
 import 'package:easycut/core/constant/color.dart';
 import 'package:easycut/core/constant/dimensions.dart';
 import 'package:easycut/core/constant/image_asset.dart';
+import 'package:easycut/core/constant/routes.dart';
 import 'package:easycut/core/shared/widgets/big_text.dart';
 import 'package:easycut/core/shared/widgets/small_text.dart';
 import 'package:easycut/data/model/salon_model.dart';
 import 'package:easycut/view/widget/home/icon_and_text.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class NewestSalonItem extends StatelessWidget {
   final SalonModel salon;
@@ -18,7 +20,9 @@ class NewestSalonItem extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        // Get.to(() => SalonDetailsView());
+        Get.toNamed(AppRoute.salonDetails, arguments: {
+          "salonid": salon.id,
+        });
       },
       child: Container(
         margin: EdgeInsets.only(

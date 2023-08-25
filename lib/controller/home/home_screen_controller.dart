@@ -1,4 +1,5 @@
 import 'package:easycut/view/screen/home/main.dart';
+import 'package:easycut/view/screen/home/profile.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -13,7 +14,7 @@ class HomeScreenControllerImp extends HomeScreenController {
     MainView(),
     Center(child: Text('Notification')),
     Center(child: Text('Booking')),
-    Center(child: Text('Profile')),
+    ProfileView(),
   ];
 
   @override

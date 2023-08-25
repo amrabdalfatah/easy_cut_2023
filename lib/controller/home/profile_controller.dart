@@ -17,7 +17,7 @@ class ProfileControllerImp extends ProfileController {
 
   ProfileData profileData = ProfileData(Get.find());
   StatusRequest statusRequest = StatusRequest.success;
-  late ProfileModel profile;
+  ProfileModel profile = ProfileModel();
 
   @override
   initialData() {
@@ -35,7 +35,7 @@ class ProfileControllerImp extends ProfileController {
     if (statusRequest == StatusRequest.success) {
       if (response['status'] == 'success') {
         var data = response['data'] as Map<String, dynamic>;
-        // profile = ProfileModel.fromJson(data);
+        profile = ProfileModel.fromJson(data);
       } else {
         Get.snackbar(
           'Warning',
@@ -53,7 +53,6 @@ class ProfileControllerImp extends ProfileController {
   void onInit() {
     initialData();
     getData();
-    profile = ProfileModel();
     super.onInit();
   }
 }

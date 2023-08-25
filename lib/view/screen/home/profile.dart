@@ -1,9 +1,9 @@
 import 'package:easycut/controller/home/profile_controller.dart';
+import 'package:easycut/core/class/handling_data_view.dart';
 import 'package:easycut/core/constant/dimensions.dart';
-import 'package:easycut/core/shared/widgets/big_text.dart';
-import 'package:easycut/core/shared/widgets/small_text.dart';
 import 'package:easycut/view/widget/home/cart_profile.dart';
-import 'package:easycut/view/widget/home/expandable_text_widget.dart';
+import 'package:easycut/view/widget/profile/about_profile.dart';
+import 'package:easycut/view/widget/profile/profile_favorite_salons.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -12,96 +12,63 @@ class ProfileView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    Get.put(ProfileControllerImp());
+    // Get.lazyPut(() => ProfileControllerImp());
     return SafeArea(
-      child: Padding(
-        padding: EdgeInsets.symmetric(horizontal: Dimensions.width15),
-        child: GetBuilder<ProfileControllerImp>(
-          builder: (controller) {
-            return Column(
-              children: [
-                CartProfile(
-                  userName: controller.id!,
-                  userImage: "",
-                  userEmail: "",
-                  update: () {},
-                ),
-                Expanded(
-                  child: DefaultTabController(
-                    length: 2,
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        TabBar(
-                          labelColor: Colors.black,
-                          tabs: [
-                            Tab(
-                              text: "About",
-                            ),
-                            Tab(
-                              text: "Favorites",
-                            ),
-                          ],
-                        ),
-                        Expanded(
-                          child: TabBarView(
-                            children: [
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  SizedBox(height: Dimensions.height20),
-                                  BigText(text: "About"),
-                                  SizedBox(height: Dimensions.height10),
-                                  SizedBox(
-                                    height: Dimensions.height120,
-                                    child: SingleChildScrollView(
-                                      child: ExpandableTextWidget(
-                                        text:
-                                            "Hello My name is Amr Abdalfatah \nI'm Software Developer \nWorking as freelancer",
-                                      ),
-                                    ),
-                                  ),
-                                  SizedBox(height: Dimensions.height10),
-                                  BigText(text: "Phone Number"),
-                                  SizedBox(height: Dimensions.height10),
-                                  SmallText(text: "+201016716496"),
-                                  SizedBox(height: Dimensions.height20),
-                                  BigText(text: "Address"),
-                                  SizedBox(height: Dimensions.height10),
-                                  SmallText(
-                                      text:
-                                          "Tanesha - Birket Elsabaa - ElMenofia"),
-                                ],
+      child: GetBuilder<ProfileControllerImp>(
+        builder: (controller) {
+          return HandlingDataView(
+            statusRequest: controller.statusRequest,
+            widget: Padding(
+              padding: EdgeInsets.symmetric(horizontal: Dimensions.width15),
+              child: Column(
+                children: [
+                  CartProfile(
+                    userName: controller.profile.name!,
+                    userImage: "",
+                    userEmail: controller.profile.email!,
+                    update: () {},
+                  ),
+                  Expanded(
+                    child: DefaultTabController(
+                      length: 2,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const TabBar(
+                            labelColor: Colors.black,
+                            tabs: [
+                              Tab(
+                                text: "About",
                               ),
-                              GridView.builder(
-                                padding: EdgeInsets.symmetric(
-                                  vertical: Dimensions.height20,
-                                ),
-                                gridDelegate:
-                                    SliverGridDelegateWithFixedCrossAxisCount(
-                                  crossAxisCount: 2,
-                                  mainAxisSpacing: Dimensions.height15,
-                                  crossAxisSpacing: Dimensions.height15,
-                                  childAspectRatio: 3 / 4,
-                                ),
-                                itemCount: 4,
-                                itemBuilder: (context, index) {
-                                  return Container(
-                                    color: Colors.red,
-                                  );
-                                },
+                              Tab(
+                                text: "Favorites",
                               ),
                             ],
                           ),
-                        ),
-                      ],
+                          Expanded(
+                            child: TabBarView(
+                              children: [
+                                AboutProfile(
+                                  email: controller.profile.email!,
+                                  country: controller.profile.country!,
+                                  gender: controller.profile.gender!,
+                                  city: controller.profile.city!,
+                                  address: controller.profile.address!,
+                                  phone: controller.profile.phone!,
+                                ),
+                                ProfileFavoriteSalons(),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
                     ),
                   ),
-                ),
-              ],
-            );
-          },
-        ),
+                ],
+              ),
+            ),
+          );
+        },
       ),
     );
   }

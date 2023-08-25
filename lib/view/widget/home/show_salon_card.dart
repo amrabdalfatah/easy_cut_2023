@@ -3,20 +3,19 @@ import 'package:easycut/core/constant/dimensions.dart';
 import 'package:easycut/core/shared/widgets/big_text.dart';
 import 'package:easycut/core/shared/widgets/small_text.dart';
 import 'package:easycut/view/widget/home/icon_and_text.dart';
-
 import 'package:flutter/material.dart';
 
 class ShowSalonCard extends StatelessWidget {
   final String text;
-  final String? phone;
-  final String? gender;
-  final String? rate;
+  final String phone;
+  final String gender;
+  final String rate;
   const ShowSalonCard({
     super.key,
     required this.text,
-    this.phone,
-    this.gender,
-    this.rate,
+    required this.phone,
+    required this.gender,
+    required this.rate,
   });
 
   @override
@@ -36,13 +35,15 @@ class ShowSalonCard extends StatelessWidget {
                 5,
                 (index) => Icon(
                   Icons.star,
-                  color: AppColor.primaryColor,
+                  color: index < num.parse(rate).floor()
+                      ? AppColor.primaryColor
+                      : AppColor.grey,
                   size: Dimensions.height15,
                 ),
               ),
             ),
             SizedBox(width: Dimensions.width10),
-            SmallText(text: rate!),
+            SmallText(text: rate),
             // SmallText(text: '1287'),
             // SmallText(text: 'comments'),
           ],
@@ -56,13 +57,11 @@ class ShowSalonCard extends StatelessWidget {
               text: gender == "1" ? "Men" : "Women",
               iconColor: AppColor.grey,
             ),
-            phone == null
-                ? SizedBox()
-                : IconAndTextWidget(
-                    icon: Icons.phone,
-                    text: phone!,
-                    iconColor: AppColor.primaryColor,
-                  ),
+            IconAndTextWidget(
+              icon: Icons.phone,
+              text: phone,
+              iconColor: AppColor.primaryColor,
+            ),
           ],
         ),
       ],

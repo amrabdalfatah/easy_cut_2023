@@ -15,8 +15,6 @@ class HomeControllerImp extends HomeController {
   MyServices myServices = Get.find();
   String? id;
   String? name;
-  String? email;
-  String? phone;
   String? gender;
   String? country;
   String? city;
@@ -31,8 +29,6 @@ class HomeControllerImp extends HomeController {
   initialData() {
     id = myServices.sharedPreferences.getString('id');
     name = myServices.sharedPreferences.getString('name');
-    email = myServices.sharedPreferences.getString('email');
-    phone = myServices.sharedPreferences.getString('phone');
     gender = myServices.sharedPreferences.getString('gender');
     country = myServices.sharedPreferences.getString('country');
     city = myServices.sharedPreferences.getString('city');

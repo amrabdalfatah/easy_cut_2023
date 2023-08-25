@@ -170,9 +170,9 @@ class _SlidingPopularSalonsState extends State<SlidingPopularSalons> {
                   ),
                   child: ShowSalonCard(
                     text: salon.name!,
-                    gender: salon.categoryId,
-                    phone: salon.phone,
-                    rate: salon.rate,
+                    gender: salon.categoryId!,
+                    phone: salon.phone!,
+                    rate: salon.rate!,
                   ),
                 ),
               ),

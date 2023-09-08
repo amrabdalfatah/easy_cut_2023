@@ -13,4 +13,5 @@ class AppRoute {
   static const String home = "/home";
   static const String salonDetails = "/salondetails";
   static const String salonBookingDetails = "/salonbookingdetails";
+  static const String bookSalonView = "/booksalonview";
 }

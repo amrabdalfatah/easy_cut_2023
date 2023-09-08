@@ -1,10 +1,12 @@
+import 'dart:io';
+
 import 'package:easycut/core/class/status_request.dart';
 import 'package:easycut/core/constant/routes.dart';
 import 'package:easycut/core/functions/handling_data_controller.dart';
+import 'package:easycut/core/shared/widgets/small_text.dart';
 import 'package:easycut/data/data_source/remote/auth/signup.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:location/location.dart';
 
 abstract class SignUpController extends GetxController {
   signUp();
@@ -20,34 +22,6 @@ class SignUpControllerImp extends SignUpController {
   late TextEditingController password;
   late Gender gender;
 
-  Location location = Location();
-
-  // getLocation() async {
-  //   bool _serviceEnabled;
-  //   PermissionStatus _permissionGranted;
-  //   LocationData _locationData;
-  //
-  //   _serviceEnabled = await location.serviceEnabled();
-  //   if (!_serviceEnabled) {
-  //     _serviceEnabled = await location.requestService();
-  //     if (!_serviceEnabled) {
-  //       return;
-  //     }
-  //   }
-  //
-  //   _permissionGranted = await location.hasPermission();
-  //   if (_permissionGranted == PermissionStatus.denied) {
-  //     _permissionGranted = await location.requestPermission();
-  //     if (_permissionGranted != PermissionStatus.granted) {
-  //       return;
-  //     }
-  //   }
-  //
-  //   _locationData = await location.getLocation();
-  //
-  //   print(_locationData);
-  // }
-
   bool isShowPassword = true;
   showPassword() {
     isShowPassword = !isShowPassword;
@@ -59,12 +33,29 @@ class SignUpControllerImp extends SignUpController {
     Get.offNamed(AppRoute.login);
   }
 
+  late TextEditingController country;
+  late TextEditingController city;
+  late TextEditingController address;
+  File? myFile;
+
+  void addFilePath(String path) {
+    myFile = File(path);
+    update();
+  }
+
   SignUpData signUpData = SignUpData(Get.find());
   StatusRequest statusRequest = StatusRequest.success;
-  // List data = [];
 
   @override
   signUp() async {
+    if (myFile == null) {
+      return Get.defaultDialog(
+        title: "Warning",
+        content: const SmallText(
+          text: "You must upload image for your Profile",
+        ),
+      );
+    }
     var formData = formState.currentState;
     if (formData!.validate()) {
       statusRequest = StatusRequest.loading;
@@ -75,14 +66,14 @@ class SignUpControllerImp extends SignUpController {
         password.text,
         phone.text,
         gender.name,
-        "Egypt",
-        "Menofia",
-        "Birket Elsabaa",
+        country.text,
+        city.text,
+        address.text,
+        myFile!,
       );
       statusRequest = handlingData(response);
       if (statusRequest == StatusRequest.success) {
         if (response['status'] == 'success') {
-          // data.addAll(response['data']);
           Get.snackbar(
             'Register Success',
             'Your Register is successfully \nGo to your account to get verify code',
@@ -113,8 +104,10 @@ class SignUpControllerImp extends SignUpController {
     password = TextEditingController();
     name = TextEditingController();
     phone = TextEditingController();
+    country = TextEditingController();
+    city = TextEditingController();
+    address = TextEditingController();
     gender = Gender.gender;
-    // getLocation();
     super.onInit();
   }
 
@@ -124,6 +117,9 @@ class SignUpControllerImp extends SignUpController {
     name.dispose();
     phone.dispose();
     password.dispose();
+    country.dispose();
+    city.dispose();
+    address.dispose();
     super.dispose();
   }
 

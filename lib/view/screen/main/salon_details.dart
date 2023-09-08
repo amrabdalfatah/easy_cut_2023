@@ -38,7 +38,7 @@ class SalonDetails extends StatelessWidget {
                               onTap: () {
                                 Get.back();
                               },
-                              child: AppIcon(icon: Icons.arrow_back_ios),
+                              child: const AppIcon(icon: Icons.arrow_back_ios),
                             ),
                             AppIcon(icon: Icons.favorite_border),
                           ],
@@ -54,7 +54,7 @@ class SalonDetails extends StatelessWidget {
                   color: AppColor.primaryColor,
                   child: MaterialButton(
                     onPressed: () {
-                      Get.toNamed(AppRoute.salonBookingDetails, arguments: {
+                      Get.toNamed(AppRoute.bookSalonView, arguments: {
                         "id": controller.salon.id,
                       });
                     },

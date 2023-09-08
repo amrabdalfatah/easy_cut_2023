@@ -18,6 +18,7 @@ class HomeControllerImp extends HomeController {
   String? gender;
   String? country;
   String? city;
+  String? image;
 
   HomeData homeData = HomeData(Get.find());
   StatusRequest statusRequest = StatusRequest.success;
@@ -32,6 +33,7 @@ class HomeControllerImp extends HomeController {
     gender = myServices.sharedPreferences.getString('gender');
     country = myServices.sharedPreferences.getString('country');
     city = myServices.sharedPreferences.getString('city');
+    image = myServices.sharedPreferences.getString('image');
   }
 
   @override
@@ -46,6 +48,7 @@ class HomeControllerImp extends HomeController {
     statusRequest = handlingData(response);
     if (statusRequest == StatusRequest.success) {
       if (response['status'] == 'success') {
+        print(response);
         List data = [];
         data.addAll(response['popsalons']);
         data.forEach((element) {

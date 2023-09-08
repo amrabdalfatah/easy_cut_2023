@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 enum Days { sun, mon, tue, wed, thu, fri, sat }
 
@@ -11,6 +12,11 @@ class DaysChoiceBooking extends StatefulWidget {
 
 class _DaysChoiceBookingState extends State<DaysChoiceBooking> {
   Days daysView = Days.sun;
+
+  @override
+  void initState() {
+    print(DateFormat.EEEE());
+  }
 
   @override
   Widget build(BuildContext context) {

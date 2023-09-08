@@ -25,8 +25,8 @@ class MyBinding extends Bindings {
     Get.lazyPut(() => ResetPasswordControllerImp(), fenix: true);
     Get.lazyPut(() => ActivateCodeControllerImp(), fenix: true);
     // ============== Home Controller
-    Get.put(HomeControllerImp());
-    Get.put(ProfileControllerImp());
+    Get.lazyPut(() => HomeControllerImp(), fenix: true);
+    Get.lazyPut(() => ProfileControllerImp(), fenix: true);
     // ============== Main Controller
     // Get.lazyPut(() => SalonDetailControllerImp());
   }

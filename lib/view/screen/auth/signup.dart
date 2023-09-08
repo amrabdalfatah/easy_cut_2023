@@ -7,9 +7,9 @@ import 'package:easycut/core/functions/valid_input.dart';
 import 'package:easycut/core/shared/widgets/small_text.dart';
 import 'package:easycut/view/widget/auth/custom_button_auth.dart';
 import 'package:easycut/view/widget/auth/custom_text_form_auth.dart';
-import 'package:easycut/view/widget/auth/header_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:image_picker/image_picker.dart';
 
 class SignUp extends StatelessWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -32,18 +32,10 @@ class SignUp extends StatelessWidget {
                   key: controller.formState,
                   child: ListView(
                     children: [
-                      SizedBox(
-                        height: Dimensions.height200,
-                        child: HeaderAuth(
-                          title: "22".tr,
-                          firstDesc: "15".tr,
-                          secondDesc: "6".tr,
-                        ),
-                      ),
                       CustomTextFormAuth(
                         myController: controller.name,
                         valid: (val) {
-                          return validInput(val!, 10, 40, 'name');
+                          return validInput(val!, 10, 40, 'any');
                         },
                         type: TextInputType.text,
                         hintText: "35".tr,
@@ -82,6 +74,33 @@ class SignUp extends StatelessWidget {
                         type: TextInputType.phone,
                         hintText: "36".tr,
                         prefixIcon: Icons.phone_android,
+                      ),
+                      CustomTextFormAuth(
+                        myController: controller.country,
+                        valid: (val) {
+                          return validInput(val!, 2, 40, 'any');
+                        },
+                        type: TextInputType.text,
+                        hintText: "Egypt",
+                        prefixIcon: Icons.flag,
+                      ),
+                      CustomTextFormAuth(
+                        myController: controller.city,
+                        valid: (val) {
+                          return validInput(val!, 3, 40, 'any');
+                        },
+                        type: TextInputType.text,
+                        hintText: "Cairo",
+                        prefixIcon: Icons.location_city,
+                      ),
+                      CustomTextFormAuth(
+                        myController: controller.address,
+                        valid: (val) {
+                          return validInput(val!, 6, 40, 'any');
+                        },
+                        type: TextInputType.text,
+                        hintText: "Ein Shams",
+                        prefixIcon: Icons.location_on,
                       ),
                       Container(
                         height: Dimensions.height60,
@@ -174,6 +193,18 @@ class SignUp extends StatelessWidget {
                           ],
                         ),
                       ),
+                      SizedBox(
+                        width: double.infinity,
+                        child: CustomButtonAuth(
+                          onPressed: () async {
+                            XFile? xFile = await ImagePicker().pickImage(
+                              source: ImageSource.gallery,
+                            );
+                            controller.addFilePath(xFile!.path);
+                          },
+                          text: "Select Image",
+                        ),
+                      ),
                       CustomButtonAuth(
                         onPressed: () {
                           controller.signUp();
@@ -200,61 +231,6 @@ class SignUp extends StatelessWidget {
                           ),
                         ],
                       ),
-                      // Padding(
-                      //   padding: EdgeInsets.symmetric(
-                      //     horizontal: Dimensions.width10,
-                      //   ),
-                      //   child: Row(
-                      //     children: [
-                      //       Expanded(
-                      //         child: Container(
-                      //           height: 1,
-                      //           decoration: BoxDecoration(
-                      //             color: Colors.black,
-                      //             borderRadius: BorderRadius.circular(
-                      //               Dimensions.radius20,
-                      //             ),
-                      //           ),
-                      //         ),
-                      //       ),
-                      //       Padding(
-                      //         padding: EdgeInsets.symmetric(
-                      //           horizontal: Dimensions.width10,
-                      //         ),
-                      //         child: const SmallText(
-                      //           text: "OR login with",
-                      //           color: Colors.black,
-                      //           fontWeight: FontWeight.w800,
-                      //         ),
-                      //       ),
-                      //       Expanded(
-                      //         child: Container(
-                      //           height: 1,
-                      //           decoration: BoxDecoration(
-                      //             color: Colors.black,
-                      //             borderRadius: BorderRadius.circular(
-                      //               Dimensions.radius20,
-                      //             ),
-                      //           ),
-                      //         ),
-                      //       ),
-                      //     ],
-                      //   ),
-                      // ),
-                      // SizedBox(
-                      //   height: Dimensions.height30,
-                      //   child: Row(
-                      //     mainAxisAlignment: MainAxisAlignment.center,
-                      //     children: [
-                      //       Image.asset(AppImageAsset.google),
-                      //       SizedBox(width: Dimensions.width20),
-                      //       Image.asset(AppImageAsset.facebook),
-                      //     ],
-                      //   ),
-                      // ),
-                      // SizedBox(
-                      //   height: Dimensions.height30,
-                      // ),
                     ],
                   ),
                 ),

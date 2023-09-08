@@ -26,6 +26,7 @@ class MainView extends StatelessWidget {
                 ),
                 child: HeaderMainView(
                   name: controller.name!,
+                  image: controller.image!,
                 ),
               ),
               SizedBox(height: Dimensions.height20),

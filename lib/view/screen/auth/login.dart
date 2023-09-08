@@ -40,7 +40,7 @@ class Login extends StatelessWidget {
                       CustomTextFormAuth(
                         myController: controller.email,
                         valid: (val) {
-                          return validInput(val!, 15, 100, 'email');
+                          return validInput(val!, 10, 100, 'email');
                         },
                         type: TextInputType.emailAddress,
                         hintText: "17".tr,
@@ -100,61 +100,6 @@ class Login extends StatelessWidget {
                           ),
                         ],
                       ),
-                      // Padding(
-                      //   padding: EdgeInsets.symmetric(
-                      //     horizontal: Dimensions.width10,
-                      //   ),
-                      //   child: Row(
-                      //     children: [
-                      //       Expanded(
-                      //         child: Container(
-                      //           height: 1,
-                      //           decoration: BoxDecoration(
-                      //             color: Colors.black,
-                      //             borderRadius: BorderRadius.circular(
-                      //               Dimensions.radius20,
-                      //             ),
-                      //           ),
-                      //         ),
-                      //       ),
-                      //       Padding(
-                      //         padding: EdgeInsets.symmetric(
-                      //           horizontal: Dimensions.width10,
-                      //         ),
-                      //         child: const SmallText(
-                      //           text: "OR login with",
-                      //           color: Colors.black,
-                      //           fontWeight: FontWeight.w800,
-                      //         ),
-                      //       ),
-                      //       Expanded(
-                      //         child: Container(
-                      //           height: 1,
-                      //           decoration: BoxDecoration(
-                      //             color: Colors.black,
-                      //             borderRadius: BorderRadius.circular(
-                      //               Dimensions.radius20,
-                      //             ),
-                      //           ),
-                      //         ),
-                      //       ),
-                      //     ],
-                      //   ),
-                      // ),
-                      // SizedBox(
-                      //   height: Dimensions.height30,
-                      //   child: Row(
-                      //     mainAxisAlignment: MainAxisAlignment.center,
-                      //     children: [
-                      //       Image.asset(AppImageAsset.google),
-                      //       SizedBox(width: Dimensions.width20),
-                      //       Image.asset(AppImageAsset.facebook),
-                      //     ],
-                      //   ),
-                      // ),
-                      // SizedBox(
-                      //   height: Dimensions.height30,
-                      // ),
                     ],
                   ),
                 ),

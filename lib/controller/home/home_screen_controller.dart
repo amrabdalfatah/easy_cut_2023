@@ -12,7 +12,6 @@ class HomeScreenControllerImp extends HomeScreenController {
 
   List<Widget> pages = [
     MainView(),
-    Center(child: Text('Notification')),
     Center(child: Text('Booking')),
     ProfileView(),
   ];

@@ -31,10 +31,10 @@ class Home extends StatelessWidget {
                 icon: Icon(Icons.home),
                 label: 'Home',
               ),
-              BottomNavigationBarItem(
-                icon: Icon(Icons.notifications_active),
-                label: 'Notification',
-              ),
+              // BottomNavigationBarItem(
+              //   icon: Icon(Icons.notifications_active),
+              //   label: 'Notification',
+              // ),
               BottomNavigationBarItem(
                 icon: Icon(Icons.calendar_month),
                 label: 'Booking',

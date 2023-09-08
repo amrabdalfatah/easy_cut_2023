@@ -12,7 +12,7 @@ class ProfileView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // Get.lazyPut(() => ProfileControllerImp());
+    Get.lazyPut(() => ProfileControllerImp());
     return SafeArea(
       child: GetBuilder<ProfileControllerImp>(
         builder: (controller) {
@@ -24,7 +24,7 @@ class ProfileView extends StatelessWidget {
                 children: [
                   CartProfile(
                     userName: controller.profile.name!,
-                    userImage: "",
+                    userImage: controller.profile.image!,
                     userEmail: controller.profile.email!,
                     update: () {},
                   ),

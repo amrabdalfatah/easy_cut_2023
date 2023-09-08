@@ -37,17 +37,8 @@ class CartProfile extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Row(
-                            children: [
-                              BigText(
-                                text: userName,
-                              ),
-                              Spacer(),
-                              IconButton(
-                                onPressed: update,
-                                icon: Icon(Icons.edit),
-                              ),
-                            ],
+                          BigText(
+                            text: userName,
                           ),
                           SmallText(text: userEmail)
                         ],

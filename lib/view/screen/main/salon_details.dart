@@ -44,7 +44,12 @@ class SalonDetails extends StatelessWidget {
                           ],
                         ),
                       ),
-                      StackSalonDetails(salon: controller.salon),
+                      StackSalonDetails(
+                        salon: controller.salon,
+                        services: controller.services,
+                        products: controller.products,
+                        comments: controller.comments,
+                      ),
                     ],
                   ),
                 ),

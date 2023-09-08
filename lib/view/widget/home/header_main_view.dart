@@ -1,8 +1,8 @@
 import 'package:easycut/core/constant/color.dart';
 import 'package:easycut/core/constant/dimensions.dart';
-import 'package:easycut/core/constant/image_asset.dart';
 import 'package:easycut/core/shared/widgets/big_text.dart';
 import 'package:easycut/core/shared/widgets/small_text.dart';
+import 'package:easycut/linkapi.dart';
 import 'package:flutter/material.dart';
 
 class HeaderMainView extends StatelessWidget {
@@ -20,10 +20,16 @@ class HeaderMainView extends StatelessWidget {
       children: [
         Container(
           height: Dimensions.height60,
-          decoration: BoxDecoration(
+          decoration: const BoxDecoration(
             shape: BoxShape.circle,
           ),
-          child: Image.network(image),
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(Dimensions.height30),
+            child: Image.network(
+              "${AppLink.imageUsers}$image",
+              fit: BoxFit.cover,
+            ),
+          ),
         ),
         SizedBox(width: Dimensions.width10),
         Column(
@@ -53,7 +59,7 @@ class HeaderMainView extends StatelessWidget {
               color: AppColor.primaryColor,
             ),
             child: Icon(
-              Icons.menu,
+              Icons.search,
               color: Colors.white,
               size: Dimensions.iconSize24,
             ),

@@ -1,5 +1,5 @@
 import 'package:easycut/core/constant/dimensions.dart';
-import 'package:easycut/core/constant/image_asset.dart';
+import 'package:easycut/linkapi.dart';
 import 'package:flutter/material.dart';
 
 class StackImageDetail extends StatelessWidget {
@@ -14,15 +14,10 @@ class StackImageDetail extends StatelessWidget {
       child: SizedBox(
         width: double.infinity,
         height: Dimensions.height350,
-        child: salonImage.isEmpty
-            ? Image.asset(
-                AppImageAsset.salonOne,
-                fit: BoxFit.fill,
-              )
-            : Image.network(
-                salonImage,
-                fit: BoxFit.fill,
-              ),
+        child: Image.network(
+          "${AppLink.imageSalons}$salonImage",
+          fit: BoxFit.fill,
+        ),
       ),
     );
   }

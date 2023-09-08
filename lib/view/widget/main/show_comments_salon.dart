@@ -1,8 +1,13 @@
 import 'package:easycut/core/constant/dimensions.dart';
+import 'package:easycut/data/model/comment_model.dart';
 import 'package:flutter/material.dart';
 
 class ShowCommentsSalon extends StatelessWidget {
-  const ShowCommentsSalon({super.key});
+  final List<CommentModel> comments;
+  const ShowCommentsSalon({
+    super.key,
+    required this.comments,
+  });
 
   @override
   Widget build(BuildContext context) {

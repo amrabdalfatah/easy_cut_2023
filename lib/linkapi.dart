@@ -1,5 +1,9 @@
 class AppLink {
   static const String server = "https://easycuteg.com";
+  static const String imageUsers = "https://easycuteg.com/upload/users/";
+  static const String imageSalons = "https://easycuteg.com/upload/salons/";
+  static const String imageProducts = "https://easycuteg.com/upload/products/";
+  static const String imageServices = "https://easycuteg.com/upload/services/";
 // ============================= Test ================================
   static const String test = "$server/test.php";
 // ================================= Auth ==========================

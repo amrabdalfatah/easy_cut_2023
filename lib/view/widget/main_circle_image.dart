@@ -1,5 +1,5 @@
 import 'package:easycut/core/constant/dimensions.dart';
-import 'package:easycut/core/constant/image_asset.dart';
+import 'package:easycut/linkapi.dart';
 import 'package:flutter/material.dart';
 
 class MainCircleImage extends StatelessWidget {
@@ -18,14 +18,10 @@ class MainCircleImage extends StatelessWidget {
         borderRadius: BorderRadius.circular(
           Dimensions.radius50,
         ),
-        child: Image.asset(
-          AppImageAsset.profile,
+        child: Image.network(
+          "${AppLink.imageUsers}$image",
           fit: BoxFit.cover,
         ),
-        // child: Image.network(
-        //   image,
-        //   fit: BoxFit.cover,
-        // ),
       ),
     );
   }

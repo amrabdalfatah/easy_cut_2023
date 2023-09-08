@@ -1,26 +1,26 @@
-class ProductModel {
+class ServiceModel {
   String? id;
   String? salonid;
   String? name;
   String? price;
-  String? number;
+  String? time;
   String? image;
 
-  ProductModel({
+  ServiceModel({
     this.id,
     this.salonid,
     this.name,
     this.price,
-    this.number,
+    this.time,
     this.image,
   });
 
-  ProductModel.fromJson(Map<String, dynamic> json) {
+  ServiceModel.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     salonid = json['salonid'];
     name = json['name'];
     price = json['price'];
-    number = json['number'];
+    time = json['time'];
     image = json['image'];
   }
 }

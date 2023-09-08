@@ -48,7 +48,6 @@ class HomeControllerImp extends HomeController {
     statusRequest = handlingData(response);
     if (statusRequest == StatusRequest.success) {
       if (response['status'] == 'success') {
-        print(response);
         List data = [];
         data.addAll(response['popsalons']);
         data.forEach((element) {

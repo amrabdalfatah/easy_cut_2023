@@ -1,6 +1,9 @@
 import 'package:easycut/core/constant/color.dart';
 import 'package:easycut/core/constant/dimensions.dart';
+import 'package:easycut/data/model/comment_model.dart';
+import 'package:easycut/data/model/products_model.dart';
 import 'package:easycut/data/model/salon_model.dart';
+import 'package:easycut/data/model/services_model.dart';
 import 'package:easycut/view/widget/home/show_salon_card.dart';
 import 'package:easycut/view/widget/main/about_salon.dart';
 import 'package:easycut/view/widget/main/show_comments_salon.dart';
@@ -9,9 +12,15 @@ import 'package:flutter/material.dart';
 
 class StackSalonDetails extends StatelessWidget {
   final SalonModel salon;
+  final List<ServiceModel> services;
+  final List<ProductModel> products;
+  final List<CommentModel> comments;
   const StackSalonDetails({
     super.key,
     required this.salon,
+    required this.services,
+    required this.products,
+    required this.comments,
   });
 
   @override
@@ -58,7 +67,7 @@ class StackSalonDetails extends StatelessWidget {
                         indicatorColor: AppColor.primaryColor,
                         tabs: [
                           Tab(
-                            text: "About",
+                            text: "Services",
                           ),
                           Tab(
                             text: "Products",
@@ -71,9 +80,9 @@ class StackSalonDetails extends StatelessWidget {
                       Expanded(
                         child: TabBarView(
                           children: [
-                            AboutSalon(description: salon.description!),
-                            ShowProductsSalon(),
-                            ShowCommentsSalon(),
+                            AboutSalon(services: services),
+                            ShowProductsSalon(products: products),
+                            ShowCommentsSalon(comments: comments),
                           ],
                         ),
                       ),

@@ -1,9 +1,9 @@
 import 'package:dots_indicator/dots_indicator.dart';
 import 'package:easycut/core/constant/color.dart';
 import 'package:easycut/core/constant/dimensions.dart';
-import 'package:easycut/core/constant/image_asset.dart';
 import 'package:easycut/core/constant/routes.dart';
 import 'package:easycut/data/model/salon_model.dart';
+import 'package:easycut/linkapi.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -127,9 +127,8 @@ class _SlidingPopularSalonsState extends State<SlidingPopularSalons> {
                 color: index.isEven ? Color(0xFF69c5df) : Color(0xFF9294cc),
                 image: DecorationImage(
                   fit: BoxFit.cover,
-                  image: AssetImage(
-                    AppImageAsset.salonOne,
-                    // popularProduct.img!,
+                  image: NetworkImage(
+                    "${AppLink.imageSalons}${salon.image}",
                   ),
                 ),
               ),

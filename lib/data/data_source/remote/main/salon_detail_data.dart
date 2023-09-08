@@ -6,7 +6,7 @@ class SalonDetailData {
 
   SalonDetailData(this.crud);
 
-  postData(String id) async {
+  getData(String id) async {
     var response = await crud.postData(AppLink.salonDetail, {
       "id": id,
     });

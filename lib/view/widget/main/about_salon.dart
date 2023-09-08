@@ -1,60 +1,80 @@
 import 'package:easycut/core/constant/dimensions.dart';
-import 'package:easycut/core/constant/image_asset.dart';
 import 'package:easycut/core/shared/widgets/big_text.dart';
-import 'package:easycut/view/widget/home/expandable_text_widget.dart';
+import 'package:easycut/core/shared/widgets/small_text.dart';
+import 'package:easycut/data/model/services_model.dart';
+import 'package:easycut/linkapi.dart';
 import 'package:flutter/material.dart';
 
 class AboutSalon extends StatelessWidget {
-  final String description;
-  const AboutSalon({super.key, required this.description});
+  final List<ServiceModel> services;
+  const AboutSalon({
+    super.key,
+    required this.services,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        SizedBox(height: Dimensions.height10),
-        SizedBox(
-          height: Dimensions.height120,
-          child: SingleChildScrollView(
-            child: ExpandableTextWidget(
-              text: description,
+    return LayoutBuilder(
+      builder: (context, constr) {
+        return SizedBox(
+          height: constr.maxHeight,
+          width: constr.maxWidth,
+          child: GridView.builder(
+            padding: EdgeInsets.symmetric(
+              vertical: Dimensions.height20,
             ),
-          ),
-        ),
-        SizedBox(height: Dimensions.height10),
-        const BigText(text: "Gallery"),
-        SizedBox(height: Dimensions.height10),
-        SizedBox(
-          height: Dimensions.height100,
-          child: ListView.builder(
-            scrollDirection: Axis.horizontal,
-            shrinkWrap: true,
-            itemCount: 6,
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              mainAxisSpacing: Dimensions.height15,
+              crossAxisSpacing: Dimensions.height15,
+              childAspectRatio: 3 / 4,
+            ),
+            itemCount: services.length,
             itemBuilder: (context, index) {
-              return Container(
-                height: Dimensions.height100,
-                width: Dimensions.width100,
-                margin: EdgeInsets.only(
-                  right: Dimensions.width10,
-                ),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(
-                    Dimensions.radius15,
-                  ),
-                  image: const DecorationImage(
-                    fit: BoxFit.cover,
-                    image: AssetImage(
-                      AppImageAsset.salonFour,
+              return Column(
+                children: [
+                  Expanded(
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: Image.network(
+                        "${AppLink.imageServices}${services[index].image}",
+                        fit: BoxFit.fill,
+                      ),
                     ),
                   ),
-                ),
+                  Expanded(
+                    child: SizedBox(
+                      width: double.infinity,
+                      child: Padding(
+                        padding: EdgeInsets.symmetric(
+                          vertical: Dimensions.width5,
+                        ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: [
+                            BigText(
+                              text: services[index].name!,
+                            ),
+                            SmallText(
+                              text: "Time: ${services[index].time} min",
+                              size: Dimensions.font16,
+                            ),
+                            SmallText(
+                              text: "Price: ${services[index].price} \$",
+                              size: Dimensions.font16,
+                            ),
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
+                ],
               );
             },
           ),
-        ),
-        SizedBox(height: Dimensions.height10),
-      ],
+        );
+      },
     );
   }
 }

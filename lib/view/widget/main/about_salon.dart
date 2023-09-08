@@ -31,45 +31,51 @@ class AboutSalon extends StatelessWidget {
             ),
             itemCount: services.length,
             itemBuilder: (context, index) {
-              return Column(
-                children: [
-                  Expanded(
-                    child: SizedBox(
-                      width: double.infinity,
-                      child: Image.network(
-                        "${AppLink.imageServices}${services[index].image}",
-                        fit: BoxFit.fill,
-                      ),
-                    ),
-                  ),
-                  Expanded(
-                    child: SizedBox(
-                      width: double.infinity,
-                      child: Padding(
-                        padding: EdgeInsets.symmetric(
-                          vertical: Dimensions.width5,
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                          children: [
-                            BigText(
-                              text: services[index].name!,
-                            ),
-                            SmallText(
-                              text: "Time: ${services[index].time} min",
-                              size: Dimensions.font16,
-                            ),
-                            SmallText(
-                              text: "Price: ${services[index].price} \$",
-                              size: Dimensions.font16,
-                            ),
-                          ],
+              return Card(
+                child: Padding(
+                  padding: EdgeInsets.all(Dimensions.width5),
+                  child: Column(
+                    children: [
+                      Expanded(
+                        child: SizedBox(
+                          width: double.infinity,
+                          child: Image.network(
+                            "${AppLink.imageServices}${services[index].image}",
+                            fit: BoxFit.fill,
+                          ),
                         ),
                       ),
-                    ),
+                      Divider(),
+                      Expanded(
+                        child: SizedBox(
+                          width: double.infinity,
+                          child: Padding(
+                            padding: EdgeInsets.symmetric(
+                              vertical: Dimensions.width5,
+                            ),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                              children: [
+                                BigText(
+                                  text: services[index].name!,
+                                ),
+                                SmallText(
+                                  text: "Time: ${services[index].time} min",
+                                  size: Dimensions.font16,
+                                ),
+                                SmallText(
+                                  text: "Price: ${services[index].price} \$",
+                                  size: Dimensions.font16,
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ),
+                    ],
                   ),
-                ],
+                ),
               );
             },
           ),

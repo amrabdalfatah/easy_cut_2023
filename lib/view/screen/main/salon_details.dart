@@ -40,7 +40,19 @@ class SalonDetails extends StatelessWidget {
                               },
                               child: const AppIcon(icon: Icons.arrow_back_ios),
                             ),
-                            AppIcon(icon: Icons.favorite_border),
+                            GestureDetector(
+                              onTap: () {
+                                controller.changeFavoriteState();
+                              },
+                              child: AppIcon(
+                                icon: controller.isFavorite!
+                                    ? Icons.favorite
+                                    : Icons.favorite_border,
+                                iconColor: controller.isFavorite!
+                                    ? Colors.red
+                                    : Colors.grey,
+                              ),
+                            ),
                           ],
                         ),
                       ),

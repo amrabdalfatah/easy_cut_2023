@@ -71,8 +71,9 @@ class SalonDetails extends StatelessWidget {
                   color: AppColor.primaryColor,
                   child: MaterialButton(
                     onPressed: () {
-                      Get.toNamed(AppRoute.bookSalonView, arguments: {
-                        "id": controller.salon.id,
+                      Get.offNamed(AppRoute.bookSalonView, arguments: {
+                        "salon": controller.salon,
+                        "services": controller.services,
                       });
                     },
                     child: const BigText(

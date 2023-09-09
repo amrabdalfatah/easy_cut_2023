@@ -21,4 +21,7 @@ class AppLink {
   static const String salonDetail = "$server/users/main/salondetail.php";
   static const String addFavorite = "$server/users/favorites/add.php";
   static const String deleteFavorite = "$server/users/favorites/delete.php";
+  static const String addBooking = "$server/booking/add.php";
+  static const String addServiceBooking = "$server/booking_service/add.php";
+  static const String showBooking = "$server/booking/show.php";
 }

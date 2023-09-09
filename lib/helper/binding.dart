@@ -5,7 +5,6 @@ import 'package:easycut/controller/auth/reset_password_controller.dart';
 import 'package:easycut/controller/auth/signup_controller.dart';
 import 'package:easycut/controller/auth/verify_code_controller.dart';
 import 'package:easycut/controller/home/home_controller.dart';
-import 'package:easycut/controller/home/profile_controller.dart';
 import 'package:easycut/controller/onboarding_controller.dart';
 import 'package:easycut/core/class/crud.dart';
 import 'package:get/get.dart';
@@ -26,7 +25,6 @@ class MyBinding extends Bindings {
     Get.lazyPut(() => ActivateCodeControllerImp(), fenix: true);
     // ============== Home Controller
     Get.lazyPut(() => HomeControllerImp(), fenix: true);
-    Get.lazyPut(() => ProfileControllerImp(), fenix: true);
     // ============== Main Controller
     // Get.lazyPut(() => SalonDetailControllerImp());
   }

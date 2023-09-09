@@ -23,9 +23,9 @@ class ProfileView extends StatelessWidget {
               child: Column(
                 children: [
                   CartProfile(
-                    userName: controller.profile.name!,
-                    userImage: controller.profile.image!,
-                    userEmail: controller.profile.email!,
+                    userName: controller.profile.name ?? "",
+                    userImage: controller.profile.image ?? "",
+                    userEmail: controller.profile.email ?? "",
                     update: () {},
                   ),
                   Expanded(
@@ -49,14 +49,16 @@ class ProfileView extends StatelessWidget {
                             child: TabBarView(
                               children: [
                                 AboutProfile(
-                                  email: controller.profile.email!,
-                                  country: controller.profile.country!,
-                                  gender: controller.profile.gender!,
-                                  city: controller.profile.city!,
-                                  address: controller.profile.address!,
-                                  phone: controller.profile.phone!,
+                                  email: controller.profile.email ?? "",
+                                  country: controller.profile.country ?? "",
+                                  gender: controller.profile.gender ?? "",
+                                  city: controller.profile.city ?? "",
+                                  address: controller.profile.address ?? "",
+                                  phone: controller.profile.phone ?? "",
                                 ),
-                                ProfileFavoriteSalons(),
+                                ProfileFavoriteSalons(
+                                  favorites: controller.favorites,
+                                ),
                               ],
                             ),
                           ),

@@ -17,7 +17,7 @@ class AppLink {
   static const String verifyCode = "$server/users/auth/verifycode.php";
 // ================================= Home ====================
   static const String home = "$server/users/home/home.php";
-  static const String userInfo = "$server/users/auth/view.php";
+  static const String userInfo = "$server/users/profile/show.php";
   static const String salonDetail = "$server/users/main/salondetail.php";
   static const String addFavorite = "$server/users/favorites/add.php";
   static const String deleteFavorite = "$server/users/favorites/delete.php";

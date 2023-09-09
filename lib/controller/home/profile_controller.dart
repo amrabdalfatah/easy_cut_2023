@@ -2,12 +2,12 @@ import 'package:easycut/core/class/status_request.dart';
 import 'package:easycut/core/functions/handling_data_controller.dart';
 import 'package:easycut/core/services/services.dart';
 import 'package:easycut/data/data_source/remote/home/profile_data.dart';
+import 'package:easycut/data/model/favorite_model.dart';
 import 'package:easycut/data/model/profile_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 abstract class ProfileController extends GetxController {
-  initialData();
   getData();
 }
 
@@ -18,8 +18,8 @@ class ProfileControllerImp extends ProfileController {
   ProfileData profileData = ProfileData(Get.find());
   StatusRequest statusRequest = StatusRequest.success;
   ProfileModel profile = ProfileModel();
+  List<FavoriteModel> favorites = [];
 
-  @override
   initialData() {
     id = myServices.sharedPreferences.getString('id');
   }
@@ -34,8 +34,13 @@ class ProfileControllerImp extends ProfileController {
     statusRequest = handlingData(response);
     if (statusRequest == StatusRequest.success) {
       if (response['status'] == 'success') {
-        var data = response['data'] as Map<String, dynamic>;
+        var data = response['profile'] as Map<String, dynamic>;
         profile = ProfileModel.fromJson(data);
+        List items = response['favorites'] as List;
+        items.forEach((element) {
+          var item = element as Map<String, dynamic>;
+          favorites.add(FavoriteModel.fromJson(item));
+        });
       } else {
         Get.snackbar(
           'Warning',

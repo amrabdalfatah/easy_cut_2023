@@ -1,3 +1,4 @@
+import 'package:easycut/view/screen/home/booking.dart';
 import 'package:easycut/view/screen/home/main.dart';
 import 'package:easycut/view/screen/home/profile.dart';
 import 'package:flutter/material.dart';
@@ -12,7 +13,7 @@ class HomeScreenControllerImp extends HomeScreenController {
 
   List<Widget> pages = [
     MainView(),
-    Center(child: Text('Booking')),
+    BookingView(),
     ProfileView(),
   ];
 

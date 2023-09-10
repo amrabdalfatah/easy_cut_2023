@@ -28,7 +28,7 @@ class SuccessBokking extends StatelessWidget {
           ),
         ),
         title: Text(
-          'Success',
+          'Booking Details',
           style: TextStyle(
             color: Colors.black,
           ),
@@ -47,7 +47,7 @@ class SuccessBokking extends StatelessWidget {
                   height: Dimensions.height100,
                   width: double.infinity,
                   child: Icon(
-                    Icons.check_circle,
+                    Icons.warning,
                     color: AppColor.primaryColor,
                     size: Dimensions.height100,
                   ),
@@ -150,6 +150,13 @@ class SuccessBokking extends StatelessWidget {
                     },
                     text: "Back to Home",
                   ),
+                ),
+                SizedBox(height: Dimensions.height20),
+                BigText(
+                  text:
+                      "Your Booking is still not accepted, \nplease wait until salon accepted your booking \nyou can see your bookings in bookings tap from home screen.",
+                  color: Colors.red,
+                  size: Dimensions.font16,
                 ),
               ],
             ),

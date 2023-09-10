@@ -24,4 +24,5 @@ class AppLink {
   static const String addBooking = "$server/booking/add.php";
   static const String addServiceBooking = "$server/booking_service/add.php";
   static const String showBooking = "$server/booking/show.php";
+  static const String viewBookings = "$server/booking/view.php";
 }

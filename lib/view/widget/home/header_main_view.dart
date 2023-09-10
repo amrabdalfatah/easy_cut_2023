@@ -1,4 +1,3 @@
-import 'package:easycut/core/constant/color.dart';
 import 'package:easycut/core/constant/dimensions.dart';
 import 'package:easycut/core/shared/widgets/big_text.dart';
 import 'package:easycut/core/shared/widgets/small_text.dart';
@@ -48,23 +47,23 @@ class HeaderMainView extends StatelessWidget {
           ],
         ),
         Spacer(),
-        Center(
-          child: Container(
-            width: Dimensions.width45,
-            height: Dimensions.height45,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(
-                Dimensions.radius15,
-              ),
-              color: AppColor.primaryColor,
-            ),
-            child: Icon(
-              Icons.search,
-              color: Colors.white,
-              size: Dimensions.iconSize24,
-            ),
-          ),
-        ),
+        // Center(
+        //   child: Container(
+        //     width: Dimensions.width45,
+        //     height: Dimensions.height45,
+        //     decoration: BoxDecoration(
+        //       borderRadius: BorderRadius.circular(
+        //         Dimensions.radius15,
+        //       ),
+        //       color: AppColor.primaryColor,
+        //     ),
+        //     child: Icon(
+        //       Icons.search,
+        //       color: Colors.white,
+        //       size: Dimensions.iconSize24,
+        //     ),
+        //   ),
+        // ),
       ],
     );
   }

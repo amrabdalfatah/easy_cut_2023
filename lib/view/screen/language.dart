@@ -19,24 +19,24 @@ class Language extends GetView<LocalController> {
               style: Theme.of(context).textTheme.headlineLarge,
             ),
             const SizedBox(height: 20),
-            CustomButtonLang(
-              textButton: '2'.tr,
-              onPressed: () {
-                controller.changeLang('ar');
-              },
-            ),
+            // CustomButtonLang(
+            //   textButton: '2'.tr,
+            //   onPressed: () {
+            //     controller.changeLang('ar');
+            //   },
+            // ),
             CustomButtonLang(
               textButton: '3'.tr,
               onPressed: () {
                 controller.changeLang('en');
               },
             ),
-            CustomButtonLang(
-              textButton: '4'.tr,
-              onPressed: () {
-                controller.changeLang('de');
-              },
-            ),
+            // CustomButtonLang(
+            //   textButton: '4'.tr,
+            //   onPressed: () {
+            //     controller.changeLang('de');
+            //   },
+            // ),
           ],
         ),
       ),

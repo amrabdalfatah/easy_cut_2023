@@ -26,7 +26,9 @@ class ProfileView extends StatelessWidget {
                     userName: controller.profile.name ?? "",
                     userImage: controller.profile.image ?? "",
                     userEmail: controller.profile.email ?? "",
-                    update: () {},
+                    logout: () {
+                      controller.logout();
+                    },
                   ),
                   Expanded(
                     child: DefaultTabController(

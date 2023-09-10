@@ -6,7 +6,6 @@ import 'package:easycut/data/model/salon_model.dart';
 import 'package:easycut/data/model/services_model.dart';
 import 'package:easycut/view/widget/home/show_salon_card.dart';
 import 'package:easycut/view/widget/main/about_salon.dart';
-import 'package:easycut/view/widget/main/show_comments_salon.dart';
 import 'package:easycut/view/widget/main/show_products_salon.dart';
 import 'package:flutter/material.dart';
 
@@ -72,9 +71,9 @@ class StackSalonDetails extends StatelessWidget {
                           Tab(
                             text: "Products",
                           ),
-                          Tab(
-                            text: "Comments",
-                          ),
+                          // Tab(
+                          //   text: "Comments",
+                          // ),
                         ],
                       ),
                       Expanded(
@@ -82,7 +81,7 @@ class StackSalonDetails extends StatelessWidget {
                           children: [
                             AboutSalon(services: services),
                             ShowProductsSalon(products: products),
-                            ShowCommentsSalon(comments: comments),
+                            // ShowCommentsSalon(comments: comments),
                           ],
                         ),
                       ),

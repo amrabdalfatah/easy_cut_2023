@@ -1,4 +1,5 @@
 import 'package:easycut/core/class/status_request.dart';
+import 'package:easycut/core/constant/routes.dart';
 import 'package:easycut/core/functions/handling_data_controller.dart';
 import 'package:easycut/core/services/services.dart';
 import 'package:easycut/data/data_source/remote/home/profile_data.dart';
@@ -9,6 +10,7 @@ import 'package:get/get.dart';
 
 abstract class ProfileController extends GetxController {
   getData();
+  logout();
 }
 
 class ProfileControllerImp extends ProfileController {
@@ -59,5 +61,12 @@ class ProfileControllerImp extends ProfileController {
     initialData();
     getData();
     super.onInit();
+  }
+
+  @override
+  logout() {
+    Get.offAllNamed(AppRoute.login);
+    myServices.sharedPreferences.clear();
+    myServices.sharedPreferences.setString('step', '1');
   }
 }

@@ -8,13 +8,13 @@ class CartProfile extends StatelessWidget {
   final String userName;
   final String userImage;
   final String userEmail;
-  final void Function() update;
+  final void Function() logout;
   const CartProfile({
     super.key,
     required this.userName,
     required this.userImage,
     required this.userEmail,
-    required this.update,
+    required this.logout,
   });
 
   @override
@@ -34,13 +34,33 @@ class CartProfile extends StatelessWidget {
                     SizedBox(width: Dimensions.width20),
                     Expanded(
                       child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           BigText(
                             text: userName,
                           ),
-                          SmallText(text: userEmail)
+                          SmallText(text: userEmail),
+                          GestureDetector(
+                            onTap: logout,
+                            child: Row(
+                              children: [
+                                Icon(
+                                  Icons.logout,
+                                  color: Colors.red,
+                                  size: Dimensions.height30,
+                                ),
+                                SizedBox(
+                                  width: Dimensions.width10,
+                                ),
+                                BigText(
+                                  text: "Logout",
+                                  color: Colors.red,
+                                  size: Dimensions.font20,
+                                ),
+                              ],
+                            ),
+                          ),
                         ],
                       ),
                     ),

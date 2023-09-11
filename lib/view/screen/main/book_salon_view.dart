@@ -125,12 +125,12 @@ class BookSalonView extends StatelessWidget {
                             initialDate: DateTime(
                               DateTime.now().year,
                               DateTime.now().month,
-                              DateTime.now().day + 1,
+                              DateTime.now().day,
                             ),
                             firstDate: DateTime(
                               DateTime.now().year,
                               DateTime.now().month,
-                              DateTime.now().day + 1,
+                              DateTime.now().day,
                             ),
                             lastDate: DateTime(DateTime.now().year + 3),
                           ).then((value) {
@@ -163,8 +163,8 @@ class BookSalonView extends StatelessWidget {
                         onPressed: () {
                           showTimePicker(
                             context: context,
-                            initialTime: const TimeOfDay(
-                              hour: 12,
+                            initialTime: TimeOfDay(
+                              hour: DateTime.now().hour,
                               minute: 0,
                             ),
                           ).then((value) {

@@ -43,5 +43,7 @@
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<false/>
+	<key>UIApplicationSupportsIndirectInputEvents</key>
+	<true/>
 </dict>
 </plist>

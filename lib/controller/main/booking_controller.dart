@@ -171,11 +171,11 @@ class BookingControllerImp extends BookingController {
         } else {
           Get.snackbar(
             'Warning',
-            'There is no data',
+            'You can\'t booking at the same date',
             snackPosition: SnackPosition.TOP,
             colorText: Colors.red,
           );
-          statusRequest = StatusRequest.failure;
+          statusRequest = StatusRequest.success;
         }
       }
       update();

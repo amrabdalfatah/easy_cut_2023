@@ -48,7 +48,7 @@ class _ExpandableTextWidgetState extends State<ExpandableTextWidget> {
               children: [
                 SmallText(
                   text: hiddenText
-                      ? (firstHalf + "....")
+                      ? ("$firstHalf....")
                       : (firstHalf + secondHalf),
                   size: Dimensions.font16,
                   color: AppColor.grey,

@@ -10,7 +10,6 @@ class CheckEmailData {
     var response = await crud.postData(AppLink.checkEmail, {
       "email": email,
     });
-    print(response);
     return response.fold((l) => l, (r) => r);
   }
 }

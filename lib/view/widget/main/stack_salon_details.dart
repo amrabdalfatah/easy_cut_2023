@@ -64,7 +64,7 @@ class StackSalonDetails extends StatelessWidget {
                         labelColor: AppColor.primaryColor,
                         unselectedLabelColor: Colors.grey[700],
                         indicatorColor: AppColor.primaryColor,
-                        tabs: [
+                        tabs: const [
                           Tab(
                             text: "Services",
                           ),

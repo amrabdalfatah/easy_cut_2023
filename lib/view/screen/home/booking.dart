@@ -26,7 +26,7 @@ class BookingView extends StatelessWidget {
                   SizedBox(
                     height: Dimensions.height50,
                     width: double.infinity,
-                    child: Center(
+                    child: const Center(
                       child: BigText(
                         text: "All Bookings",
                       ),

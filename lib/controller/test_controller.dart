@@ -13,7 +13,6 @@ class TestController extends GetxController {
   getData() async {
     statusRequest = StatusRequest.loading;
     var response = await testData.getData();
-    print("================= Controller $response ");
     statusRequest = handlingData(response);
     if (statusRequest == StatusRequest.success) {
       if (response['status'] == 'success') {

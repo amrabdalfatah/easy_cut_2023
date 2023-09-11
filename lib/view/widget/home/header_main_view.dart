@@ -46,7 +46,7 @@ class HeaderMainView extends StatelessWidget {
             ),
           ],
         ),
-        Spacer(),
+        const Spacer(),
         // Center(
         //   child: Container(
         //     width: Dimensions.width45,

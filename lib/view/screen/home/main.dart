@@ -61,7 +61,7 @@ class MainView extends StatelessWidget {
                           ),
                           color: Colors.grey[300],
                         ),
-                        NewestText(
+                        const NewestText(
                           title: 'Near for you',
                         ),
                         controller.nearSalons.isEmpty
@@ -77,7 +77,7 @@ class MainView extends StatelessWidget {
                               )
                             : ListView.builder(
                                 shrinkWrap: true,
-                                physics: NeverScrollableScrollPhysics(),
+                                physics: const NeverScrollableScrollPhysics(),
                                 itemCount: controller.nearSalons.length,
                                 itemBuilder: (context, index) {
                                   return NewestSalonItem(
@@ -94,7 +94,7 @@ class MainView extends StatelessWidget {
                           ),
                           color: Colors.grey[300],
                         ),
-                        NewestText(
+                        const NewestText(
                           title: "Newest Salons",
                         ),
                         controller.newSalons.isEmpty
@@ -110,7 +110,7 @@ class MainView extends StatelessWidget {
                               )
                             : ListView.builder(
                                 shrinkWrap: true,
-                                physics: NeverScrollableScrollPhysics(),
+                                physics: const NeverScrollableScrollPhysics(),
                                 itemCount: controller.newSalons.length,
                                 itemBuilder: (context, index) {
                                   return NewestSalonItem(

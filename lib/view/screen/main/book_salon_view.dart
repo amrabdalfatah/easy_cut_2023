@@ -24,12 +24,12 @@ class BookSalonView extends StatelessWidget {
           onPressed: () {
             Get.offNamed(AppRoute.home);
           },
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back_ios,
             color: Colors.black,
           ),
         ),
-        title: Text(
+        title: const Text(
           'Book Now',
           style: TextStyle(
             color: Colors.black,
@@ -137,11 +137,9 @@ class BookSalonView extends StatelessWidget {
                             // 2023-08-16 00:00:00.000 -> 2023-08-16
                             var date = value.toString().substring(0, 10);
                             controller.chooseDate(date);
-                          }).catchError((error) {
-                            print(error);
-                          });
+                          }).catchError((error) {});
                         },
-                        child: SmallText(
+                        child: const SmallText(
                           text: "Choose",
                           color: AppColor.primaryColor,
                           fontWeight: FontWeight.bold,
@@ -184,11 +182,9 @@ class BookSalonView extends StatelessWidget {
                             }
                             String finalTime = "$hours:$minutes $act";
                             controller.chooseTime(finalTime);
-                          }).catchError((error) {
-                            print(error);
-                          });
+                          }).catchError((error) {});
                         },
-                        child: SmallText(
+                        child: const SmallText(
                           text: "Choose",
                           color: AppColor.primaryColor,
                           fontWeight: FontWeight.bold,
@@ -258,12 +254,12 @@ class BookSalonView extends StatelessWidget {
                                         .contains(controller.services[index])
                                     ? SizedBox(
                                         height: Dimensions.height45,
-                                        child: Icon(
+                                        child: const Icon(
                                           Icons.check_circle,
                                           color: Colors.green,
                                         ),
                                       )
-                                    : SizedBox(),
+                                    : const SizedBox(),
                               ],
                             ),
                           ),
@@ -280,7 +276,7 @@ class BookSalonView extends StatelessWidget {
                       height: Dimensions.height60,
                       width: double.infinity,
                       color: AppColor.primaryColor,
-                      child: Center(
+                      child: const Center(
                         child: BigText(
                           text: "Submit",
                           color: Colors.white,

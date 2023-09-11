@@ -52,9 +52,4 @@ class ActivateCodeControllerImp extends ActivateCodeController {
     email = Get.arguments['email'];
     super.onInit();
   }
-
-  @override
-  void dispose() {
-    super.dispose();
-  }
 }

@@ -11,7 +11,7 @@ class MainCircleImage extends StatelessWidget {
     return Container(
       height: Dimensions.height100,
       width: Dimensions.height100,
-      decoration: BoxDecoration(
+      decoration: const BoxDecoration(
         shape: BoxShape.circle,
       ),
       child: ClipRRect(

@@ -41,21 +41,4 @@ class ProfileModel {
     address = json['address'];
     createdAt = json['created_at'];
   }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['email'] = this.email;
-    data['gender'] = this.gender;
-    data['phone'] = this.phone;
-    data['image'] = this.image;
-    data['verifycode'] = this.verifycode;
-    data['approve'] = this.approve;
-    data['country'] = this.country;
-    data['city'] = this.city;
-    data['address'] = this.address;
-    data['created_at'] = this.createdAt;
-    return data;
-  }
 }

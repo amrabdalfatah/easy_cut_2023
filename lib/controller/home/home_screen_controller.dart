@@ -12,9 +12,9 @@ class HomeScreenControllerImp extends HomeScreenController {
   int currentPage = 0;
 
   List<Widget> pages = [
-    MainView(),
-    BookingView(),
-    ProfileView(),
+    const MainView(),
+    const BookingView(),
+    const ProfileView(),
   ];
 
   @override

@@ -55,26 +55,4 @@ class SalonModel {
     createdAt = json['created_at'];
     updatedAt = json['updated_at'];
   }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
-    data['name'] = this.name;
-    data['email'] = this.email;
-    data['password'] = this.password;
-    data['phone'] = this.phone;
-    data['rate'] = this.rate;
-    data['description'] = this.description;
-    data['chairs'] = this.chairs;
-    data['category_id'] = this.categoryId;
-    data['image'] = this.image;
-    data['verifycode'] = this.verifycode;
-    data['approve'] = this.approve;
-    data['country'] = this.country;
-    data['city'] = this.city;
-    data['address'] = this.address;
-    data['created_at'] = this.createdAt;
-    data['updated_at'] = this.updatedAt;
-    return data;
-  }
 }

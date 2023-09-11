@@ -22,12 +22,12 @@ class SuccessBokking extends StatelessWidget {
           onPressed: () {
             Get.offNamed(AppRoute.home);
           },
-          icon: Icon(
+          icon: const Icon(
             Icons.arrow_back_ios,
             color: Colors.black,
           ),
         ),
-        title: Text(
+        title: const Text(
           'Booking Details',
           style: TextStyle(
             color: Colors.black,
@@ -53,7 +53,7 @@ class SuccessBokking extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: Dimensions.height10),
-                BigText(
+                const BigText(
                   text: "Booking Details",
                   color: AppColor.primaryColor,
                 ),

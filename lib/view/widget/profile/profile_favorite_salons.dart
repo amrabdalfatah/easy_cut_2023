@@ -40,7 +40,7 @@ class ProfileFavoriteSalons extends StatelessWidget {
                     ),
                   ),
                 ),
-                Divider(),
+                const Divider(),
                 Expanded(
                   child: SizedBox(
                     width: double.infinity,

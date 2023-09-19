@@ -122,7 +122,7 @@ class BookingView extends StatelessWidget {
                                             ],
                                           ),
                                           SizedBox(
-                                            width: Dimensions.width20,
+                                            width: Dimensions.width10,
                                           ),
                                           Row(
                                             children: [
@@ -134,11 +134,12 @@ class BookingView extends StatelessWidget {
                                                 text: controller
                                                     .bookings[index].day!,
                                                 color: AppColor.primaryColor,
+                                                size: Dimensions.font16,
                                               ),
                                             ],
                                           ),
                                           SizedBox(
-                                            width: Dimensions.width20,
+                                            width: Dimensions.width10,
                                           ),
                                           Row(
                                             children: [
@@ -150,6 +151,7 @@ class BookingView extends StatelessWidget {
                                                 text: controller
                                                     .bookings[index].time!,
                                                 color: AppColor.primaryColor,
+                                                size: Dimensions.font16,
                                               ),
                                             ],
                                           ),

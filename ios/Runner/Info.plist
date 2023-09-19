@@ -5,7 +5,7 @@
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>NSPhotoLibraryUsageDescription</key>
-	<string>To Select your Image to upload it</string>
+	<string>Allow photo access to take and add your photo to your profile, which make your information correctly and trusted for salons to accept your bookings.</string>
 	<key>CADisableMinimumFrameDurationOnPhone</key>
 	<true/>
 	<key>CFBundleDevelopmentRegion</key>

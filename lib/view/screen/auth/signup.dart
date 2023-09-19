@@ -32,6 +32,13 @@ class SignUp extends StatelessWidget {
                   key: controller.formState,
                   child: ListView(
                     children: [
+                      const SmallText(
+                        text: "All Fields are required",
+                        color: Colors.red,
+                      ),
+                      SizedBox(
+                        height: Dimensions.height10,
+                      ),
                       CustomTextFormAuth(
                         myController: controller.name,
                         valid: (val) {
@@ -81,7 +88,7 @@ class SignUp extends StatelessWidget {
                           return validInput(val!, 2, 40, 'any');
                         },
                         type: TextInputType.text,
-                        hintText: "Egypt",
+                        hintText: "Country",
                         prefixIcon: Icons.flag,
                       ),
                       CustomTextFormAuth(
@@ -90,7 +97,7 @@ class SignUp extends StatelessWidget {
                           return validInput(val!, 3, 40, 'any');
                         },
                         type: TextInputType.text,
-                        hintText: "Cairo",
+                        hintText: "Government",
                         prefixIcon: Icons.location_city,
                       ),
                       CustomTextFormAuth(
@@ -99,7 +106,7 @@ class SignUp extends StatelessWidget {
                           return validInput(val!, 6, 40, 'any');
                         },
                         type: TextInputType.text,
-                        hintText: "Ein Shams",
+                        hintText: "State",
                         prefixIcon: Icons.location_on,
                       ),
                       Container(

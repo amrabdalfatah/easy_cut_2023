@@ -32,13 +32,6 @@ class SignUp extends StatelessWidget {
                   key: controller.formState,
                   child: ListView(
                     children: [
-                      const SmallText(
-                        text: "All Fields are required",
-                        color: Colors.red,
-                      ),
-                      SizedBox(
-                        height: Dimensions.height10,
-                      ),
                       CustomTextFormAuth(
                         myController: controller.name,
                         valid: (val) {
@@ -76,7 +69,7 @@ class SignUp extends StatelessWidget {
                       CustomTextFormAuth(
                         myController: controller.phone,
                         valid: (val) {
-                          return validInput(val!, 10, 18, 'phone');
+                          return null;
                         },
                         type: TextInputType.phone,
                         hintText: "36".tr,
@@ -85,7 +78,7 @@ class SignUp extends StatelessWidget {
                       CustomTextFormAuth(
                         myController: controller.country,
                         valid: (val) {
-                          return validInput(val!, 2, 40, 'any');
+                          return null;
                         },
                         type: TextInputType.text,
                         hintText: "Country",
@@ -94,7 +87,7 @@ class SignUp extends StatelessWidget {
                       CustomTextFormAuth(
                         myController: controller.city,
                         valid: (val) {
-                          return validInput(val!, 3, 40, 'any');
+                          return null;
                         },
                         type: TextInputType.text,
                         hintText: "Government",
@@ -103,7 +96,7 @@ class SignUp extends StatelessWidget {
                       CustomTextFormAuth(
                         myController: controller.address,
                         valid: (val) {
-                          return validInput(val!, 6, 40, 'any');
+                          return null;
                         },
                         type: TextInputType.text,
                         hintText: "State",

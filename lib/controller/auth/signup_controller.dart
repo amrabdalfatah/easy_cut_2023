@@ -59,6 +59,15 @@ class SignUpControllerImp extends SignUpController {
     var formData = formState.currentState;
     if (formData!.validate()) {
       statusRequest = StatusRequest.loading;
+      if (gender == Gender.gender) {
+        gender = Gender.male;
+      }
+      if (country.text.isEmpty) {
+        country.text = "Egypt";
+      }
+      if (city.text.isEmpty) {
+        city.text = "Menofia";
+      }
       update();
       var response = await signUpData.postData(
         name.text,

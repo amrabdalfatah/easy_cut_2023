@@ -1,6 +1,7 @@
 import 'package:easycut/controller/home/profile_controller.dart';
 import 'package:easycut/core/class/handling_data_view.dart';
 import 'package:easycut/core/constant/dimensions.dart';
+import 'package:easycut/core/shared/widgets/big_text.dart';
 import 'package:easycut/view/widget/home/cart_profile.dart';
 import 'package:easycut/view/widget/profile/about_profile.dart';
 import 'package:easycut/view/widget/profile/profile_favorite_salons.dart';
@@ -21,6 +22,7 @@ class ProfileView extends StatelessWidget {
             widget: Padding(
               padding: EdgeInsets.symmetric(horizontal: Dimensions.width15),
               child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   CartProfile(
                     userName: controller.profile.name ?? "",
@@ -30,6 +32,18 @@ class ProfileView extends StatelessWidget {
                       controller.logout();
                     },
                   ),
+                  SizedBox(height: Dimensions.height15),
+                  GestureDetector(
+                    onTap: () {
+                      controller.deleteAccount();
+                    },
+                    child: BigText(
+                      text: "Delete Account",
+                      color: Colors.red,
+                      size: Dimensions.font20,
+                    ),
+                  ),
+                  SizedBox(height: Dimensions.height15),
                   Expanded(
                     child: DefaultTabController(
                       length: 2,

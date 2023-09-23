@@ -12,4 +12,12 @@ class ProfileData {
     });
     return response.fold((l) => l, (r) => r);
   }
+
+  deleteData(String id, String image) async {
+    var response = await crud.postData(AppLink.userDelete, {
+      "id": id,
+      "imageold": image,
+    });
+    return response.fold((l) => l, (r) => r);
+  }
 }

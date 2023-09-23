@@ -11,6 +11,7 @@ import 'package:get/get.dart';
 abstract class ProfileController extends GetxController {
   getData();
   logout();
+  deleteAccount();
 }
 
 class ProfileControllerImp extends ProfileController {
@@ -54,6 +55,59 @@ class ProfileControllerImp extends ProfileController {
       }
     }
     update();
+  }
+
+  @override
+  deleteAccount() {
+    Get.defaultDialog(
+      title: "Delete Account",
+      middleText: "Are you sure to delete your account?",
+      actions: [
+        TextButton(
+          onPressed: () async {
+            Get.back();
+            statusRequest = StatusRequest.loading;
+            update();
+            var response = await profileData.deleteData(
+              id!,
+              profile.image!,
+            );
+            statusRequest = handlingData(response);
+            if (statusRequest == StatusRequest.success) {
+              if (response['status'] == 'success') {
+                logout();
+              } else {
+                Get.snackbar(
+                  'Warning',
+                  'Failed to Delete Account, Try Again',
+                  snackPosition: SnackPosition.TOP,
+                  colorText: Colors.red,
+                );
+                statusRequest = StatusRequest.failure;
+              }
+            }
+            update();
+          },
+          child: const Text(
+            "Yes",
+            style: TextStyle(
+              color: Colors.red,
+            ),
+          ),
+        ),
+        TextButton(
+          onPressed: () {
+            Get.back();
+          },
+          child: const Text(
+            "No",
+            style: TextStyle(
+              color: Colors.blue,
+            ),
+          ),
+        ),
+      ],
+    );
   }
 
   @override

@@ -38,7 +38,7 @@ class BookingView extends StatelessWidget {
                       scrollDirection: Axis.vertical,
                       itemBuilder: (context, index) {
                         return SizedBox(
-                          height: Dimensions.height350,
+                          height: Dimensions.height350 + Dimensions.height10,
                           width: double.infinity,
                           child: Card(
                             child: Column(
@@ -57,7 +57,7 @@ class BookingView extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                SizedBox(height: Dimensions.height15),
+                                SizedBox(height: Dimensions.height10),
                                 Padding(
                                   padding: EdgeInsets.symmetric(
                                     horizontal: Dimensions.width10,
